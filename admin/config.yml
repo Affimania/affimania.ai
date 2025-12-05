@@ -1,0 +1,21 @@
+backend:
+  name: github
+  # ⚠️ Yeh line Zaroor Change Karein:
+  repo: [YOUR-GITHUB-USERNAME]/[YOUR-REPO-NAME] 
+  branch: main # Agar aapka main branch ka naam 'master' hai toh use change karein
+
+media_folder: "assets/img" 
+public_folder: "/assets/img"
+
+collections:
+  - name: "deals"
+    label: "Amazon Daily Deals"
+    folder: "_deals" # Data files is folder mein store honge
+    create: true
+    slug: "{{date}}-{{slug}}"
+    fields:
+      - {label: "Product Name", name: "title", widget: "string"}
+      - {label: "Current Price (₹)", name: "price", widget: "number"}
+      - {label: "Savings", name: "savings", widget: "string"}
+      - {label: "Amazon Affiliate Link", name: "affiliate_link", widget: "string"}
+      - {label: "Product Image URL", name: "image", widget: "string"} # Image URL field
