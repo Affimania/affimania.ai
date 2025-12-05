@@ -1,0 +1,34 @@
+# Yeh file aapke liye daily code update karegi
+name: Daily Amazon Deal Update
+
+# Ise har din subah 5:00 AM (UTC time) par chalao (~10:30 AM IST)
+on:
+  schedule:
+    - cron: '0 5 * * *' 
+
+jobs:
+  update-deals:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+
+      - name: Setup Node.js (for running script)
+        uses: actions/setup-node@v3
+        with:
+          node-version: '18'
+
+      # Yeh woh jagah hai jahan deals ka data fetch hoga aur index.html update hoga.
+      # Abhi yeh sirf ek dummy script run karega.
+      - name: Fetch and Update Deals
+        run: |
+          echo "Starting daily deal fetch and update..."
+          # ********** ADVANCED CODING REQUIRED HERE **********
+          # Jaise ki: node update_script.js (iska code abhi banana hai)
+          
+      - name: Commit Updated Index
+        run: |
+          git config user.name "Affimania Bot"
+          git config user.email "affimania-bot@users.github.com"
+          git add index.html 
+          git commit -m "Automated: Daily deal update by GitHub Action" || echo "No changes to commit"
+          git push
