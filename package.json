@@ -1,0 +1,9 @@
+{
+  "name": "affimania-ai-automation",
+  "version": "1.0.0",
+  "description": "Script to auto-update Amazon deals on GitHub Pages.",
+  "main": "update_deals.js",
+  "scripts": {
+    "start": "node update_deals.js"
+  }
+}
