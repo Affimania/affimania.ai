@@ -7,30 +7,6 @@
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
     
-    <script src="https://identity.netlify.com/v1/netlify-identity-widget.js"></script> 
-    
-    <script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-app-compat.js"></script>
-    <script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-auth-compat.js"></script>
-    <script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-firestore-compat.js"></script>
-
-    <script>
-        // Aapka Unique Firebase Configuration (Used for Login, Signup, History)
-        const firebaseConfig = {
-          apiKey: "AIzaSyBnACV3LWdkZldSRl1GoV7AlTANKrC6Yh8",
-          authDomain: "affimania-ai.firebaseapp.com",
-          projectId: "affimania-ai",
-          storageBucket: "affimania-ai.appspot.com",
-          messagingSenderId: "870720070496",
-          appId: "1:870720070496:web:3e44a017ad44fbc4e5f405"
-        };
-
-        // Firebase ko initialize karna
-        const app = firebase.initializeApp(firebaseConfig);
-        const auth = app.auth(); // Authentication service
-        const db = app.firestore(); // Database service (History tracking)
-
-        console.log('Firebase App Connected. Ready for Auth and DB.'); 
-    </script>
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-status-bar-style" content="black">
     <meta name="theme-color" content="#3b82f6">
@@ -96,53 +72,9 @@
 </head>
 <body class="min-h-screen flex items-start justify-center p-4">
 
-    <div id="auth-modal" class="hidden fixed inset-0 bg-gray-900 bg-opacity-80 z-50 flex items-center justify-center">
-        <div class="bg-white p-6 rounded-xl shadow-2xl w-full max-w-sm">
-            <h2 class="text-2xl font-bold text-blue-600 mb-4 text-center">AFFIMANIA Login/Signup</h2>
-            
-            <div class="flex mb-4 border-b">
-                <button id="tab-login" class="flex-1 py-2 text-sm font-semibold border-b-2 border-blue-600 text-blue-600">Login</button>
-                <button id="tab-signup" class="flex-1 py-2 text-sm font-semibold text-gray-500 hover:text-blue-600">Sign Up</button>
-            </div>
-
-            <form id="login-form" class="space-y-4">
-                <input type="email" id="login-email" placeholder="Email Address" required 
-                       class="w-full p-3 border border-gray-300 rounded-lg focus:ring-blue-500">
-                <input type="password" id="login-password" placeholder="Password" required 
-                       class="w-full p-3 border border-gray-300 rounded-lg focus:ring-blue-500">
-                <button type="submit" class="w-full bg-green-600 text-white p-3 rounded-lg font-semibold hover:bg-green-700">Log In</button>
-            </form>
-
-            <form id="signup-form" class="space-y-4 hidden">
-                <input type="text" id="signup-name" placeholder="Name" required 
-                       class="w-full p-3 border border-gray-300 rounded-lg focus:ring-blue-500">
-                <input type="email" id="signup-email" placeholder="Email Address" required 
-                       class="w-full p-3 border border-gray-300 rounded-lg focus:ring-blue-500">
-                <input type="password" id="signup-password" placeholder="Set Password (Min 6 Chars)" required 
-                       class="w-full p-3 border border-gray-300 rounded-lg focus:ring-blue-500">
-                <input type="tel" id="signup-mobile" placeholder="Mobile Number"
-                       class="w-full p-3 border border-gray-300 rounded-lg focus:ring-blue-500">
-                <button type="submit" class="w-full bg-blue-600 text-white p-3 rounded-lg font-semibold hover:bg-blue-700">Sign Up</button>
-            </form>
-
-            <div class="text-center my-4">OR</div>
-
-            <button id="google-login-btn" class="w-full flex items-center justify-center p-3 border rounded-lg hover:bg-gray-100 transition">
-                <svg class="w-5 h-5 mr-2" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg"><path fill="#FFC107" d="M43.611 20.083H42V20H24v8h11.303c-1.649 4.746-6.08 7.962-10.303 7.962c-6.196 0-11.226-5.031-11.226-11.226c0-6.196 5.03-11.226 11.226-11.226c3.159 0 6.026 1.286 8.16 3.392l4.47-4.47c-3.793-3.64-8.823-5.88-14.07-5.88c-11.487 0-20.803 9.316-20.803 20.804c0 11.487 9.316 20.803 20.803 20.803c11.487 0 20.534-9.316 20.534-20.803c0-1.321-.137-2.613-.385-3.845z"/><path fill="#FF3D00" d="M6.306 14.691L11.536 18.232C12.79 15.69 14.536 13.986 16.353 12.87z"/><path fill="#4CAF50" d="M12.012 37.387L17.242 33.846C18.215 35.83 20.55 37.387 23.611 37.387c3.125 0 5.46-1.557 6.434-3.541l5.23-3.541C30.65 40.533 26.54 44 21.611 44c-3.159 0-6.026-1.286-8.16-3.392z"/><path fill="#1976D2" d="M43.611 20.083L39.81 22.993C40.941 24.088 41.564 25.56 41.564 27.218z"/></svg>
-                Sign in with Google
-            </button>
-
-            <button id="close-modal" class="mt-4 w-full text-sm text-gray-500 hover:text-gray-900">Close</button>
-        </div>
-    </div>
     <div id="app-container" class="w-full max-w-md lg:max-w-xl xl:max-w-2xl bg-white shadow-2xl rounded-2xl p-6 transition-all duration-300 border-t-4 border-blue-600">
         
         <header class="text-center mb-4">
-            <div class="absolute top-4 right-4">
-                <button id="auth-btn" class="bg-blue-500 text-white text-xs font-semibold px-3 py-1 rounded hover:bg-blue-600 transition">
-                    Login/Signup
-                </button>
-            </div>
             <div class="text-4xl mb-2 flex items-center justify-center text-blue-600">
                 <span class="mr-2">💡</span> AFFIMANIA AI
             </div>
@@ -157,10 +89,6 @@
             </div>
         </div>
 
-        <div id="history-area" class="hidden bg-gray-100 p-3 rounded-lg text-sm text-gray-700 font-medium mb-6 transition-all duration-300">
-            <p class="font-semibold text-gray-800 mb-1">🔍 Aapki Last 3 Searches:</p>
-            <div id="history-list"></div>
-        </div>
         <div id="output-message" class="bg-indigo-50 p-3 rounded-lg text-sm text-indigo-700 font-medium mb-6 transition-all duration-300">
             AFFIMANIA AI: Welcome! Aapki shopping journey shuru karne ke liye, konsa product chahiye?
         </div>
@@ -314,201 +242,7 @@
         // Page load hone par deals load karein
         window.addEventListener('load', loadDailyDeals);
         
-        // --- START: AUTHENTICATION UI & FIREBASE LOGIC ---
-        
-        const authModal = document.getElementById('auth-modal');
-        const authBtn = document.getElementById('auth-btn');
-        const closeModalBtn = document.getElementById('close-modal');
-        const loginForm = document.getElementById('login-form');
-        const signupForm = document.getElementById('signup-form');
-        const tabLogin = document.getElementById('tab-login');
-        const tabSignup = document.getElementById('tab-signup');
-        const googleLoginBtn = document.getElementById('google-login-btn');
-        const historyArea = document.getElementById('history-area'); // New History Area Element
-        
-        // Show/Hide Modal Logic
-        authBtn.addEventListener('click', () => {
-            authModal.classList.remove('hidden');
-        });
-        closeModalBtn.addEventListener('click', () => {
-            authModal.classList.add('hidden');
-        });
-        
-        // Tab Switching Logic
-        tabLogin.addEventListener('click', () => {
-            tabLogin.classList.add('border-blue-600', 'text-blue-600');
-            tabSignup.classList.remove('border-blue-600', 'text-blue-600');
-            loginForm.classList.remove('hidden');
-            signupForm.classList.add('hidden');
-        });
-        tabSignup.addEventListener('click', () => {
-            tabSignup.classList.add('border-blue-600', 'text-blue-600');
-            tabLogin.classList.remove('border-blue-600', 'text-blue-600');
-            signupForm.classList.remove('hidden');
-            loginForm.classList.add('hidden');
-        });
-
-        // --- FIREBASE AUTHENTICATION FUNCTIONS ---
-
-        // 1. SIGNUP WITH EMAIL AND PASSWORD
-        signupForm.addEventListener('submit', async (e) => {
-            e.preventDefault();
-            const name = document.getElementById('signup-name').value;
-            const email = document.getElementById('signup-email').value;
-            const password = document.getElementById('signup-password').value;
-            const mobile = document.getElementById('signup-mobile').value;
-
-            try {
-                // Firebase mein user create karna
-                const userCredential = await auth.createUserWithEmailAndPassword(email, password);
-                const user = userCredential.user;
-
-                // User details Firestore Database mein save karna
-                await db.collection("users").doc(user.uid).set({
-                    name: name,
-                    mobile: mobile,
-                    email: email,
-                    created_at: firebase.firestore.FieldValue.serverTimestamp()
-                });
-
-                alert("✅ Signup Successful! Aap ab logged in hain.");
-                authModal.classList.add('hidden');
-
-            } catch (error) {
-                alert("❌ Signup Failed: " + error.message);
-                console.error("Signup error:", error.code);
-            }
-        });
-
-        // 2. LOGIN WITH EMAIL AND PASSWORD
-        loginForm.addEventListener('submit', async (e) => {
-            e.preventDefault();
-            const email = document.getElementById('login-email').value;
-            const password = document.getElementById('login-password').value;
-
-            try {
-                await auth.signInWithEmailAndPassword(email, password);
-                alert("✅ Login Successful! Welcome back.");
-                authModal.classList.add('hidden');
-
-            } catch (error) {
-                alert("❌ Login Failed: Email ya Password galat hai.");
-                console.error("Login error:", error.code);
-            }
-        });
-
-        // 3. GOOGLE SIGN-IN
-        googleLoginBtn.addEventListener('click', async () => {
-            const provider = new firebase.auth.GoogleAuthProvider();
-            try {
-                const result = await auth.signInWithPopup(provider);
-                const user = result.user;
-                
-                // Naye Google user ka data database mein save karna
-                const userRef = db.collection("users").doc(user.uid);
-                await userRef.set({
-                    name: user.displayName,
-                    email: user.email,
-                    created_at: firebase.firestore.FieldValue.serverTimestamp()
-                }, { merge: true }); // Merge: agar user pehle se hai toh update nahi hoga
-                
-                alert("✅ Google Login Successful!");
-                authModal.classList.add('hidden');
-
-            } catch (error) {
-                alert("❌ Google Login Failed: " + error.message);
-                console.error("Google Auth error:", error.code);
-            }
-        });
-
-
-        // 4. HISTORY TRACKING FUNCTION (Naye features ka sabse zaroori hissa)
-        async function saveSearchHistory(userId, productName, minPrice, maxPrice) {
-            if (!userId) return; // Agar user logged in nahi hai toh save na karein
-            
-            try {
-                await db.collection("history").add({
-                    userId: userId,
-                    product: productName,
-                    min: minPrice,
-                    max: maxPrice,
-                    timestamp: firebase.firestore.FieldValue.serverTimestamp()
-                });
-            } catch (error) {
-                console.error("Error saving history:", error);
-            }
-        }
-        
-        // 5. HISTORY LOAD FUNCTION (Agle session mein dikhane ke liye)
-        async function loadUserHistory(userId) {
-            const historyListElement = document.getElementById('history-list');
-            historyListElement.innerHTML = '';
-            
-            try {
-                const historySnapshot = await db.collection("history")
-                    .where("userId", "==", userId)
-                    .orderBy("timestamp", "desc")
-                    .limit(3)
-                    .get();
-
-                if (historySnapshot.empty) {
-                    historyListElement.innerHTML = `<p class="text-xs text-gray-500">Koi purani search nahi mili.</p>`;
-                    return;
-                }
-                
-                historySnapshot.forEach(doc => {
-                    const data = doc.data();
-                    const p = document.createElement('p');
-                    p.className = 'text-xs text-blue-700 font-medium hover:underline cursor-pointer';
-                    p.textContent = `${data.product} (₹${data.min}-${data.max})`;
-                    
-                    // History item par click karne se form fill ho jaaye
-                    p.addEventListener('click', () => {
-                        document.getElementById('product').value = data.product;
-                        document.getElementById('min_price').value = data.min;
-                        document.getElementById('max_price').value = data.max;
-                        document.getElementById('search-button').click(); // Turant search shuru karein
-                    });
-                    
-                    historyListElement.appendChild(p);
-                });
-                
-            } catch (error) {
-                 console.error("Error loading history:", error);
-            }
-        }
-
-
-        // 6. AUTH STATE CHANGE (Login/Logout Hone Par UI Update)
-        auth.onAuthStateChanged(user => {
-            const authBtn = document.getElementById('auth-btn');
-
-            if (user) {
-                // User logged in
-                const userName = user.displayName ? user.displayName.split(' ')[0] : 'User';
-                authBtn.textContent = `Hi, ${userName} | Logout`;
-                historyArea.classList.remove('hidden');
-                
-                // History load karein
-                loadUserHistory(user.uid);
-                
-                // Logout function add karein
-                authBtn.onclick = () => {
-                    auth.signOut();
-                    alert("✅ Aap successfully log out ho gaye hain.");
-                };
-
-            } else {
-                // User logged out
-                authBtn.textContent = 'Login/Signup';
-                historyArea.classList.add('hidden');
-                
-                // Login modal show function add karein
-                authBtn.onclick = () => {
-                    authModal.classList.remove('hidden');
-                };
-            }
-        });
+        // --- START: AUTHENTICATION UI & FIREBASE LOGIC (Login/Signup Logic removed, UI Logic only) ---
         
         // --- END: AUTHENTICATION UI & FIREBASE LOGIC ---
         
@@ -532,12 +266,6 @@
             // Loading state
             searchButton.textContent = '🔍 AFFIMANIA Search Kar Raha Hai...';
             searchButton.disabled = true;
-            
-            // 🛑 HISTORY TRACKING (Search submit hone par save karein)
-            const currentUser = auth.currentUser;
-            if (currentUser) {
-                saveSearchHistory(currentUser.uid, product, minPrice, maxPrice);
-            }
 
             // --- C. Dynamic Link Generation (The Core AI/Filtering Logic) ---
             
