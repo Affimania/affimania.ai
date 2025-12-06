@@ -3,29 +3,31 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>AFFIMANIA AI App - Pro</title>
+    <title>AFFIMANIA AI App</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&display=swap" rel="stylesheet">
     
     <script src="https://identity.netlify.com/v1/netlify-identity-widget.js"></script> 
-
+    
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-status-bar-style" content="black">
-    <meta name="theme-color" content="#164E63"> <style>
+    <meta name="theme-color" content="#164E63"> 
+
+    <style>
         /* New Color Scheme: Dark Teal/Navy (#164E63) and Orange (#F97316) */
         body {
             font-family: 'Inter', sans-serif;
-            background-color: #f3f4f6; /* Light gray background */
+            background-color: #f3f4f6;
         }
         /* Custom scrollbar for modern look */
         ::-webkit-scrollbar {
             width: 8px;
         }
         ::-webkit-scrollbar-thumb {
-            background: #164E63; /* Dark Teal */
+            background: #164E63; 
             border-radius: 4px;
         }
-        /* Gradient for the final link button */
+        /* Gradient for the final link button (Search Result Card) */
         .affiliate-link-button {
             background-image: linear-gradient(to right, #F97316 0%, #D97706  51%, #F97316  100%);
             text-align: center;
@@ -33,8 +35,7 @@
             transition: 0.5s;
             background-size: 200% auto;
             color: white;            
-            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
-            font-weight: 800; /* Extra bold for impact */
+            font-weight: 800;
         }
         .affiliate-link-button:hover {
             background-position: right center;
@@ -58,12 +59,12 @@
         /* Specific Hover Styles */
         .insta-button:hover {
             transform: scale(1.05);
-            border-color: #EC4899;
+            border-color: #EC4899; 
             color: #EC4899;
         }
         .email-button:hover {
             transform: scale(1.05);
-            border-color: #164E63; /* Dark Teal hover */
+            border-color: #164E63; 
             color: #164E63;
         }
 
@@ -71,25 +72,25 @@
 </head>
 <body class="min-h-screen flex items-start justify-center p-4">
 
-    <div id="app-container" class="w-full max-w-md lg:max-w-4xl xl:max-w-5xl bg-white shadow-2xl rounded-2xl p-6 transition-all duration-300 border-t-4 border-teal-700">
+    <div id="app-container" class="w-full max-w-md md:max-w-4xl lg:max-w-5xl bg-white shadow-2xl rounded-2xl p-6 transition-all duration-300 border-t-4 border-teal-700">
         
         <header class="text-center mb-4">
             <div class="text-5xl mb-2 flex items-center justify-center text-teal-700 font-extrabold">
                 <span class="mr-2">⚡</span> AFFIMANIA AI
             </div>
-            <h1 class="text-xl font-bold text-gray-700">Aapka Intelligent Price Optimization Assistant</h1>
+            <h1 class="text-xl font-bold text-gray-800">Aapka Intelligent Price Optimization Assistant</h1>
         </header>
         
         <div class="bg-yellow-50 border border-yellow-300 p-3 rounded-lg flex items-center mb-6">
             <span class="text-yellow-600 mr-3 text-xl">🔒</span>
             <div>
                 <p class="text-sm font-semibold text-yellow-800">Data Safety Assurance</p>
-                <p class="text-xs text-yellow-700">Hum aapka koi bhi Personal Data store nahi karte. Aapka data yahan 100% safe hai.</p>
+                <p class="text-xs text-yellow-700">We do not store any of your Personal Data. Your data is 100% safe here.</p>
             </div>
         </div>
 
-        <div id="output-message" class="bg-blue-50 border border-blue-200 p-3 rounded-lg text-sm text-blue-700 font-medium mb-6 transition-all duration-300">
-            AFFIMANIA AI: Welcome! Aapki shopping journey shuru karne ke liye, konsa product chahiye?
+        <div id="output-message" class="bg-teal-50 border border-teal-200 p-3 rounded-lg text-sm text-teal-700 font-medium mb-6 transition-all duration-300">
+            AFFIMANIA AI: Welcome! What product are you looking for to start your shopping journey?
         </div>
 
         <form id="affimania-form" class="space-y-4">
@@ -116,8 +117,8 @@
             </div>
             
             <button type="submit" id="search-button"
-                    class="w-full bg-orange-600 text-white p-3 rounded-lg font-semibold hover:bg-orange-700 transition-colors duration-200 shadow-md transform hover:scale-[1.01] transition-transform">
-                🔍 AFFIMANIA Search Karo!
+                    class="w-full bg-blue-600 text-white p-3 rounded-lg font-semibold hover:bg-blue-700 transition-colors duration-200 shadow-md transform hover:scale-[1.01] transition-transform">
+                🔍 AFFIMANIA Search Now!
             </button>
         </form>
 
@@ -132,30 +133,30 @@
                 <p class="mt-4 text-center"><strong>🚀 Click for Optimized Deal:</strong></p>
                 
                 <a id="res-link" target="_blank" class="block p-3 rounded-lg font-bold affiliate-link-button">
-                    <span class="mr-2">🛒</span> AMAZON PAR BEST DEAL DEKHO!
+                    <span class="mr-2">🛒</span> VIEW BEST DEAL ON AMAZON!
                 </a>
             </div>
             <p class="text-xs text-green-600 mt-3 text-center font-medium italic">
-                Commerce Insight: Yeh link hamare exclusive **'Best Price Partner Tag'** se optimize kiya gaya hai.
+                Commerce Insight: Yeh link hamare exclusive **'Best Price Partner Tag'** se optimize kiya गया है.
             </p>
         </div>
         
         <div id="deals-container" class="mt-8 p-4 bg-gray-50 rounded-lg shadow-inner border border-gray-200">
             <h2 class="text-2xl font-bold text-gray-800 mb-4 border-b pb-2 text-center">🔥 Aaj Ki Top Trending Deals</h2>
-            <div id="deals-list" class="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3">
+            <div id="deals-list" class="grid grid-cols-1 gap-4 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4">
                 <p id="loading-message" class="text-center text-gray-500 col-span-full">Deals loading...</p>
             </div>
         </div>
-        <div class="mt-8 pt-4 border-t border-gray-200 text-center">
-            <h3 class="text-lg font-semibold text-gray-700 mb-4">Customer Support & Connect</h3>
+        <div class="mt-10 pt-6 border-t border-gray-300 text-center">
+            <h3 class="text-xl font-bold text-gray-700 mb-4">Customer Support & Connect</h3>
 
-            <div class="flex flex-col space-y-4 items-center">
-                <a href="mailto:affimania1@gmail.com" class="contact-button email-button w-full max-w-xs">
+            <div class="flex flex-wrap justify-center space-x-0 sm:space-x-4 space-y-4 sm:space-y-0">
+                <a href="mailto:affimania1@gmail.com" class="contact-button email-button w-full sm:w-auto px-6">
                     <svg class="w-5 h-5 mr-2 text-teal-600" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8m-2-3H5a2 2 0 00-2 2v10a2 2 0 002 2h14a2 2 0 002-2V7a2 2 0 00-2-2z"></path></svg>
                     affimania1@gmail.com
                 </a>
 
-                <a href="https://www.instagram.com/affimania" target="_blank" class="contact-button insta-button w-full max-w-xs" aria-label="Instagram Profile">
+                <a href="https://www.instagram.com/affimania" target="_blank" class="contact-button insta-button w-full sm:w-auto px-6" aria-label="Instagram Profile">
                     <svg class="w-5 h-5 mr-2 text-pink-500" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4.5c2.454 0 2.768.01 3.738.053 1.05.048 1.795.212 2.453.468a4.116 4.116 0 011.493.992 4.116 4.116 0 01.992 1.493c.256.658.42 1.403.468 2.453.043.97.053 1.284.053 3.738s-.01 2.768-.053 3.738c-.048 1.05-.212 1.795-.468 2.453a4.116 4.116 0 01-.992 1.493 4.116 4.116 0 01-1.493.992c-.658.256-1.403.42-2.453.468-.97.043-1.284.053-3.738.053s-2.768-.01-3.738-.053c-1.05-.048-1.795-.212-2.453-.468a4.116 4.116 0 01-1.493-.992 4.116 4.116 0 01-.992-1.493c-.256-.658-.42-1.403-.468-2.453-.043-.97-.053-1.284-.053-3.738s.01-2.768.053-3.738c.048-1.05.212-1.795.468-2.453a4.116 4.116 0 01.992-1.493 4.116 4.116 0 011.493-.992c.658-.256 1.403-.42 2.453-.468.97-.043 1.284-.053 3.738-.053z"/>
                         <circle cx="12" cy="12" r="3.2"/>
@@ -191,801 +192,11 @@
         const searchButton = document.getElementById('search-button');
         
         // --- START: AUTOGENERATED DEALS DATA ---
-const dummyDeals = [
-    {
-        "title": "Fast Car Charger (Type-C) - Save Today! (ID: 0.8456)",
-        "price": 7365,
-        "mrp": 10089,
-        "savings": "Flat 27% Off",
-        "affiliate_link": "https://www.amazon.in/s?k=Fast+Car+Charger+(Type-C)&tag=ascreation00f-21",
-        "image": "https://placehold.co/150x150?text=AFFIMANIA"
-    },
-    {
-        "title": "Gaming Headset (50% Off) - Save Today! (ID: 0.1036)",
-        "price": 4524,
-        "mrp": 5370,
-        "savings": "Flat 16% Off",
-        "affiliate_link": "https://www.amazon.in/s?k=Gaming+Headset+(50%+Off)&tag=ascreation00f-21",
-        "image": "https://placehold.co/150x150?text=AFFIMANIA"
-    },
-    {
-        "title": "Backpack (Waterproof) - Save Today! (ID: 0.0983)",
-        "price": 1837,
-        "mrp": 2421,
-        "savings": "Flat 24% Off",
-        "affiliate_link": "https://www.amazon.in/s?k=Backpack+(Waterproof)&tag=ascreation00f-21",
-        "image": "https://placehold.co/150x150?text=AFFIMANIA"
-    },
-    {
-        "title": "Laptop Cooling Pad - Save Today! (ID: 0.3170)",
-        "price": 6353,
-        "mrp": 7755,
-        "savings": "Flat 18% Off",
-        "affiliate_link": "https://www.amazon.in/s?k=Laptop+Cooling+Pad&tag=ascreation00f-21",
-        "image": "https://placehold.co/150x150?text=AFFIMANIA"
-    },
-    {
-        "title": "Smartwatch (Fitness Tracker) - Save Today! (ID: 0.3643)",
-        "price": 6328,
-        "mrp": 9472,
-        "savings": "Flat 33% Off",
-        "affiliate_link": "https://www.amazon.in/s?k=Smartwatch+(Fitness+Tracker)&tag=ascreation00f-21",
-        "image": "https://placehold.co/150x150?text=AFFIMANIA"
-    },
-    {
-        "title": "Running Shoes (Men's) - Save Today! (ID: 0.9716)",
-        "price": 4826,
-        "mrp": 5388,
-        "savings": "Flat 10% Off",
-        "affiliate_link": "https://www.amazon.in/s?k=Running+Shoes+(Men's)&tag=ascreation00f-21",
-        "image": "https://placehold.co/150x150?text=AFFIMANIA"
-    },
-    {
-        "title": "Vitamin C Serum (Skincare) - Save Today! (ID: 0.3514)",
-        "price": 4229,
-        "mrp": 6211,
-        "savings": "Flat 32% Off",
-        "affiliate_link": "https://www.amazon.in/s?k=Vitamin+C+Serum+(Skincare)&tag=ascreation00f-21",
-        "image": "https://placehold.co/150x150?text=AFFIMANIA"
-    },
-    {
-        "title": "Office Chair (Ergonomic) - Save Today! (ID: 0.7580)",
-        "price": 2958,
-        "mrp": 4386,
-        "savings": "Flat 33% Off",
-        "affiliate_link": "https://www.amazon.in/s?k=Office+Chair+(Ergonomic)&tag=ascreation00f-21",
-        "image": "https://placehold.co/150x150?text=AFFIMANIA"
-    },
-    {
-        "title": "Vitamin C Serum (Skincare) - Save Today! (ID: 0.5098)",
-        "price": 5320,
-        "mrp": 8614,
-        "savings": "Flat 38% Off",
-        "affiliate_link": "https://www.amazon.in/s?k=Vitamin+C+Serum+(Skincare)&tag=ascreation00f-21",
-        "image": "https://placehold.co/150x150?text=AFFIMANIA"
-    },
-    {
-        "title": "Wireless Earbuds (New Model) - Save Today! (ID: 0.4927)",
-        "price": 1392,
-        "mrp": 3880,
-        "savings": "Flat 64% Off",
-        "affiliate_link": "https://www.amazon.in/s?k=Wireless+Earbuds+(New+Model)&tag=ascreation00f-21",
-        "image": "https://placehold.co/150x150?text=AFFIMANIA"
-    },
-    {
-        "title": "Gaming Headset (50% Off) - Save Today! (ID: 0.3479)",
-        "price": 3715,
-        "mrp": 4751,
-        "savings": "Flat 22% Off",
-        "affiliate_link": "https://www.amazon.in/s?k=Gaming+Headset+(50%+Off)&tag=ascreation00f-21",
-        "image": "https://placehold.co/150x150?text=AFFIMANIA"
-    },
-    {
-        "title": "Vitamin C Serum (Skincare) - Save Today! (ID: 0.7209)",
-        "price": 6571,
-        "mrp": 8356,
-        "savings": "Flat 21% Off",
-        "affiliate_link": "https://www.amazon.in/s?k=Vitamin+C+Serum+(Skincare)&tag=ascreation00f-21",
-        "image": "https://placehold.co/150x150?text=AFFIMANIA"
-    },
-    {
-        "title": "Laptop Cooling Pad - Save Today! (ID: 0.7729)",
-        "price": 3541,
-        "mrp": 5679,
-        "savings": "Flat 38% Off",
-        "affiliate_link": "https://www.amazon.in/s?k=Laptop+Cooling+Pad&tag=ascreation00f-21",
-        "image": "https://placehold.co/150x150?text=AFFIMANIA"
-    },
-    {
-        "title": "Fast Car Charger (Type-C) - Save Today! (ID: 0.3526)",
-        "price": 7002,
-        "mrp": 7693,
-        "savings": "Flat 9% Off",
-        "affiliate_link": "https://www.amazon.in/s?k=Fast+Car+Charger+(Type-C)&tag=ascreation00f-21",
-        "image": "https://placehold.co/150x150?text=AFFIMANIA"
-    },
-    {
-        "title": "Bluetooth Speaker (Portable) - Save Today! (ID: 0.3222)",
-        "price": 5062,
-        "mrp": 8350,
-        "savings": "Flat 39% Off",
-        "affiliate_link": "https://www.amazon.in/s?k=Bluetooth+Speaker+(Portable)&tag=ascreation00f-21",
-        "image": "https://placehold.co/150x150?text=AFFIMANIA"
-    },
-    {
-        "title": "Bluetooth Speaker (Portable) - Save Today! (ID: 0.4514)",
-        "price": 5207,
-        "mrp": 8405,
-        "savings": "Flat 38% Off",
-        "affiliate_link": "https://www.amazon.in/s?k=Bluetooth+Speaker+(Portable)&tag=ascreation00f-21",
-        "image": "https://placehold.co/150x150?text=AFFIMANIA"
-    },
-    {
-        "title": "Layered Necklace Set - Save Today! (ID: 0.5616)",
-        "price": 8205,
-        "mrp": 8969,
-        "savings": "Flat 9% Off",
-        "affiliate_link": "https://www.amazon.in/s?k=Layered+Necklace+Set&tag=ascreation00f-21",
-        "image": "https://placehold.co/150x150?text=AFFIMANIA"
-    },
-    {
-        "title": "Laptop Cooling Pad - Save Today! (ID: 0.0849)",
-        "price": 5933,
-        "mrp": 7219,
-        "savings": "Flat 18% Off",
-        "affiliate_link": "https://www.amazon.in/s?k=Laptop+Cooling+Pad&tag=ascreation00f-21",
-        "image": "https://placehold.co/150x150?text=AFFIMANIA"
-    },
-    {
-        "title": "Vitamin C Serum (Skincare) - Save Today! (ID: 0.4139)",
-        "price": 5856,
-        "mrp": 7366,
-        "savings": "Flat 20% Off",
-        "affiliate_link": "https://www.amazon.in/s?k=Vitamin+C+Serum+(Skincare)&tag=ascreation00f-21",
-        "image": "https://placehold.co/150x150?text=AFFIMANIA"
-    },
-    {
-        "title": "Bluetooth Speaker (Portable) - Save Today! (ID: 0.1713)",
-        "price": 2862,
-        "mrp": 6189,
-        "savings": "Flat 54% Off",
-        "affiliate_link": "https://www.amazon.in/s?k=Bluetooth+Speaker+(Portable)&tag=ascreation00f-21",
-        "image": "https://placehold.co/150x150?text=AFFIMANIA"
-    },
-    {
-        "title": "Backpack (Waterproof) - Save Today! (ID: 0.5516)",
-        "price": 6667,
-        "mrp": 9306,
-        "savings": "Flat 28% Off",
-        "affiliate_link": "https://www.amazon.in/s?k=Backpack+(Waterproof)&tag=ascreation00f-21",
-        "image": "https://placehold.co/150x150?text=AFFIMANIA"
-    },
-    {
-        "title": "Backpack (Waterproof) - Save Today! (ID: 0.4793)",
-        "price": 4229,
-        "mrp": 7103,
-        "savings": "Flat 40% Off",
-        "affiliate_link": "https://www.amazon.in/s?k=Backpack+(Waterproof)&tag=ascreation00f-21",
-        "image": "https://placehold.co/150x150?text=AFFIMANIA"
-    },
-    {
-        "title": "Laptop Cooling Pad - Save Today! (ID: 0.1030)",
-        "price": 2046,
-        "mrp": 4514,
-        "savings": "Flat 55% Off",
-        "affiliate_link": "https://www.amazon.in/s?k=Laptop+Cooling+Pad&tag=ascreation00f-21",
-        "image": "https://placehold.co/150x150?text=AFFIMANIA"
-    },
-    {
-        "title": "Wireless Earbuds (New Model) - Save Today! (ID: 0.5789)",
-        "price": 7847,
-        "mrp": 9471,
-        "savings": "Flat 17% Off",
-        "affiliate_link": "https://www.amazon.in/s?k=Wireless+Earbuds+(New+Model)&tag=ascreation00f-21",
-        "image": "https://placehold.co/150x150?text=AFFIMANIA"
-    },
-    {
-        "title": "Running Shoes (Men's) - Save Today! (ID: 0.9644)",
-        "price": 4772,
-        "mrp": 7198,
-        "savings": "Flat 34% Off",
-        "affiliate_link": "https://www.amazon.in/s?k=Running+Shoes+(Men's)&tag=ascreation00f-21",
-        "image": "https://placehold.co/150x150?text=AFFIMANIA"
-    },
-    {
-        "title": "Running Shoes (Men's) - Save Today! (ID: 0.9751)",
-        "price": 2842,
-        "mrp": 4315,
-        "savings": "Flat 34% Off",
-        "affiliate_link": "https://www.amazon.in/s?k=Running+Shoes+(Men's)&tag=ascreation00f-21",
-        "image": "https://placehold.co/150x150?text=AFFIMANIA"
-    },
-    {
-        "title": "Backpack (Waterproof) - Save Today! (ID: 0.0446)",
-        "price": 662,
-        "mrp": 1466,
-        "savings": "Flat 55% Off",
-        "affiliate_link": "https://www.amazon.in/s?k=Backpack+(Waterproof)&tag=ascreation00f-21",
-        "image": "https://placehold.co/150x150?text=AFFIMANIA"
-    },
-    {
-        "title": "Vitamin C Serum (Skincare) - Save Today! (ID: 0.1522)",
-        "price": 8234,
-        "mrp": 9073,
-        "savings": "Flat 9% Off",
-        "affiliate_link": "https://www.amazon.in/s?k=Vitamin+C+Serum+(Skincare)&tag=ascreation00f-21",
-        "image": "https://placehold.co/150x150?text=AFFIMANIA"
-    },
-    {
-        "title": "Office Chair (Ergonomic) - Save Today! (ID: 0.5482)",
-        "price": 2641,
-        "mrp": 4589,
-        "savings": "Flat 42% Off",
-        "affiliate_link": "https://www.amazon.in/s?k=Office+Chair+(Ergonomic)&tag=ascreation00f-21",
-        "image": "https://placehold.co/150x150?text=AFFIMANIA"
-    },
-    {
-        "title": "Wireless Earbuds (New Model) - Save Today! (ID: 0.3620)",
-        "price": 6174,
-        "mrp": 7524,
-        "savings": "Flat 18% Off",
-        "affiliate_link": "https://www.amazon.in/s?k=Wireless+Earbuds+(New+Model)&tag=ascreation00f-21",
-        "image": "https://placehold.co/150x150?text=AFFIMANIA"
-    },
-    {
-        "title": "Fast Car Charger (Type-C) - Save Today! (ID: 0.8755)",
-        "price": 8156,
-        "mrp": 8922,
-        "savings": "Flat 9% Off",
-        "affiliate_link": "https://www.amazon.in/s?k=Fast+Car+Charger+(Type-C)&tag=ascreation00f-21",
-        "image": "https://placehold.co/150x150?text=AFFIMANIA"
-    },
-    {
-        "title": "Wireless Earbuds (New Model) - Save Today! (ID: 0.5092)",
-        "price": 7055,
-        "mrp": 8589,
-        "savings": "Flat 18% Off",
-        "affiliate_link": "https://www.amazon.in/s?k=Wireless+Earbuds+(New+Model)&tag=ascreation00f-21",
-        "image": "https://placehold.co/150x150?text=AFFIMANIA"
-    },
-    {
-        "title": "Backpack (Waterproof) - Save Today! (ID: 0.9910)",
-        "price": 1263,
-        "mrp": 2951,
-        "savings": "Flat 57% Off",
-        "affiliate_link": "https://www.amazon.in/s?k=Backpack+(Waterproof)&tag=ascreation00f-21",
-        "image": "https://placehold.co/150x150?text=AFFIMANIA"
-    },
-    {
-        "title": "Layered Necklace Set - Save Today! (ID: 0.2305)",
-        "price": 3390,
-        "mrp": 4848,
-        "savings": "Flat 30% Off",
-        "affiliate_link": "https://www.amazon.in/s?k=Layered+Necklace+Set&tag=ascreation00f-21",
-        "image": "https://placehold.co/150x150?text=AFFIMANIA"
-    },
-    {
-        "title": "Bluetooth Speaker (Portable) - Save Today! (ID: 0.3974)",
-        "price": 612,
-        "mrp": 3452,
-        "savings": "Flat 82% Off",
-        "affiliate_link": "https://www.amazon.in/s?k=Bluetooth+Speaker+(Portable)&tag=ascreation00f-21",
-        "image": "https://placehold.co/150x150?text=AFFIMANIA"
-    },
-    {
-        "title": "Laptop Cooling Pad - Save Today! (ID: 0.4603)",
-        "price": 2383,
-        "mrp": 5424,
-        "savings": "Flat 56% Off",
-        "affiliate_link": "https://www.amazon.in/s?k=Laptop+Cooling+Pad&tag=ascreation00f-21",
-        "image": "https://placehold.co/150x150?text=AFFIMANIA"
-    },
-    {
-        "title": "Layered Necklace Set - Save Today! (ID: 0.6137)",
-        "price": 4777,
-        "mrp": 6131,
-        "savings": "Flat 22% Off",
-        "affiliate_link": "https://www.amazon.in/s?k=Layered+Necklace+Set&tag=ascreation00f-21",
-        "image": "https://placehold.co/150x150?text=AFFIMANIA"
-    },
-    {
-        "title": "Air Fryer (5L Capacity) - Save Today! (ID: 0.7897)",
-        "price": 1804,
-        "mrp": 3073,
-        "savings": "Flat 41% Off",
-        "affiliate_link": "https://www.amazon.in/s?k=Air+Fryer+(5L+Capacity)&tag=ascreation00f-21",
-        "image": "https://placehold.co/150x150?text=AFFIMANIA"
-    },
-    {
-        "title": "Air Fryer (5L Capacity) - Save Today! (ID: 0.0333)",
-        "price": 6160,
-        "mrp": 8992,
-        "savings": "Flat 31% Off",
-        "affiliate_link": "https://www.amazon.in/s?k=Air+Fryer+(5L+Capacity)&tag=ascreation00f-21",
-        "image": "https://placehold.co/150x150?text=AFFIMANIA"
-    },
-    {
-        "title": "Bluetooth Speaker (Portable) - Save Today! (ID: 0.1458)",
-        "price": 5348,
-        "mrp": 5887,
-        "savings": "Flat 9% Off",
-        "affiliate_link": "https://www.amazon.in/s?k=Bluetooth+Speaker+(Portable)&tag=ascreation00f-21",
-        "image": "https://placehold.co/150x150?text=AFFIMANIA"
-    },
-    {
-        "title": "Layered Necklace Set - Save Today! (ID: 0.6100)",
-        "price": 5044,
-        "mrp": 6036,
-        "savings": "Flat 16% Off",
-        "affiliate_link": "https://www.amazon.in/s?k=Layered+Necklace+Set&tag=ascreation00f-21",
-        "image": "https://placehold.co/150x150?text=AFFIMANIA"
-    },
-    {
-        "title": "Office Chair (Ergonomic) - Save Today! (ID: 0.1845)",
-        "price": 8094,
-        "mrp": 10714,
-        "savings": "Flat 24% Off",
-        "affiliate_link": "https://www.amazon.in/s?k=Office+Chair+(Ergonomic)&tag=ascreation00f-21",
-        "image": "https://placehold.co/150x150?text=AFFIMANIA"
-    },
-    {
-        "title": "Laptop Cooling Pad - Save Today! (ID: 0.5404)",
-        "price": 6144,
-        "mrp": 9135,
-        "savings": "Flat 33% Off",
-        "affiliate_link": "https://www.amazon.in/s?k=Laptop+Cooling+Pad&tag=ascreation00f-21",
-        "image": "https://placehold.co/150x150?text=AFFIMANIA"
-    },
-    {
-        "title": "Laptop Cooling Pad - Save Today! (ID: 0.5384)",
-        "price": 3552,
-        "mrp": 4127,
-        "savings": "Flat 14% Off",
-        "affiliate_link": "https://www.amazon.in/s?k=Laptop+Cooling+Pad&tag=ascreation00f-21",
-        "image": "https://placehold.co/150x150?text=AFFIMANIA"
-    },
-    {
-        "title": "Air Fryer (5L Capacity) - Save Today! (ID: 0.9739)",
-        "price": 4056,
-        "mrp": 6381,
-        "savings": "Flat 36% Off",
-        "affiliate_link": "https://www.amazon.in/s?k=Air+Fryer+(5L+Capacity)&tag=ascreation00f-21",
-        "image": "https://placehold.co/150x150?text=AFFIMANIA"
-    },
-    {
-        "title": "Wireless Earbuds (New Model) - Save Today! (ID: 0.5000)",
-        "price": 6201,
-        "mrp": 9146,
-        "savings": "Flat 32% Off",
-        "affiliate_link": "https://www.amazon.in/s?k=Wireless+Earbuds+(New+Model)&tag=ascreation00f-21",
-        "image": "https://placehold.co/150x150?text=AFFIMANIA"
-    },
-    {
-        "title": "Vitamin C Serum (Skincare) - Save Today! (ID: 0.4341)",
-        "price": 2378,
-        "mrp": 4259,
-        "savings": "Flat 44% Off",
-        "affiliate_link": "https://www.amazon.in/s?k=Vitamin+C+Serum+(Skincare)&tag=ascreation00f-21",
-        "image": "https://placehold.co/150x150?text=AFFIMANIA"
-    },
-    {
-        "title": "Layered Necklace Set - Save Today! (ID: 0.5045)",
-        "price": 824,
-        "mrp": 2627,
-        "savings": "Flat 69% Off",
-        "affiliate_link": "https://www.amazon.in/s?k=Layered+Necklace+Set&tag=ascreation00f-21",
-        "image": "https://placehold.co/150x150?text=AFFIMANIA"
-    },
-    {
-        "title": "Air Fryer (5L Capacity) - Save Today! (ID: 0.5918)",
-        "price": 8009,
-        "mrp": 10476,
-        "savings": "Flat 24% Off",
-        "affiliate_link": "https://www.amazon.in/s?k=Air+Fryer+(5L+Capacity)&tag=ascreation00f-21",
-        "image": "https://placehold.co/150x150?text=AFFIMANIA"
-    },
-    {
-        "title": "Backpack (Waterproof) - Save Today! (ID: 0.6542)",
-        "price": 3075,
-        "mrp": 3594,
-        "savings": "Flat 14% Off",
-        "affiliate_link": "https://www.amazon.in/s?k=Backpack+(Waterproof)&tag=ascreation00f-21",
-        "image": "https://placehold.co/150x150?text=AFFIMANIA"
-    },
-    {
-        "title": "Fast Car Charger (Type-C) - Save Today! (ID: 0.4223)",
-        "price": 6773,
-        "mrp": 9169,
-        "savings": "Flat 26% Off",
-        "affiliate_link": "https://www.amazon.in/s?k=Fast+Car+Charger+(Type-C)&tag=ascreation00f-21",
-        "image": "https://placehold.co/150x150?text=AFFIMANIA"
-    },
-    {
-        "title": "Office Chair (Ergonomic) - Save Today! (ID: 0.4908)",
-        "price": 5803,
-        "mrp": 7550,
-        "savings": "Flat 23% Off",
-        "affiliate_link": "https://www.amazon.in/s?k=Office+Chair+(Ergonomic)&tag=ascreation00f-21",
-        "image": "https://placehold.co/150x150?text=AFFIMANIA"
-    },
-    {
-        "title": "Office Chair (Ergonomic) - Save Today! (ID: 0.7626)",
-        "price": 1373,
-        "mrp": 4321,
-        "savings": "Flat 68% Off",
-        "affiliate_link": "https://www.amazon.in/s?k=Office+Chair+(Ergonomic)&tag=ascreation00f-21",
-        "image": "https://placehold.co/150x150?text=AFFIMANIA"
-    },
-    {
-        "title": "Air Fryer (5L Capacity) - Save Today! (ID: 0.8445)",
-        "price": 3978,
-        "mrp": 7093,
-        "savings": "Flat 44% Off",
-        "affiliate_link": "https://www.amazon.in/s?k=Air+Fryer+(5L+Capacity)&tag=ascreation00f-21",
-        "image": "https://placehold.co/150x150?text=AFFIMANIA"
-    },
-    {
-        "title": "Bluetooth Speaker (Portable) - Save Today! (ID: 0.8288)",
-        "price": 1659,
-        "mrp": 4576,
-        "savings": "Flat 64% Off",
-        "affiliate_link": "https://www.amazon.in/s?k=Bluetooth+Speaker+(Portable)&tag=ascreation00f-21",
-        "image": "https://placehold.co/150x150?text=AFFIMANIA"
-    },
-    {
-        "title": "Vitamin C Serum (Skincare) - Save Today! (ID: 0.7415)",
-        "price": 5413,
-        "mrp": 7914,
-        "savings": "Flat 32% Off",
-        "affiliate_link": "https://www.amazon.in/s?k=Vitamin+C+Serum+(Skincare)&tag=ascreation00f-21",
-        "image": "https://placehold.co/150x150?text=AFFIMANIA"
-    },
-    {
-        "title": "Laptop Cooling Pad - Save Today! (ID: 0.1125)",
-        "price": 5707,
-        "mrp": 7627,
-        "savings": "Flat 25% Off",
-        "affiliate_link": "https://www.amazon.in/s?k=Laptop+Cooling+Pad&tag=ascreation00f-21",
-        "image": "https://placehold.co/150x150?text=AFFIMANIA"
-    },
-    {
-        "title": "Layered Necklace Set - Save Today! (ID: 0.8373)",
-        "price": 7297,
-        "mrp": 10183,
-        "savings": "Flat 28% Off",
-        "affiliate_link": "https://www.amazon.in/s?k=Layered+Necklace+Set&tag=ascreation00f-21",
-        "image": "https://placehold.co/150x150?text=AFFIMANIA"
-    },
-    {
-        "title": "Gaming Headset (50% Off) - Save Today! (ID: 0.1396)",
-        "price": 3393,
-        "mrp": 5567,
-        "savings": "Flat 39% Off",
-        "affiliate_link": "https://www.amazon.in/s?k=Gaming+Headset+(50%+Off)&tag=ascreation00f-21",
-        "image": "https://placehold.co/150x150?text=AFFIMANIA"
-    },
-    {
-        "title": "Vitamin C Serum (Skincare) - Save Today! (ID: 0.6102)",
-        "price": 1411,
-        "mrp": 4389,
-        "savings": "Flat 68% Off",
-        "affiliate_link": "https://www.amazon.in/s?k=Vitamin+C+Serum+(Skincare)&tag=ascreation00f-21",
-        "image": "https://placehold.co/150x150?text=AFFIMANIA"
-    },
-    {
-        "title": "Fast Car Charger (Type-C) - Save Today! (ID: 0.0599)",
-        "price": 7924,
-        "mrp": 9858,
-        "savings": "Flat 20% Off",
-        "affiliate_link": "https://www.amazon.in/s?k=Fast+Car+Charger+(Type-C)&tag=ascreation00f-21",
-        "image": "https://placehold.co/150x150?text=AFFIMANIA"
-    },
-    {
-        "title": "Gaming Headset (50% Off) - Save Today! (ID: 0.7590)",
-        "price": 2717,
-        "mrp": 3720,
-        "savings": "Flat 27% Off",
-        "affiliate_link": "https://www.amazon.in/s?k=Gaming+Headset+(50%+Off)&tag=ascreation00f-21",
-        "image": "https://placehold.co/150x150?text=AFFIMANIA"
-    },
-    {
-        "title": "Wireless Earbuds (New Model) - Save Today! (ID: 0.4214)",
-        "price": 5404,
-        "mrp": 7027,
-        "savings": "Flat 23% Off",
-        "affiliate_link": "https://www.amazon.in/s?k=Wireless+Earbuds+(New+Model)&tag=ascreation00f-21",
-        "image": "https://placehold.co/150x150?text=AFFIMANIA"
-    },
-    {
-        "title": "Running Shoes (Men's) - Save Today! (ID: 0.0856)",
-        "price": 6390,
-        "mrp": 7244,
-        "savings": "Flat 12% Off",
-        "affiliate_link": "https://www.amazon.in/s?k=Running+Shoes+(Men's)&tag=ascreation00f-21",
-        "image": "https://placehold.co/150x150?text=AFFIMANIA"
-    },
-    {
-        "title": "Layered Necklace Set - Save Today! (ID: 0.7588)",
-        "price": 785,
-        "mrp": 2496,
-        "savings": "Flat 69% Off",
-        "affiliate_link": "https://www.amazon.in/s?k=Layered+Necklace+Set&tag=ascreation00f-21",
-        "image": "https://placehold.co/150x150?text=AFFIMANIA"
-    },
-    {
-        "title": "Vitamin C Serum (Skincare) - Save Today! (ID: 0.2223)",
-        "price": 1276,
-        "mrp": 4251,
-        "savings": "Flat 70% Off",
-        "affiliate_link": "https://www.amazon.in/s?k=Vitamin+C+Serum+(Skincare)&tag=ascreation00f-21",
-        "image": "https://placehold.co/150x150?text=AFFIMANIA"
-    },
-    {
-        "title": "Fast Car Charger (Type-C) - Save Today! (ID: 0.3014)",
-        "price": 4101,
-        "mrp": 5355,
-        "savings": "Flat 23% Off",
-        "affiliate_link": "https://www.amazon.in/s?k=Fast+Car+Charger+(Type-C)&tag=ascreation00f-21",
-        "image": "https://placehold.co/150x150?text=AFFIMANIA"
-    },
-    {
-        "title": "Vitamin C Serum (Skincare) - Save Today! (ID: 0.0150)",
-        "price": 5184,
-        "mrp": 6175,
-        "savings": "Flat 16% Off",
-        "affiliate_link": "https://www.amazon.in/s?k=Vitamin+C+Serum+(Skincare)&tag=ascreation00f-21",
-        "image": "https://placehold.co/150x150?text=AFFIMANIA"
-    },
-    {
-        "title": "Smartwatch (Fitness Tracker) - Save Today! (ID: 0.1880)",
-        "price": 5306,
-        "mrp": 6920,
-        "savings": "Flat 23% Off",
-        "affiliate_link": "https://www.amazon.in/s?k=Smartwatch+(Fitness+Tracker)&tag=ascreation00f-21",
-        "image": "https://placehold.co/150x150?text=AFFIMANIA"
-    },
-    {
-        "title": "Gaming Headset (50% Off) - Save Today! (ID: 0.5994)",
-        "price": 3825,
-        "mrp": 5061,
-        "savings": "Flat 24% Off",
-        "affiliate_link": "https://www.amazon.in/s?k=Gaming+Headset+(50%+Off)&tag=ascreation00f-21",
-        "image": "https://placehold.co/150x150?text=AFFIMANIA"
-    },
-    {
-        "title": "Bluetooth Speaker (Portable) - Save Today! (ID: 0.2546)",
-        "price": 8061,
-        "mrp": 8956,
-        "savings": "Flat 10% Off",
-        "affiliate_link": "https://www.amazon.in/s?k=Bluetooth+Speaker+(Portable)&tag=ascreation00f-21",
-        "image": "https://placehold.co/150x150?text=AFFIMANIA"
-    },
-    {
-        "title": "Bluetooth Speaker (Portable) - Save Today! (ID: 0.7462)",
-        "price": 4341,
-        "mrp": 5629,
-        "savings": "Flat 23% Off",
-        "affiliate_link": "https://www.amazon.in/s?k=Bluetooth+Speaker+(Portable)&tag=ascreation00f-21",
-        "image": "https://placehold.co/150x150?text=AFFIMANIA"
-    },
-    {
-        "title": "Running Shoes (Men's) - Save Today! (ID: 0.4088)",
-        "price": 1126,
-        "mrp": 2820,
-        "savings": "Flat 60% Off",
-        "affiliate_link": "https://www.amazon.in/s?k=Running+Shoes+(Men's)&tag=ascreation00f-21",
-        "image": "https://placehold.co/150x150?text=AFFIMANIA"
-    },
-    {
-        "title": "Gaming Headset (50% Off) - Save Today! (ID: 0.1262)",
-        "price": 1280,
-        "mrp": 2891,
-        "savings": "Flat 56% Off",
-        "affiliate_link": "https://www.amazon.in/s?k=Gaming+Headset+(50%+Off)&tag=ascreation00f-21",
-        "image": "https://placehold.co/150x150?text=AFFIMANIA"
-    },
-    {
-        "title": "Laptop Cooling Pad - Save Today! (ID: 0.4750)",
-        "price": 3535,
-        "mrp": 5977,
-        "savings": "Flat 41% Off",
-        "affiliate_link": "https://www.amazon.in/s?k=Laptop+Cooling+Pad&tag=ascreation00f-21",
-        "image": "https://placehold.co/150x150?text=AFFIMANIA"
-    },
-    {
-        "title": "Smartwatch (Fitness Tracker) - Save Today! (ID: 0.0228)",
-        "price": 7500,
-        "mrp": 9706,
-        "savings": "Flat 23% Off",
-        "affiliate_link": "https://www.amazon.in/s?k=Smartwatch+(Fitness+Tracker)&tag=ascreation00f-21",
-        "image": "https://placehold.co/150x150?text=AFFIMANIA"
-    },
-    {
-        "title": "Wireless Earbuds (New Model) - Save Today! (ID: 0.7585)",
-        "price": 5256,
-        "mrp": 6283,
-        "savings": "Flat 16% Off",
-        "affiliate_link": "https://www.amazon.in/s?k=Wireless+Earbuds+(New+Model)&tag=ascreation00f-21",
-        "image": "https://placehold.co/150x150?text=AFFIMANIA"
-    },
-    {
-        "title": "Gaming Headset (50% Off) - Save Today! (ID: 0.4622)",
-        "price": 5271,
-        "mrp": 6018,
-        "savings": "Flat 12% Off",
-        "affiliate_link": "https://www.amazon.in/s?k=Gaming+Headset+(50%+Off)&tag=ascreation00f-21",
-        "image": "https://placehold.co/150x150?text=AFFIMANIA"
-    },
-    {
-        "title": "Smartwatch (Fitness Tracker) - Save Today! (ID: 0.8302)",
-        "price": 795,
-        "mrp": 1656,
-        "savings": "Flat 52% Off",
-        "affiliate_link": "https://www.amazon.in/s?k=Smartwatch+(Fitness+Tracker)&tag=ascreation00f-21",
-        "image": "https://placehold.co/150x150?text=AFFIMANIA"
-    },
-    {
-        "title": "Gaming Headset (50% Off) - Save Today! (ID: 0.5434)",
-        "price": 8480,
-        "mrp": 9341,
-        "savings": "Flat 9% Off",
-        "affiliate_link": "https://www.amazon.in/s?k=Gaming+Headset+(50%+Off)&tag=ascreation00f-21",
-        "image": "https://placehold.co/150x150?text=AFFIMANIA"
-    },
-    {
-        "title": "Air Fryer (5L Capacity) - Save Today! (ID: 0.6662)",
-        "price": 8097,
-        "mrp": 10428,
-        "savings": "Flat 22% Off",
-        "affiliate_link": "https://www.amazon.in/s?k=Air+Fryer+(5L+Capacity)&tag=ascreation00f-21",
-        "image": "https://placehold.co/150x150?text=AFFIMANIA"
-    },
-    {
-        "title": "Vitamin C Serum (Skincare) - Save Today! (ID: 0.5102)",
-        "price": 4999,
-        "mrp": 6799,
-        "savings": "Flat 26% Off",
-        "affiliate_link": "https://www.amazon.in/s?k=Vitamin+C+Serum+(Skincare)&tag=ascreation00f-21",
-        "image": "https://placehold.co/150x150?text=AFFIMANIA"
-    },
-    {
-        "title": "Air Fryer (5L Capacity) - Save Today! (ID: 0.0379)",
-        "price": 5955,
-        "mrp": 6914,
-        "savings": "Flat 14% Off",
-        "affiliate_link": "https://www.amazon.in/s?k=Air+Fryer+(5L+Capacity)&tag=ascreation00f-21",
-        "image": "https://placehold.co/150x150?text=AFFIMANIA"
-    },
-    {
-        "title": "Vitamin C Serum (Skincare) - Save Today! (ID: 0.6316)",
-        "price": 593,
-        "mrp": 1643,
-        "savings": "Flat 64% Off",
-        "affiliate_link": "https://www.amazon.in/s?k=Vitamin+C+Serum+(Skincare)&tag=ascreation00f-21",
-        "image": "https://placehold.co/150x150?text=AFFIMANIA"
-    },
-    {
-        "title": "Backpack (Waterproof) - Save Today! (ID: 0.7761)",
-        "price": 1087,
-        "mrp": 2163,
-        "savings": "Flat 50% Off",
-        "affiliate_link": "https://www.amazon.in/s?k=Backpack+(Waterproof)&tag=ascreation00f-21",
-        "image": "https://placehold.co/150x150?text=AFFIMANIA"
-    },
-    {
-        "title": "Layered Necklace Set - Save Today! (ID: 0.0719)",
-        "price": 1431,
-        "mrp": 3301,
-        "savings": "Flat 57% Off",
-        "affiliate_link": "https://www.amazon.in/s?k=Layered+Necklace+Set&tag=ascreation00f-21",
-        "image": "https://placehold.co/150x150?text=AFFIMANIA"
-    },
-    {
-        "title": "Backpack (Waterproof) - Save Today! (ID: 0.3670)",
-        "price": 3150,
-        "mrp": 4473,
-        "savings": "Flat 30% Off",
-        "affiliate_link": "https://www.amazon.in/s?k=Backpack+(Waterproof)&tag=ascreation00f-21",
-        "image": "https://placehold.co/150x150?text=AFFIMANIA"
-    },
-    {
-        "title": "Laptop Cooling Pad - Save Today! (ID: 0.0978)",
-        "price": 1604,
-        "mrp": 2594,
-        "savings": "Flat 38% Off",
-        "affiliate_link": "https://www.amazon.in/s?k=Laptop+Cooling+Pad&tag=ascreation00f-21",
-        "image": "https://placehold.co/150x150?text=AFFIMANIA"
-    },
-    {
-        "title": "Vitamin C Serum (Skincare) - Save Today! (ID: 0.7675)",
-        "price": 3827,
-        "mrp": 7222,
-        "savings": "Flat 47% Off",
-        "affiliate_link": "https://www.amazon.in/s?k=Vitamin+C+Serum+(Skincare)&tag=ascreation00f-21",
-        "image": "https://placehold.co/150x150?text=AFFIMANIA"
-    },
-    {
-        "title": "Air Fryer (5L Capacity) - Save Today! (ID: 0.9791)",
-        "price": 2384,
-        "mrp": 5264,
-        "savings": "Flat 55% Off",
-        "affiliate_link": "https://www.amazon.in/s?k=Air+Fryer+(5L+Capacity)&tag=ascreation00f-21",
-        "image": "https://placehold.co/150x150?text=AFFIMANIA"
-    },
-    {
-        "title": "Vitamin C Serum (Skincare) - Save Today! (ID: 0.8798)",
-        "price": 2543,
-        "mrp": 3385,
-        "savings": "Flat 25% Off",
-        "affiliate_link": "https://www.amazon.in/s?k=Vitamin+C+Serum+(Skincare)&tag=ascreation00f-21",
-        "image": "https://placehold.co/150x150?text=AFFIMANIA"
-    },
-    {
-        "title": "Office Chair (Ergonomic) - Save Today! (ID: 0.0900)",
-        "price": 7230,
-        "mrp": 9364,
-        "savings": "Flat 23% Off",
-        "affiliate_link": "https://www.amazon.in/s?k=Office+Chair+(Ergonomic)&tag=ascreation00f-21",
-        "image": "https://placehold.co/150x150?text=AFFIMANIA"
-    },
-    {
-        "title": "Layered Necklace Set - Save Today! (ID: 0.6207)",
-        "price": 7839,
-        "mrp": 8739,
-        "savings": "Flat 10% Off",
-        "affiliate_link": "https://www.amazon.in/s?k=Layered+Necklace+Set&tag=ascreation00f-21",
-        "image": "https://placehold.co/150x150?text=AFFIMANIA"
-    },
-    {
-        "title": "Smartwatch (Fitness Tracker) - Save Today! (ID: 0.7890)",
-        "price": 1307,
-        "mrp": 3399,
-        "savings": "Flat 62% Off",
-        "affiliate_link": "https://www.amazon.in/s?k=Smartwatch+(Fitness+Tracker)&tag=ascreation00f-21",
-        "image": "https://placehold.co/150x150?text=AFFIMANIA"
-    },
-    {
-        "title": "Smartwatch (Fitness Tracker) - Save Today! (ID: 0.6063)",
-        "price": 7627,
-        "mrp": 8954,
-        "savings": "Flat 15% Off",
-        "affiliate_link": "https://www.amazon.in/s?k=Smartwatch+(Fitness+Tracker)&tag=ascreation00f-21",
-        "image": "https://placehold.co/150x150?text=AFFIMANIA"
-    },
-    {
-        "title": "Running Shoes (Men's) - Save Today! (ID: 0.9386)",
-        "price": 7496,
-        "mrp": 10561,
-        "savings": "Flat 29% Off",
-        "affiliate_link": "https://www.amazon.in/s?k=Running+Shoes+(Men's)&tag=ascreation00f-21",
-        "image": "https://placehold.co/150x150?text=AFFIMANIA"
-    },
-    {
-        "title": "Vitamin C Serum (Skincare) - Save Today! (ID: 0.4296)",
-        "price": 3922,
-        "mrp": 6910,
-        "savings": "Flat 43% Off",
-        "affiliate_link": "https://www.amazon.in/s?k=Vitamin+C+Serum+(Skincare)&tag=ascreation00f-21",
-        "image": "https://placehold.co/150x150?text=AFFIMANIA"
-    },
-    {
-        "title": "Laptop Cooling Pad - Save Today! (ID: 0.2255)",
-        "price": 6969,
-        "mrp": 9152,
-        "savings": "Flat 24% Off",
-        "affiliate_link": "https://www.amazon.in/s?k=Laptop+Cooling+Pad&tag=ascreation00f-21",
-        "image": "https://placehold.co/150x150?text=AFFIMANIA"
-    },
-    {
-        "title": "Vitamin C Serum (Skincare) - Save Today! (ID: 0.5929)",
-        "price": 1434,
-        "mrp": 3599,
-        "savings": "Flat 60% Off",
-        "affiliate_link": "https://www.amazon.in/s?k=Vitamin+C+Serum+(Skincare)&tag=ascreation00f-21",
-        "image": "https://placehold.co/150x150?text=AFFIMANIA"
-    }
-];
-// --- END: AUTOGENERATED DEALS DATA ---
+        // Yahan par aapka naya deals data apne aap aayega.
+        const dummyDeals = [
+            // ... (99 deals data will be injected here by the robot)
+        ];
+        // --- END: AUTOGENERATED DEALS DATA ---
         
         // --- FUNCTION TO LOAD DEALS (Displays the 99 deals) ---
         function loadDailyDeals() {
@@ -995,12 +206,11 @@ const dummyDeals = [
             dummyDeals.forEach(deal => {
                 const dealCard = document.createElement('div');
                 
-                // Nayi classes: Grid Item ke liye full height aur flex column
+                // FINAL FIX: Grid Item Card ka HTML
                 dealCard.className = 'bg-white p-4 rounded-lg shadow-md border border-red-100 flex flex-col justify-between h-full'; 
                 
-                // Final HTML structure: Responsive Card
                 dealCard.innerHTML = `
-                    <div class="flex-shrink-0 mb-3 h-32 flex items-center justify-center border-b pb-3">
+                    <div class="flex-shrink-0 mb-3 h-32 flex items-center justify-center">
                         <img src="${deal.image}" 
                              alt="${deal.title}" 
                              class="max-w-full max-h-full object-contain rounded-md"
@@ -1014,8 +224,8 @@ const dummyDeals = [
                     </div>
                     <a href="${deal.affiliate_link}" 
                        target="_blank" 
-                       class="w-full block text-center mt-auto py-2 rounded font-bold transition duration-300 bg-yellow-500 hover:bg-yellow-600 text-white text-sm">
-                       DEAL PAR CLICK KAREN
+                       class="w-full block text-center mt-auto py-2 rounded font-bold transition duration-300 bg-orange-600 hover:bg-orange-700 text-white text-sm">
+                       VIEW DEAL & BUY NOW
                     </a>
                 `;
                 dealsListElement.appendChild(dealCard);
