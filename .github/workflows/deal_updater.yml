@@ -12,8 +12,11 @@ jobs:
     permissions: # Write permission for GitHub Pages
       contents: write 
     steps:
+      # 🛑 CRITICAL FIX: TOKEN KO CHECKOUT MEIN PASS KAREN
       - uses: actions/checkout@v3
-
+        with:
+          token: ${{ secrets.GH_TOKEN }} # ⬅️ GH_TOKEN use kiya gaya
+          
       # DEPENDENCIES AUR NODE SETUP
       - name: Setup Node.js (for running script)
         uses: actions/setup-node@v3
