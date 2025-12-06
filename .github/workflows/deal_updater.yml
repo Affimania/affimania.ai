@@ -1,7 +1,6 @@
 # Yeh file aapke liye daily code update karegi
 name: Daily Amazon Deal Update
 
-# Ise ab har ghante (minute 0) mein chalega
 on:
   schedule:
     - cron: '0 * * * *' 
@@ -9,8 +8,11 @@ on:
 jobs:
   update-deals:
     runs-on: ubuntu-latest
+    permissions: # 🟢 FIX STARTS HERE
+      contents: write 
     steps:
       - uses: actions/checkout@v3
+# ... (rest of the file remains the same)
 
       # 🟢 DEPENDENCIES AUR NODE SETUP
       - name: Setup Node.js (for running script)
