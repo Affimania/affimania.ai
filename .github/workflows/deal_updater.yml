@@ -1,42 +1,35 @@
-# Yeh file aapke liye daily code update karegi
 name: Daily Amazon Deal Update
 
 on:
   schedule:
-    - cron: '0 * * * *'  # Har ghante chalega
-  workflow_dispatch: # Manual run button add kiya
-    
+    - cron: '0 * * * *'  # Har ghante auto-run
+  workflow_dispatch:     # Manual run button
+
 jobs:
   update-deals:
     runs-on: ubuntu-latest
-    permissions: # Write permission for GitHub Pages
+    permissions:
       contents: write 
     steps:
-      # 🛑 CRITICAL FIX: TOKEN KO CHECKOUT MEIN PASS KARNA (Final fix for push failure)
       - uses: actions/checkout@v3
         with:
           token: ${{ secrets.GH_TOKEN }} 
           
-      # DEPENDENCIES AUR NODE SETUP
-      - name: Setup Node.js (for running script)
+      - name: Setup Node.js
         uses: actions/setup-node@v3
         with:
           node-version: '18'
           
       - name: Install Dependencies
         run: npm install
-        working-directory: ./  # Root directory mein install karega
-
-      # FETCH AND UPDATE SCRIPT CHALANA
+        
       - name: Fetch and Update Deals
         run: npm start 
-        working-directory: ./  # Root directory mein script chalaega
           
       - name: Commit Updated Index
         run: |
           git config user.name "Affimania Bot"
           git config user.email "affimania-bot@users.github.com"
           git add index.html 
-          git commit -m "Automated: Daily deal update by GitHub Action" || echo "No changes to commit"
-          # ✅ FINAL PUSH FIX: Simple git push ka use kiya (Token checkout step se mil gaya)
+          git commit -m "Automated: Seasonal & Hourly Deal Update" || echo "No changes to commit"
           git push
