@@ -14,9 +14,16 @@ collections:
     slug: "{{date}}-{{slug}}"
     fields:
       - {label: "Product Name", name: "title", widget: "string"}
-      # 🟢 ADDED: MRP field (Future proofing ke liye)
       - {label: "MRP (₹)", name: "mrp", widget: "number"} 
       - {label: "Current Price (₹)", name: "price", widget: "number"}
       - {label: "Savings", name: "savings", widget: "string"}
       - {label: "Amazon Affiliate Link", name: "affiliate_link", widget: "string"}
       - {label: "Product Image URL", name: "image", widget: "string"}
+
+  - name: "seasonal_config"
+    label: "⚙️ Seasonal Engine Settings"
+    folder: "_config"
+    create: true
+    fields:
+      - {label: "Manual Override Title", name: "title", widget: "string", required: false}
+      - {label: "Special Event Mode", name: "event", widget: "boolean", default: false}
