@@ -1,7 +1,7 @@
 const fs = require('fs');
 const path = require('path');
 
-// 📸 Ultra-Stable High-Res Image Pool (Tested Links)
+// 📸 Ultra-Stable High-Res Image Pool
 const imagePool = {
     "Winter Jackets": [
         "https://images.unsplash.com/photo-1551488831-00ddcb6c6bd3?w=500&auto=format",
@@ -60,16 +60,15 @@ const seasonalDatabase = {
 const trendingProducts = Object.keys(imagePool);
 const realDealsData = [];
 
-// Helper to shuffle array for randomness
 function shuffle(array) {
     return array.sort(() => Math.random() - 0.5);
 }
 
-for (let i = 1; i <= 99; i++) {
+// 🛒 AB SIRF 50 DEALS GENERATE HONGI
+for (let i = 1; i <= 50; i++) {
     const price = Math.floor(Math.random() * 8000) + 500;
     const mrp = price + Math.floor(Math.random() * 3000) + 500;
     
-    // Pick random category then pick random image from shuffled pool
     const randomProduct = trendingProducts[Math.floor(Math.random() * trendingProducts.length)];
     const shuffledPool = shuffle([...imagePool[randomProduct]]);
     const randomImg = shuffledPool[0]; 
@@ -94,4 +93,4 @@ content = content.replace(/(\/\/ --- START: CONTEXT DATA ---)[\s\S]*?(\/\/ --- E
     `$1\nconst affimaniaContext = ${JSON.stringify(seasonalDatabase.winter)};\n$2`);
 
 fs.writeFileSync(indexPath, content);
-console.log('✅ Variety Fixed: No duplicates in same row & broken links replaced!');
+console.log('✅ Success: Deals limit set to 50 for better performance!');
