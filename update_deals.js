@@ -1,17 +1,17 @@
 const fs = require('fs');
 const path = require('path');
 
-// --- 1. DYNAMIC SEASONAL DATABASE ---
+// --- 1. DYNAMIC SEASONAL DATABASE (Updated for Winter Wear) ---
 const seasonalDatabase = {
     winter: {
         badge: "WINTER SPECIAL ❄️",
         title: "Crush Your <span class='text-blue-400'>2026 Goals</span>",
-        desc: "Best deals on Fitness Gear, Winter Wear, and Health Essentials.",
+        desc: "Best deals on Winter Wear, Fitness Gear, and Health Essentials.",
         bg: "https://images.unsplash.com/photo-1517836357463-d25dfeac3438?q=80&w=1200",
         accent: "#164E63",
         categories: [
+            {n: "Winter Wear", i: "🧥", l: "winter+wear+jackets+sweaters"}, // Books hatakar Winter Wear add kiya
             {n: "Fitness", i: "🏋️‍♂️", l: "fitness+equipment"},
-            {n: "Self Help", i: "📚", l: "productivity+books"},
             {n: "Gadgets", i: "⌚", l: "smartwatch"},
             {n: "Health", i: "🥗", l: "health+supplements"}
         ]
@@ -36,7 +36,7 @@ const month = new Date().getMonth();
 const selectedSeason = (month >= 2 && month <= 6) ? seasonalDatabase.summer : seasonalDatabase.winter;
 
 // --- 3. GENERATE 99 TRENDING DEALS ---
-const trendingProducts = ["Smartwatch", "Wireless Buds", "Running Shoes", "Backpack", "Gaming Mouse", "Skincare Serum"];
+const trendingProducts = ["Jackets", "Sweaters", "Smartwatch", "Wireless Buds", "Running Shoes", "Backpack", "Skincare Serum"];
 const realDealsData = [];
 for (let i = 1; i <= 99; i++) {
     const price = Math.floor(Math.random() * 8000) + 500;
@@ -65,4 +65,4 @@ content = content.replace(/(\/\/ --- START: CONTEXT DATA ---)[\s\S]*?(\/\/ --- E
     `$1\nconst affimaniaContext = ${JSON.stringify(selectedSeason)};\n$2`);
 
 fs.writeFileSync(indexPath, content);
-console.log('✅ Affimania AI: Seasonal Engine Updated Successfully!');
+console.log('✅ Winter Wear & Goals Updated Successfully!');
