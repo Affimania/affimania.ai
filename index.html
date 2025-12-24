@@ -36,76 +36,82 @@
             <h1 class="text-xl font-bold text-gray-800 italic">Smart Festive Price Optimization 🎄🎆</h1>
         </header>
 
-        <form id="affimania-form" class="space-y-4 mb-6">
-            <input type="text" id="product" required class="w-full p-3 border rounded-lg" placeholder="Example: Party Speaker, Gift Hamper">
-            <div class="flex space-x-4">
-                <input type="number" id="min_price" required class="w-1/2 p-3 border rounded-lg" placeholder="Min ₹">
-                <input type="number" id="max_price" required class="w-1/2 p-3 border rounded-lg" placeholder="Max ₹">
+        <form id="affimania-form" class="space-y-4 mb-10">
+            <div>
+                <label class="block text-sm font-medium text-gray-700 mb-1">Product Name</label>
+                <input type="text" id="product" required class="w-full p-3 border border-gray-300 rounded-lg focus:ring-red-700 focus:border-red-700" placeholder="Example: Party Speaker, Gift Hamper">
             </div>
-            <button type="submit" id="search-button" class="w-full bg-red-700 text-white p-3 rounded-lg font-bold">✨ Find Festive Deals Now!</button>
+            <div class="flex space-x-4">
+                <div class="w-1/2">
+                    <input type="number" id="min_price" required class="w-full p-3 border border-gray-300 rounded-lg" placeholder="Min ₹">
+                </div>
+                <div class="w-1/2">
+                    <input type="number" id="max_price" required class="w-full p-3 border border-gray-300 rounded-lg" placeholder="Max ₹">
+                </div>
+            </div>
+            <button type="submit" class="w-full bg-red-700 text-white p-3 rounded-lg font-bold hover:bg-red-800 transition-all shadow-md">
+                ✨ Find Festive Deals Now!
+            </button>
         </form>
 
         <div id="seasonal-spotlight" class="mb-12 overflow-hidden rounded-2xl shadow-xl">
-            <div id="main-banner" class="seasonal-banner h-64 md:h-80 flex flex-col items-center justify-center text-center p-6 text-white">
-                <span id="season-badge" class="px-4 py-1 rounded-full text-[10px] font-black mb-4 animate-pulse"></span>
-                <h2 id="season-title" class="text-4xl md:text-5xl font-black uppercase tracking-tighter"></h2>
-                <p id="season-desc" class="mt-4 text-sm opacity-90 max-w-xl font-medium italic"></p>
+            <div id="main-banner" style="background-image: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.4)), url('https://images.unsplash.com/photo-1467810563316-b5476525c0f9?w=1200')" class="seasonal-banner h-64 md:h-80 flex flex-col items-center justify-center text-center p-6 text-white">
+                <span class="px-4 py-1 rounded-full text-[10px] font-black mb-4 bg-red-600 animate-pulse">🎄 HOLIDAY SPECIAL</span>
+                <h2 class="text-4xl md:text-5xl font-black uppercase tracking-tighter">Celebrate <span class='text-yellow-400'>2026</span></h2>
+                <p class="mt-4 text-sm opacity-90 max-w-xl font-medium italic">Explore the best handpicked deals for the festive season.</p>
             </div>
-            <div id="seasonal-category-grid" class="grid grid-cols-2 md:grid-cols-4 gap-4 px-4 -mt-10 relative z-10 pb-8"></div>
         </div>
 
         <div id="deals-container">
             <h2 class="text-3xl font-black text-gray-800 mb-6 border-b-4 border-red-700 pb-2">🔥 Trending Right Now</h2>
-            <div id="deals-list" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6"></div>
+            <div id="deals-list" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+                <div class="bg-white p-4 rounded-2xl shadow-lg border border-gray-100 flex flex-col hover:border-red-500 transition-all duration-300">
+                    <img src="https://images.unsplash.com/photo-1589003077984-894e133dabab?w=400" class="h-40 w-full object-cover rounded-lg mb-4">
+                    <h3 class="text-sm font-bold text-gray-800 h-10 mb-1">boAt Party Speaker RGB</h3>
+                    <p class="text-red-600 font-black text-xl mb-4">₹3,499</p>
+                    <a href="https://www.amazon.in/s?k=party+speakers&tag=ascreation00f-21" target="_blank" class="w-full py-2.5 rounded-lg text-white font-bold text-center text-sm bg-red-700">CLAIM DEAL</a>
+                </div>
+
+                <div class="bg-white p-4 rounded-2xl shadow-lg border border-gray-100 flex flex-col hover:border-red-500 transition-all duration-300">
+                    <img src="https://images.unsplash.com/photo-1549007994-cb92caebd54b?w=400" class="h-40 w-full object-cover rounded-lg mb-4">
+                    <h3 class="text-sm font-bold text-gray-800 h-10 mb-1">Christmas Gift Hamper</h3>
+                    <p class="text-red-600 font-black text-xl mb-4">₹499</p>
+                    <a href="https://www.amazon.in/s?k=christmas+gift+items&tag=ascreation00f-21" target="_blank" class="w-full py-2.5 rounded-lg text-white font-bold text-center text-sm bg-red-700">CLAIM DEAL</a>
+                </div>
+
+                <div class="bg-white p-4 rounded-2xl shadow-lg border border-gray-100 flex flex-col hover:border-red-500 transition-all duration-300">
+                    <img src="https://images.unsplash.com/photo-1506784919141-939e9e033d40?w=400" class="h-40 w-full object-cover rounded-lg mb-4">
+                    <h3 class="text-sm font-bold text-gray-800 h-10 mb-1">2026 Premium Planner</h3>
+                    <p class="text-red-600 font-black text-xl mb-4">₹350</p>
+                    <a href="https://www.amazon.in/s?k=2026+planner&tag=ascreation00f-21" target="_blank" class="w-full py-2.5 rounded-lg text-white font-bold text-center text-sm bg-red-700">CLAIM DEAL</a>
+                </div>
+
+                <div class="bg-white p-4 rounded-2xl shadow-lg border border-gray-100 flex flex-col hover:border-red-500 transition-all duration-300">
+                    <img src="https://images.unsplash.com/photo-1523275335684-37898b6baf30?w=400" class="h-40 w-full object-cover rounded-lg mb-4">
+                    <h3 class="text-sm font-bold text-gray-800 h-10 mb-1">Noise Smartwatch</h3>
+                    <p class="text-red-600 font-black text-xl mb-4">₹1,499</p>
+                    <a href="https://www.amazon.in/s?k=smartwatch&tag=ascreation00f-21" target="_blank" class="w-full py-2.5 rounded-lg text-white font-bold text-center text-sm bg-red-700">CLAIM DEAL</a>
+                </div>
+                </div>
         </div>
 
         <footer class="mt-16 pt-8 border-t text-center text-[10px] text-gray-400 font-bold italic">
-            © 2026 AFFIMANIA Ai • Festive Hourly Sync Active
+            © 2026 AFFIMANIA Ai • All Rights Reserved
         </footer>
     </div>
 
     <script>
-        // --- START: CONTEXT DATA ---
-        const affimaniaContext = {}; // Will be filled by update_deals.js
-        // --- END: CONTEXT DATA ---
-
-        // --- START: AUTOGENERATED DEALS DATA ---
-        const dummyDeals = []; // Will be filled by update_deals.js
-        // --- END: AUTOGENERATED DEALS DATA ---
-
-        function initPage() {
-            const banner = document.getElementById('main-banner');
-            banner.style.backgroundImage = `linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.4)), url('${affimaniaContext.bg}')`;
-            document.getElementById('season-badge').innerText = affimaniaContext.badge;
-            document.getElementById('season-badge').style.backgroundColor = affimaniaContext.accent;
-            document.getElementById('season-title').innerHTML = affimaniaContext.title;
-            document.getElementById('season-desc').innerText = affimaniaContext.desc;
-
-            const grid = document.getElementById('seasonal-category-grid');
-            grid.innerHTML = affimaniaContext.categories.map(cat => `
-                <a href="https://www.amazon.in/s?k=${cat.l}&tag=ascreation00f-21" target="_blank" class="glass-card p-4 rounded-xl text-center border-b-4 shadow-sm" style="border-color: #ffd700">
-                    <div class="text-3xl mb-2">${cat.i}</div>
-                    <h3 class="font-bold text-gray-800 text-xs uppercase">${cat.n}</h3>
-                </a>
-            `).join('');
-
-            renderDeals();
-        }
-
-        function renderDeals() {
-            const list = document.getElementById('deals-list');
-            const shuffled = dummyDeals.sort(() => 0.5 - Math.random());
-            list.innerHTML = shuffled.map(deal => `
-                <div class="bg-white p-4 rounded-2xl shadow-lg border border-gray-100 flex flex-col hover:border-red-500 transition-all duration-300">
-                    <img src="${deal.image}" class="h-40 w-full object-cover rounded-lg mb-4">
-                    <h3 class="text-sm font-bold text-gray-800 h-10 mb-1">${deal.title}</h3>
-                    <p class="text-red-600 font-black text-xl mb-4">₹${deal.price.toLocaleString('en-IN')}</p>
-                    <a href="${deal.affiliate_link}" target="_blank" class="w-full py-2.5 rounded-lg text-white font-bold text-center text-sm bg-red-700">CLAIM DEAL</a>
-                </div>
-            `).join('');
-        }
-
-        window.onload = initPage;
+        // Search Functionality
+        document.getElementById('affimania-form').addEventListener('submit', function(e) {
+            e.preventDefault();
+            const product = document.getElementById('product').value;
+            const min = document.getElementById('min_price').value;
+            const max = document.getElementById('max_price').value;
+            const tag = "ascreation00f-21";
+            
+            const url = `https://www.amazon.in/s?k=${product.replace(/\s/g, '+')}&low-price=${min}&high-price=${max}&tag=${tag}`;
+            window.open(url, '_blank');
+        });
     </script>
 </body>
 </html>
