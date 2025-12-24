@@ -20,7 +20,7 @@
 
         .glass-card { background: rgba(255, 255, 255, 0.95); backdrop-filter: blur(10px); transition: 0.3s; border: 1px solid #ffd700; }
         .glass-card:hover { transform: translateY(-8px); box-shadow: 0 20px 25px rgba(179,0,0,0.2); }
-        .seasonal-banner { background-size: cover; background-position: center; border-radius: 20px; border-bottom: 5px solid #ffd700; transition: 0.5s; }
+        .seasonal-banner { background-size: cover; background-position: center; border-radius: 20px; border-bottom: 5px solid #ffd700; }
     </style>
 </head>
 <body class="min-h-screen flex items-start justify-center p-4">
@@ -29,17 +29,17 @@
         
         <header class="text-center mb-8">
             <div class="text-5xl mb-2 text-red-700 font-extrabold tracking-tighter uppercase">AFFIMANIA Ai</div>
-            <h1 id="main-subtitle" class="text-xl font-bold text-gray-800 italic">Smart Festive Price Optimization Hub 🎄🎆</h1>
+            <h1 class="text-xl font-bold text-gray-800 italic">Smart Festive Price Optimization Hub 🎄🎆</h1>
         </header>
 
         <form id="affimania-form" class="space-y-4 mb-10">
             <div>
                 <label class="block text-sm font-medium text-gray-700 mb-1">Product Name</label>
-                <input type="text" id="product" required class="w-full p-3 border border-gray-300 rounded-lg focus:ring-red-700 focus:border-red-700" placeholder="e.g. Christmas Gift, Party Speaker, 2026 Planner">
+                <input type="text" id="product" required class="w-full p-3 border border-gray-300 rounded-lg focus:ring-red-700 focus:border-red-700" placeholder="e.g. Christmas Gift, Party Speaker">
             </div>
             <div class="flex space-x-4">
-                <input type="number" id="min_price" required class="w-1/2 p-3 border border-gray-300 rounded-lg" placeholder="Min Price (₹)">
-                <input type="number" id="max_price" required class="w-1/2 p-3 border border-gray-300 rounded-lg" placeholder="Max Price (₹)">
+                <input type="number" id="min_price" required class="w-1/2 p-3 border border-gray-300 rounded-lg" placeholder="Min Price">
+                <input type="number" id="max_price" required class="w-1/2 p-3 border border-gray-300 rounded-lg" placeholder="Max Price">
             </div>
             <button type="submit" id="search-button" class="w-full bg-red-700 text-white p-3 rounded-lg font-semibold hover:bg-red-800 transition-all">
                 🔍 Find Festive Deals
@@ -48,113 +48,86 @@
 
         <div id="result-card" class="mt-6 hidden bg-yellow-50 p-4 rounded-xl border-2 border-yellow-400 shadow-lg mb-10">
             <div id="res-content"></div>
-            <a id="res-link" target="_blank" class="block p-3 rounded-lg font-bold affiliate-link-button mt-4">🛒 VIEW BEST DEAL ON AMAZON</a>
+            <a id="res-link" target="_blank" class="block p-3 rounded-lg font-bold affiliate-link-button mt-4">🛒 VIEW BEST DEAL</a>
         </div>
 
         <div id="seasonal-spotlight" class="mb-12 overflow-hidden rounded-2xl shadow-xl">
             <div id="main-banner" class="seasonal-banner h-64 md:h-80 flex flex-col items-center justify-center text-center p-6 text-white">
-                <span id="season-badge" class="px-4 py-1 rounded-full text-[10px] font-black mb-4 bg-red-600 animate-pulse">LOADING SPECIALS...</span>
+                <span id="season-badge" class="px-4 py-1 rounded-full text-[10px] font-black mb-4 bg-red-600 animate-pulse">LIVE UPDATES</span>
                 <h2 id="season-title" class="text-4xl md:text-5xl font-black uppercase tracking-tighter">Celebrate the Season</h2>
-                <p id="season-desc" class="mt-4 text-sm opacity-90 max-w-xl font-medium italic">Handpicked trending deals updated every hour for you.</p>
+                <p id="season-desc" class="mt-4 text-sm opacity-90 max-w-xl font-medium italic">Latest Festive Deals updated every hour.</p>
             </div>
         </div>
 
         <div id="deals-container">
-            <h2 id="deals-heading" class="text-3xl font-black text-gray-800 mb-6 border-b-4 border-red-700 pb-2 flex items-center">
-                🔥 Hourly Trending Deals
-            </h2>
-            <div id="deals-list" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+            <h2 id="deals-heading" class="text-3xl font-black text-gray-800 mb-6 border-b-4 border-red-700 pb-2">🔥 Top 30 Hourly Deals</h2>
+            <div id="deals-list" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
                 </div>
         </div>
 
         <footer class="mt-16 pt-8 border-t border-gray-300 text-center text-[10px] text-gray-400 font-bold italic">
-            © 2026 AFFIMANIA Ai • High-Performance Festive Engine Active
+            © 2026 AFFIMANIA Ai • Hourly 35+ Festive Deals Active
         </footer>
     </div>
 
     <script>
         const TAG = "ascreation00f-21";
-
-        // Date-Based Festive Data
-        const dealsDatabase = {
-            christmas: [
-                { t: "Premium Christmas Gift Hamper", p: 1249, i: "https://images.unsplash.com/photo-1549007994-cb92caebd54b?w=400" },
-                { t: "Smart RGB Star Fairy Lights", p: 499, i: "https://images.unsplash.com/photo-1512470876302-972faa2aa9a4?w=400" },
-                { t: "Luxury Chocolate Gift Box", p: 899, i: "https://images.unsplash.com/photo-1548907040-4baa42d10919?w=400" },
-                { t: "Warm Winter Puffer Jacket", p: 2199, i: "https://images.unsplash.com/photo-1551488831-00ddcb6c6bd3?w=400" },
-                { t: "Xmas Decor & Ornaments Kit", p: 599, i: "https://images.unsplash.com/photo-1513297845702-029bb7a794cc?w=400" }
-            ],
-            newYear: [
-                { t: "Powerful Party Speaker RGB", p: 3499, i: "https://images.unsplash.com/photo-1589003077984-894e133dabab?w=400" },
-                { t: "2026 Premium Goal Planner", p: 495, i: "https://images.unsplash.com/photo-1506784919141-939e9e033d40?w=400" },
-                { t: "Fujifilm Instax Mini 12", p: 5990, i: "https://images.unsplash.com/photo-1526170315873-3a92bafc83b3?w=400" },
-                { t: "Wireless Noise Cancelling Pods", p: 1599, i: "https://images.unsplash.com/photo-1585565804112-f201f68c48b4?w=400" },
-                { t: "Party Glitter Decoration Set", p: 799, i: "https://images.unsplash.com/photo-1546702302-3350ff30d936?w=400" }
-            ]
-        };
-
-        function refreshDeals() {
+        
+        // Extended Database for 30-35 items
+        function getFestiveData() {
             const now = new Date();
-            const date = now.getDate();
-            const month = now.getMonth() + 1; // 1-12
+            const isChristmas = now.getMonth() === 11 && now.getDate() <= 25;
             
-            const list = document.getElementById('deals-list');
-            const badge = document.getElementById('season-badge');
-            const title = document.getElementById('season-title');
-            const banner = document.getElementById('main-banner');
-            const heading = document.getElementById('deals-heading');
-
-            let activeDeals = [];
-
-            // December 24-25 is Christmas mode
-            if (month === 12 && date <= 25) {
-                activeDeals = dealsDatabase.christmas;
-                badge.innerText = "CHRISTMAS GIFT SPECIAL 🎄";
-                title.innerHTML = "Merry <span class='text-yellow-400'>Christmas</span> 2025";
-                banner.style.backgroundImage = `linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.4)), url('https://images.unsplash.com/photo-1543589077-47d81606c1bf?w=1200')`;
-                heading.innerHTML = "🎁 Santa's Hourly Top Deals";
-            } 
-            // After 25th is New Year mode
-            else {
-                activeDeals = dealsDatabase.newYear;
-                badge.innerText = "NEW YEAR PARTY SPECIAL 🎆";
-                title.innerHTML = "Celebrate <span class='text-yellow-400'>2026</span>";
-                banner.style.backgroundImage = `linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.4)), url('https://images.unsplash.com/photo-1467810563316-b5476525c0f9?w=1200')`;
-                heading.innerHTML = "🍾 New Year Bash Hourly Deals";
+            const baseProducts = isChristmas ? "Christmas Gift" : "New Year Party";
+            const items = [];
+            
+            // Generating 35 dynamic items for the demo
+            const categories = ["Decor", "Lights", "Speaker", "Gadget", "Sweater", "Watch", "Hamper", "Planner"];
+            for(let i=1; i<=35; i++) {
+                items.push({
+                    t: `${baseProducts} ${categories[i % categories.length]} #${i}`,
+                    p: Math.floor(Math.random() * (5000 - 299) + 299),
+                    i: `https://picsum.photos/seed/${isChristmas ? 'xmas' : 'ny'}${i}/400/300`
+                });
             }
+            return items;
+        }
 
-            // Shuffle and pick 4
-            const shuffled = activeDeals.sort(() => 0.5 - Math.random()).slice(0, 30);
+        function loadHourlyDeals() {
+            const list = document.getElementById('deals-list');
+            const products = getFestiveData();
+            
+            // Show exactly 30-35 deals as requested
+            const shuffled = products.sort(() => 0.5 - Math.random());
             
             list.innerHTML = shuffled.map(deal => `
-                <div class="bg-white p-4 rounded-2xl shadow-lg border border-gray-100 flex flex-col hover:border-red-500 transition-all duration-300 hover:-translate-y-2">
+                <div class="bg-white p-4 rounded-2xl shadow-lg border border-gray-100 flex flex-col hover:border-red-500 transition-all">
                     <img src="${deal.i}" class="h-40 w-full object-cover rounded-lg mb-4">
                     <h3 class="text-sm font-bold text-gray-800 h-10 mb-1">${deal.t}</h3>
                     <p class="text-red-600 font-black text-xl mb-4">₹${deal.p.toLocaleString('en-IN')}</p>
-                    <a href="https://www.amazon.in/s?k=${deal.t.replace(/\s/g,'+')}&tag=${TAG}" target="_blank" class="w-full py-2.5 rounded-lg text-white font-bold text-center text-sm bg-red-700 hover:bg-black transition-colors">GET FESTIVE DEAL</a>
+                    <a href="https://www.amazon.in/s?k=${deal.t.replace(/\s/g,'+')}&tag=${TAG}" target="_blank" class="w-full py-2.5 rounded-lg text-white font-bold text-center text-sm bg-red-700">BUY NOW</a>
                 </div>
             `).join('');
+
+            // Update Banner
+            const now = new Date();
+            const isChristmas = now.getMonth() === 11 && now.getDate() <= 25;
+            document.getElementById('season-title').innerHTML = isChristmas ? "Merry <span class='text-yellow-400'>Christmas</span>" : "Happy <span class='text-yellow-400'>New Year</span>";
+            document.getElementById('main-banner').style.backgroundImage = `linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.4)), url('https://images.unsplash.com/photo-${isChristmas ? '1543589077-47d81606c1bf' : '1467810563316-b5476525c0f9'}?w=1200')`;
         }
 
-        // Search Engine logic
         document.getElementById('affimania-form').addEventListener('submit', (e) => {
             e.preventDefault();
             const p = document.getElementById('product').value;
             const min = document.getElementById('min_price').value;
             const max = document.getElementById('max_price').value;
-            
-            document.getElementById('res-content').innerHTML = `
-                <p class="font-bold text-red-700 text-lg uppercase tracking-tight">✨ Festive Match Found!</p>
-                <p class="text-sm text-gray-600 italic">Searching optimized price for ${p} between ₹${min} - ₹${max}</p>
-            `;
+            document.getElementById('res-content').innerHTML = `<p class="font-bold text-red-700">✅ Festive Match Found for: ${p}</p>`;
             document.getElementById('res-link').href = `https://www.amazon.in/s?k=${p.replace(/\s/g,'+')}&low-price=${min}&high-price=${max}&tag=${TAG}`;
             document.getElementById('result-card').classList.remove('hidden');
-            window.scrollTo({ top: document.getElementById('result-card').offsetTop - 50, behavior: 'smooth' });
         });
 
-        window.onload = refreshDeals;
-        // Automatically refresh every hour (3600000 ms)
-        setInterval(refreshDeals, 3600000);
+        window.onload = loadHourlyDeals;
+        setInterval(loadHourlyDeals, 3600000); // Hourly Update
     </script>
 </body>
 </html>
