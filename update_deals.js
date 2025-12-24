@@ -2,8 +2,8 @@ const fs = require('fs');
 const path = require('path');
 
 // 🔐 PA-API KEYS YAHAN DAALEIN (Inhe kisi ko mat dikhana)
-const ACCESS_KEY = 'YOUR_ACCESS_KEY_HERE';
-const SECRET_KEY = 'YOUR_SECRET_KEY_HERE';
+const ACCESS_KEY = 'AKPALTMLPD1766576649';
+const SECRET_KEY = 'jC7vaQ1o9PGlVMcTC8Uu/RCUeSWuA8w60Sn2rX7z';
 const PARTNER_TAG = 'ascreation00f-21';
 
 // 📸 Festive High-Res Images for Categories
