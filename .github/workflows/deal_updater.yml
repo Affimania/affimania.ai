@@ -2,8 +2,8 @@ name: Daily Amazon Deal Update
 
 on:
   schedule:
-    - cron: '0 * * * *'  # Har ghante auto-run karne ke liye
-  workflow_dispatch:     # Manual run button ke liye
+    - cron: '0 * * * *'
+  workflow_dispatch:
 
 jobs:
   update-deals:
@@ -12,33 +12,19 @@ jobs:
       contents: write 
     steps:
       - uses: actions/checkout@v3
-        with:
-          # Default token use karein, isse GitHub ko permission milti hai file update karne ki
-          token: ${{ secrets.GITHUB_TOKEN }} 
           
       - name: Setup Node.js
         uses: actions/setup-node@v3
         with:
           node-version: '18'
           
-      - name: Install Dependencies
-        run: |
-          npm init -y
-          npm install axios crypto-js # Amazon API call karne ke liye zaroori libraries
-        
       - name: Run Update Script
-        # Ye command aapki update_deals.js file ko chalayegi
-        run: node update_deals.js 
-        env:
-          # Aapki keys yahan workflow ko milengi taaki script run ho sake
-          AMAZON_ACCESS_KEY: 'AKPALTMLPD1766576649'
-          AMAZON_SECRET_KEY: 'jC7vaQ1o9PGlVMcTC8Uu/RCUeSWuA8w60Sn2rX7z'
+        run: node update_deals.js # Seedha script run karein
           
       - name: Commit Updated Index
         run: |
           git config --global user.name "Affimania Bot"
           git config --global user.email "affimania-bot@users.github.com"
           git add index.html 
-          # Agar data badla hai toh hi commit karega
-          git commit -m "Automated: Festive & Hourly Deal Update" || echo "No changes to commit"
+          git commit -m "Automated: Deal Update Fix" || echo "No changes"
           git push origin main
