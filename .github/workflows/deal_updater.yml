@@ -2,8 +2,8 @@ name: Daily Amazon Deal Update
 
 on:
   schedule:
-    - cron: '0 * * * *'  # Har ghante auto-run
-  workflow_dispatch:     # Manual run button
+    - cron: '0 * * * *'  # Har ghante auto-run karne ke liye
+  workflow_dispatch:     # Manual run button ke liye
 
 jobs:
   update-deals:
@@ -13,7 +13,7 @@ jobs:
     steps:
       - uses: actions/checkout@v3
         with:
-          # Yahan GITHUB_TOKEN default use karein, GH_TOKEN ki zaroorat nahi agar aap same repo mein push kar rahe hain
+          # Default token use karein, isse GitHub ko permission milti hai file update karne ki
           token: ${{ secrets.GITHUB_TOKEN }} 
           
       - name: Setup Node.js
@@ -24,21 +24,21 @@ jobs:
       - name: Install Dependencies
         run: |
           npm init -y
-          npm install axios crypto-js  # API ke liye zaroori libraries
+          npm install axios crypto-js # Amazon API call karne ke liye zaroori libraries
         
-      - name: Fetch and Update Deals
-        # Hum seedha node script run karenge taaki package.json ke scripts par depend na rehna pade
+      - name: Run Update Script
+        # Ye command aapki update_deals.js file ko chalayegi
         run: node update_deals.js 
         env:
-          # In secrets ko GitHub Settings mein add karna zaroori hai
-          AMAZON_ACCESS_KEY: ${{ secrets.AKPALTMLPD1766576649 }}
-          AMAZON_SECRET_KEY: ${{ secrets.jC7vaQ1o9PGlVMcTC8Uu/RCUeSWuA8w60Sn2rX7z }}
+          # Aapki keys yahan workflow ko milengi taaki script run ho sake
+          AMAZON_ACCESS_KEY: 'AKPALTMLPD1766576649'
+          AMAZON_SECRET_KEY: 'jC7vaQ1o9PGlVMcTC8Uu/RCUeSWuA8w60Sn2rX7z'
           
       - name: Commit Updated Index
         run: |
           git config --global user.name "Affimania Bot"
           git config --global user.email "affimania-bot@users.github.com"
           git add index.html 
-          # Agar koi badlav nahi hai toh error na aaye isliye || true ka use kiya hai
-          git commit -m "Automated: Seasonal & Hourly Deal Update" || echo "No changes to commit"
+          # Agar data badla hai toh hi commit karega
+          git commit -m "Automated: Festive & Hourly Deal Update" || echo "No changes to commit"
           git push origin main
