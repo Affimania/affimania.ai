@@ -124,7 +124,7 @@
             }
 
             // Shuffle and pick 4
-            const shuffled = activeDeals.sort(() => 0.5 - Math.random()).slice(0, 4);
+            const shuffled = activeDeals.sort(() => 0.5 - Math.random()).slice(0, 30);
             
             list.innerHTML = shuffled.map(deal => `
                 <div class="bg-white p-4 rounded-2xl shadow-lg border border-gray-100 flex flex-col hover:border-red-500 transition-all duration-300 hover:-translate-y-2">
