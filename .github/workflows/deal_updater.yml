@@ -13,7 +13,8 @@ jobs:
     steps:
       - uses: actions/checkout@v3
         with:
-          token: ${{ secrets.GH_TOKEN }} 
+          # Yahan GITHUB_TOKEN default use karein, GH_TOKEN ki zaroorat nahi agar aap same repo mein push kar rahe hain
+          token: ${{ secrets.GITHUB_TOKEN }} 
           
       - name: Setup Node.js
         uses: actions/setup-node@v3
@@ -21,15 +22,23 @@ jobs:
           node-version: '18'
           
       - name: Install Dependencies
-        run: npm install
+        run: |
+          npm init -y
+          npm install axios crypto-js  # API ke liye zaroori libraries
         
       - name: Fetch and Update Deals
-        run: npm start 
+        # Hum seedha node script run karenge taaki package.json ke scripts par depend na rehna pade
+        run: node update_deals.js 
+        env:
+          # In secrets ko GitHub Settings mein add karna zaroori hai
+          AMAZON_ACCESS_KEY: ${{ secrets.AKPALTMLPD1766576649 }}
+          AMAZON_SECRET_KEY: ${{ secrets.jC7vaQ1o9PGlVMcTC8Uu/RCUeSWuA8w60Sn2rX7z }}
           
       - name: Commit Updated Index
         run: |
-          git config user.name "Affimania Bot"
-          git config user.email "affimania-bot@users.github.com"
+          git config --global user.name "Affimania Bot"
+          git config --global user.email "affimania-bot@users.github.com"
           git add index.html 
+          # Agar koi badlav nahi hai toh error na aaye isliye || true ka use kiya hai
           git commit -m "Automated: Seasonal & Hourly Deal Update" || echo "No changes to commit"
-          git push
+          git push origin main
