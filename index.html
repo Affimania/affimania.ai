@@ -5,53 +5,112 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>AFFIMANIA Ai | Happy New Year 2026</title>
     <script src="https://cdn.tailwindcss.com"></script>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700;800&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&display=swap" rel="stylesheet">
     <style>
-        body { background-color: #0f172a; color: white; font-family: 'Inter', sans-serif; }
-        .glass-card { background: rgba(255, 255, 255, 0.03); backdrop-filter: blur(12px); border: 1px solid rgba(255, 255, 255, 0.1); transition: 0.3s; }
+        :root {
+            --primary-gradient: linear-gradient(135deg, #10b981 0%, #3b82f6 100%);
+            --glass-bg: rgba(255, 255, 255, 0.05);
+            --glass-border: rgba(255, 255, 255, 0.1);
+        }
+
+        body { 
+            font-family: 'Inter', sans-serif; 
+            background-color: #0f172a; 
+            color: #ffffff;
+            overflow-x: hidden;
+        }
+
+        /* 🎉 Festive New Year Banner */
         .new-year-banner {
-            background: linear-gradient(rgba(15, 23, 42, 0.8), rgba(15, 23, 42, 0.9)), 
+            background: linear-gradient(rgba(15, 23, 42, 0.7), rgba(15, 23, 42, 0.8)), 
                         url('https://images.unsplash.com/photo-1546733080-d99f4af6763a?w=1200&q=80');
-            background-size: cover; background-position: center;
-            border-radius: 30px; padding: 60px 20px; text-align: center; border: 1px solid rgba(16, 185, 129, 0.3);
+            background-size: cover;
+            background-position: center;
+            border-radius: 30px;
+            padding: 80px 20px;
+            text-align: center;
+            border: 1px solid rgba(16, 185, 129, 0.3);
+            box-shadow: 0 0 50px rgba(16, 185, 129, 0.1);
         }
-        .deals-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 20px; }
+
+        .glass-card { 
+            background: rgba(255, 255, 255, 0.03); 
+            backdrop-filter: blur(15px); 
+            border: 1px solid var(--glass-border);
+            transition: 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275); 
+        }
+
+        .glass-card:hover { 
+            transform: translateY(-8px); 
+            border-color: #10b981;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.4); 
+        }
+
+        .deals-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 20px;
+        }
+
+        /* Support Buttons */
         .contact-button {
-            display: flex; align-items: center; justify-content: center;
-            padding: 10px 20px; background: rgba(255, 255, 255, 0.05); border: 1px solid rgba(255, 255, 255, 0.1);
-            border-radius: 12px; color: white; font-weight: 600; text-decoration: none; transition: 0.3s;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 12px 24px;
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 12px;
+            color: white;
+            font-weight: 600;
+            transition: 0.3s;
+            text-decoration: none;
         }
-        .contact-button:hover { background: #10b981; transform: translateY(-3px); }
+
+        .contact-button:hover {
+            background: var(--primary-gradient);
+            transform: translateY(-3px);
+            border-color: transparent;
+        }
+
         @media (max-width: 1024px) { .deals-grid { grid-template-columns: repeat(2, 1fr); } }
         @media (max-width: 640px) { .deals-grid { grid-template-columns: repeat(1, 1fr); } }
+
+        ::-webkit-scrollbar { width: 8px; }
+        ::-webkit-scrollbar-thumb { background: #10b981; border-radius: 4px; }
     </style>
 </head>
 <body class="p-4 md:p-10">
 
     <div id="app-container" class="max-w-7xl mx-auto">
+        
         <header class="text-center mb-8">
-            <div class="text-5xl font-extrabold tracking-tighter" style="background: linear-gradient(135deg, #10b981 0%, #3b82f6 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent;">
+            <div class="text-5xl font-extrabold tracking-tighter" style="background: var(--primary-gradient); -webkit-background-clip: text; -webkit-text-fill-color: transparent;">
                 AFFIMANIA Ai
             </div>
         </header>
 
         <div class="new-year-banner mb-12">
-            <div class="inline-block px-4 py-1 rounded-full bg-emerald-500 text-white text-[10px] font-bold tracking-widest uppercase mb-4 animate-pulse">CELEBRATION MODE ON</div>
+            <div class="inline-block px-4 py-1 rounded-full bg-emerald-500 text-white text-[10px] font-bold tracking-widest uppercase mb-4 animate-pulse">
+                Celebration Mode On
+            </div>
             <h2 class="text-5xl md:text-7xl font-black mb-4 tracking-tighter uppercase">HAPPY NEW YEAR <span class="text-emerald-400">2026</span></h2>
-            <p class="text-gray-300 text-lg md:text-xl font-medium italic">Your Gateway to Smart Shopping in the New Year!</p>
+            <p class="text-gray-300 text-lg md:text-xl font-medium italic">Your Gateway to Smart Shopping & AI-Powered Savings!</p>
         </div>
 
         <div class="glass-card p-8 rounded-3xl mb-16 shadow-2xl">
             <form id="affimania-form" class="space-y-6">
-                <input type="text" id="product" required class="w-full bg-white/5 border border-white/10 p-4 rounded-xl text-white outline-none" placeholder="Search product for 2026...">
+                <input type="text" id="product" required class="w-full bg-white/5 border border-white/10 p-4 rounded-xl text-white outline-none focus:ring-2 focus:ring-emerald-500" placeholder="Search New Year Deals (e.g. Laptops, Watches)...">
                 <div class="flex gap-4">
                     <input type="number" id="min_price" required class="w-1/2 bg-white/5 border border-white/10 p-4 rounded-xl text-white" placeholder="Min ₹">
                     <input type="number" id="max_price" required class="w-1/2 bg-white/5 border border-white/10 p-4 rounded-xl text-white" placeholder="Max ₹">
                 </div>
-                <button type="submit" class="w-full bg-gradient-to-r from-emerald-500 to-blue-600 text-white p-4 rounded-xl font-bold text-lg transition-all hover:opacity-90">✨ AI SEARCH FOR BEST DEALS</button>
+                <button type="submit" class="w-full bg-gradient-to-r from-emerald-500 to-blue-600 text-white p-4 rounded-xl font-bold text-lg transition-all hover:opacity-90">
+                    ✨ AI SEARCH FOR BEST PRICES
+                </button>
             </form>
-            <div id="result-card" class="mt-6 hidden bg-emerald-500/10 border border-emerald-500/30 p-4 rounded-2xl text-center">
-                <a id="res-link" target="_blank" class="block w-full bg-white text-black p-3 rounded-xl font-black">🛒 VIEW OPTIMIZED AMAZON LINK</a>
+            <div id="result-card" class="mt-6 hidden bg-emerald-500/10 border border-emerald-500/30 p-4 rounded-2xl">
+                <a id="res-link" target="_blank" class="block w-full bg-white text-black text-center p-3 rounded-xl font-black">🛒 VIEW OPTIMIZED AMAZON LINK</a>
             </div>
         </div>
 
@@ -68,8 +127,8 @@
                 <a href="https://www.instagram.com/affimania.ai" target="_blank" class="contact-button w-full sm:w-auto">📸 @affimania.ai</a>
             </div>
             <p class="text-gray-500 text-[10px] font-bold uppercase tracking-widest">© 2026 AFFIMANIA Ai • AI Powered Shopping Engine</p>
-            <div class="mt-4 inline-block px-3 py-1 bg-white/5 rounded-full border border-white/10">
-                <p class="text-[10px] text-gray-400 font-black uppercase tracking-widest">VERSION: 2.5.0 STABLE BUILD</p>
+            <div class="mt-4 inline-block px-4 py-1 bg-white/5 rounded-full border border-white/10">
+                <p class="text-[10px] text-gray-400 font-black uppercase tracking-widest">Version: 2.5.0 Stable Build</p>
             </div>
         </footer>
     </div>
@@ -77,347 +136,32 @@
     <script>
         const AFFILIATE_TAG = "ascreation00f-21";
         // --- START: AUTOGENERATED DEALS DATA ---
-const dummyDeals = [
-    {
-        "title": "AI Optimized Gadgets Best Seller - New Year Deal #1",
-        "price": "4,480",
-        "mrp": "6,720",
-        "savings": "FLAT 33% OFF",
-        "affiliate_link": "https://www.amazon.in/s?k=Gadgets&tag=ascreation00f-21",
-        "image": "https://images.unsplash.com/photo-1523275335684-37898b6baf30?w=500&q=80"
-    },
-    {
-        "title": "AI Optimized Tech Best Seller - New Year Deal #2",
-        "price": "4,205",
-        "mrp": "6,307.5",
-        "savings": "FLAT 33% OFF",
-        "affiliate_link": "https://www.amazon.in/s?k=Tech&tag=ascreation00f-21",
-        "image": "https://images.unsplash.com/photo-1523275335684-37898b6baf30?w=500&q=80"
-    },
-    {
-        "title": "AI Optimized SmartHome Best Seller - New Year Deal #3",
-        "price": "3,821",
-        "mrp": "5,731.5",
-        "savings": "FLAT 33% OFF",
-        "affiliate_link": "https://www.amazon.in/s?k=SmartHome&tag=ascreation00f-21",
-        "image": "https://images.unsplash.com/photo-1523275335684-37898b6baf30?w=500&q=80"
-    },
-    {
-        "title": "AI Optimized Style Best Seller - New Year Deal #4",
-        "price": "5,196",
-        "mrp": "7,794",
-        "savings": "FLAT 33% OFF",
-        "affiliate_link": "https://www.amazon.in/s?k=Style&tag=ascreation00f-21",
-        "image": "https://images.unsplash.com/photo-1523275335684-37898b6baf30?w=500&q=80"
-    },
-    {
-        "title": "AI Optimized Gadgets Best Seller - New Year Deal #5",
-        "price": "5,919",
-        "mrp": "8,878.5",
-        "savings": "FLAT 33% OFF",
-        "affiliate_link": "https://www.amazon.in/s?k=Gadgets&tag=ascreation00f-21",
-        "image": "https://images.unsplash.com/photo-1523275335684-37898b6baf30?w=500&q=80"
-    },
-    {
-        "title": "AI Optimized Tech Best Seller - New Year Deal #6",
-        "price": "3,190",
-        "mrp": "4,785",
-        "savings": "FLAT 33% OFF",
-        "affiliate_link": "https://www.amazon.in/s?k=Tech&tag=ascreation00f-21",
-        "image": "https://images.unsplash.com/photo-1523275335684-37898b6baf30?w=500&q=80"
-    },
-    {
-        "title": "AI Optimized Tech Best Seller - New Year Deal #7",
-        "price": "1,762",
-        "mrp": "2,643",
-        "savings": "FLAT 33% OFF",
-        "affiliate_link": "https://www.amazon.in/s?k=Tech&tag=ascreation00f-21",
-        "image": "https://images.unsplash.com/photo-1523275335684-37898b6baf30?w=500&q=80"
-    },
-    {
-        "title": "AI Optimized Style Best Seller - New Year Deal #8",
-        "price": "2,906",
-        "mrp": "4,359",
-        "savings": "FLAT 33% OFF",
-        "affiliate_link": "https://www.amazon.in/s?k=Style&tag=ascreation00f-21",
-        "image": "https://images.unsplash.com/photo-1523275335684-37898b6baf30?w=500&q=80"
-    },
-    {
-        "title": "AI Optimized Tech Best Seller - New Year Deal #9",
-        "price": "3,956",
-        "mrp": "5,934",
-        "savings": "FLAT 33% OFF",
-        "affiliate_link": "https://www.amazon.in/s?k=Tech&tag=ascreation00f-21",
-        "image": "https://images.unsplash.com/photo-1523275335684-37898b6baf30?w=500&q=80"
-    },
-    {
-        "title": "AI Optimized Gadgets Best Seller - New Year Deal #10",
-        "price": "3,782",
-        "mrp": "5,673",
-        "savings": "FLAT 33% OFF",
-        "affiliate_link": "https://www.amazon.in/s?k=Gadgets&tag=ascreation00f-21",
-        "image": "https://images.unsplash.com/photo-1523275335684-37898b6baf30?w=500&q=80"
-    },
-    {
-        "title": "AI Optimized Tech Best Seller - New Year Deal #11",
-        "price": "5,404",
-        "mrp": "8,106",
-        "savings": "FLAT 33% OFF",
-        "affiliate_link": "https://www.amazon.in/s?k=Tech&tag=ascreation00f-21",
-        "image": "https://images.unsplash.com/photo-1523275335684-37898b6baf30?w=500&q=80"
-    },
-    {
-        "title": "AI Optimized Tech Best Seller - New Year Deal #12",
-        "price": "3,563",
-        "mrp": "5,344.5",
-        "savings": "FLAT 33% OFF",
-        "affiliate_link": "https://www.amazon.in/s?k=Tech&tag=ascreation00f-21",
-        "image": "https://images.unsplash.com/photo-1523275335684-37898b6baf30?w=500&q=80"
-    },
-    {
-        "title": "AI Optimized Gadgets Best Seller - New Year Deal #13",
-        "price": "1,267",
-        "mrp": "1,900.5",
-        "savings": "FLAT 33% OFF",
-        "affiliate_link": "https://www.amazon.in/s?k=Gadgets&tag=ascreation00f-21",
-        "image": "https://images.unsplash.com/photo-1523275335684-37898b6baf30?w=500&q=80"
-    },
-    {
-        "title": "AI Optimized SmartHome Best Seller - New Year Deal #14",
-        "price": "3,463",
-        "mrp": "5,194.5",
-        "savings": "FLAT 33% OFF",
-        "affiliate_link": "https://www.amazon.in/s?k=SmartHome&tag=ascreation00f-21",
-        "image": "https://images.unsplash.com/photo-1523275335684-37898b6baf30?w=500&q=80"
-    },
-    {
-        "title": "AI Optimized Tech Best Seller - New Year Deal #15",
-        "price": "3,922",
-        "mrp": "5,883",
-        "savings": "FLAT 33% OFF",
-        "affiliate_link": "https://www.amazon.in/s?k=Tech&tag=ascreation00f-21",
-        "image": "https://images.unsplash.com/photo-1523275335684-37898b6baf30?w=500&q=80"
-    },
-    {
-        "title": "AI Optimized SmartHome Best Seller - New Year Deal #16",
-        "price": "3,455",
-        "mrp": "5,182.5",
-        "savings": "FLAT 33% OFF",
-        "affiliate_link": "https://www.amazon.in/s?k=SmartHome&tag=ascreation00f-21",
-        "image": "https://images.unsplash.com/photo-1523275335684-37898b6baf30?w=500&q=80"
-    },
-    {
-        "title": "AI Optimized SmartHome Best Seller - New Year Deal #17",
-        "price": "1,082",
-        "mrp": "1,623",
-        "savings": "FLAT 33% OFF",
-        "affiliate_link": "https://www.amazon.in/s?k=SmartHome&tag=ascreation00f-21",
-        "image": "https://images.unsplash.com/photo-1523275335684-37898b6baf30?w=500&q=80"
-    },
-    {
-        "title": "AI Optimized Gadgets Best Seller - New Year Deal #18",
-        "price": "1,194",
-        "mrp": "1,791",
-        "savings": "FLAT 33% OFF",
-        "affiliate_link": "https://www.amazon.in/s?k=Gadgets&tag=ascreation00f-21",
-        "image": "https://images.unsplash.com/photo-1523275335684-37898b6baf30?w=500&q=80"
-    },
-    {
-        "title": "AI Optimized Gadgets Best Seller - New Year Deal #19",
-        "price": "4,847",
-        "mrp": "7,270.5",
-        "savings": "FLAT 33% OFF",
-        "affiliate_link": "https://www.amazon.in/s?k=Gadgets&tag=ascreation00f-21",
-        "image": "https://images.unsplash.com/photo-1523275335684-37898b6baf30?w=500&q=80"
-    },
-    {
-        "title": "AI Optimized Gadgets Best Seller - New Year Deal #20",
-        "price": "4,817",
-        "mrp": "7,225.5",
-        "savings": "FLAT 33% OFF",
-        "affiliate_link": "https://www.amazon.in/s?k=Gadgets&tag=ascreation00f-21",
-        "image": "https://images.unsplash.com/photo-1523275335684-37898b6baf30?w=500&q=80"
-    },
-    {
-        "title": "AI Optimized Tech Best Seller - New Year Deal #21",
-        "price": "4,036",
-        "mrp": "6,054",
-        "savings": "FLAT 33% OFF",
-        "affiliate_link": "https://www.amazon.in/s?k=Tech&tag=ascreation00f-21",
-        "image": "https://images.unsplash.com/photo-1523275335684-37898b6baf30?w=500&q=80"
-    },
-    {
-        "title": "AI Optimized Style Best Seller - New Year Deal #22",
-        "price": "2,649",
-        "mrp": "3,973.5",
-        "savings": "FLAT 33% OFF",
-        "affiliate_link": "https://www.amazon.in/s?k=Style&tag=ascreation00f-21",
-        "image": "https://images.unsplash.com/photo-1523275335684-37898b6baf30?w=500&q=80"
-    },
-    {
-        "title": "AI Optimized Style Best Seller - New Year Deal #23",
-        "price": "2,047",
-        "mrp": "3,070.5",
-        "savings": "FLAT 33% OFF",
-        "affiliate_link": "https://www.amazon.in/s?k=Style&tag=ascreation00f-21",
-        "image": "https://images.unsplash.com/photo-1523275335684-37898b6baf30?w=500&q=80"
-    },
-    {
-        "title": "AI Optimized SmartHome Best Seller - New Year Deal #24",
-        "price": "4,587",
-        "mrp": "6,880.5",
-        "savings": "FLAT 33% OFF",
-        "affiliate_link": "https://www.amazon.in/s?k=SmartHome&tag=ascreation00f-21",
-        "image": "https://images.unsplash.com/photo-1523275335684-37898b6baf30?w=500&q=80"
-    },
-    {
-        "title": "AI Optimized SmartHome Best Seller - New Year Deal #25",
-        "price": "2,343",
-        "mrp": "3,514.5",
-        "savings": "FLAT 33% OFF",
-        "affiliate_link": "https://www.amazon.in/s?k=SmartHome&tag=ascreation00f-21",
-        "image": "https://images.unsplash.com/photo-1523275335684-37898b6baf30?w=500&q=80"
-    },
-    {
-        "title": "AI Optimized Gadgets Best Seller - New Year Deal #26",
-        "price": "4,989",
-        "mrp": "7,483.5",
-        "savings": "FLAT 33% OFF",
-        "affiliate_link": "https://www.amazon.in/s?k=Gadgets&tag=ascreation00f-21",
-        "image": "https://images.unsplash.com/photo-1523275335684-37898b6baf30?w=500&q=80"
-    },
-    {
-        "title": "AI Optimized Tech Best Seller - New Year Deal #27",
-        "price": "1,517",
-        "mrp": "2,275.5",
-        "savings": "FLAT 33% OFF",
-        "affiliate_link": "https://www.amazon.in/s?k=Tech&tag=ascreation00f-21",
-        "image": "https://images.unsplash.com/photo-1523275335684-37898b6baf30?w=500&q=80"
-    },
-    {
-        "title": "AI Optimized Tech Best Seller - New Year Deal #28",
-        "price": "1,456",
-        "mrp": "2,184",
-        "savings": "FLAT 33% OFF",
-        "affiliate_link": "https://www.amazon.in/s?k=Tech&tag=ascreation00f-21",
-        "image": "https://images.unsplash.com/photo-1523275335684-37898b6baf30?w=500&q=80"
-    },
-    {
-        "title": "AI Optimized Style Best Seller - New Year Deal #29",
-        "price": "4,959",
-        "mrp": "7,438.5",
-        "savings": "FLAT 33% OFF",
-        "affiliate_link": "https://www.amazon.in/s?k=Style&tag=ascreation00f-21",
-        "image": "https://images.unsplash.com/photo-1523275335684-37898b6baf30?w=500&q=80"
-    },
-    {
-        "title": "AI Optimized Tech Best Seller - New Year Deal #30",
-        "price": "3,125",
-        "mrp": "4,687.5",
-        "savings": "FLAT 33% OFF",
-        "affiliate_link": "https://www.amazon.in/s?k=Tech&tag=ascreation00f-21",
-        "image": "https://images.unsplash.com/photo-1523275335684-37898b6baf30?w=500&q=80"
-    },
-    {
-        "title": "AI Optimized Gadgets Best Seller - New Year Deal #31",
-        "price": "2,904",
-        "mrp": "4,356",
-        "savings": "FLAT 33% OFF",
-        "affiliate_link": "https://www.amazon.in/s?k=Gadgets&tag=ascreation00f-21",
-        "image": "https://images.unsplash.com/photo-1523275335684-37898b6baf30?w=500&q=80"
-    },
-    {
-        "title": "AI Optimized Tech Best Seller - New Year Deal #32",
-        "price": "1,616",
-        "mrp": "2,424",
-        "savings": "FLAT 33% OFF",
-        "affiliate_link": "https://www.amazon.in/s?k=Tech&tag=ascreation00f-21",
-        "image": "https://images.unsplash.com/photo-1523275335684-37898b6baf30?w=500&q=80"
-    },
-    {
-        "title": "AI Optimized SmartHome Best Seller - New Year Deal #33",
-        "price": "1,969",
-        "mrp": "2,953.5",
-        "savings": "FLAT 33% OFF",
-        "affiliate_link": "https://www.amazon.in/s?k=SmartHome&tag=ascreation00f-21",
-        "image": "https://images.unsplash.com/photo-1523275335684-37898b6baf30?w=500&q=80"
-    },
-    {
-        "title": "AI Optimized Tech Best Seller - New Year Deal #34",
-        "price": "2,392",
-        "mrp": "3,588",
-        "savings": "FLAT 33% OFF",
-        "affiliate_link": "https://www.amazon.in/s?k=Tech&tag=ascreation00f-21",
-        "image": "https://images.unsplash.com/photo-1523275335684-37898b6baf30?w=500&q=80"
-    },
-    {
-        "title": "AI Optimized SmartHome Best Seller - New Year Deal #35",
-        "price": "3,808",
-        "mrp": "5,712",
-        "savings": "FLAT 33% OFF",
-        "affiliate_link": "https://www.amazon.in/s?k=SmartHome&tag=ascreation00f-21",
-        "image": "https://images.unsplash.com/photo-1523275335684-37898b6baf30?w=500&q=80"
-    },
-    {
-        "title": "AI Optimized Style Best Seller - New Year Deal #36",
-        "price": "1,199",
-        "mrp": "1,798.5",
-        "savings": "FLAT 33% OFF",
-        "affiliate_link": "https://www.amazon.in/s?k=Style&tag=ascreation00f-21",
-        "image": "https://images.unsplash.com/photo-1523275335684-37898b6baf30?w=500&q=80"
-    },
-    {
-        "title": "AI Optimized Gadgets Best Seller - New Year Deal #37",
-        "price": "1,439",
-        "mrp": "2,158.5",
-        "savings": "FLAT 33% OFF",
-        "affiliate_link": "https://www.amazon.in/s?k=Gadgets&tag=ascreation00f-21",
-        "image": "https://images.unsplash.com/photo-1523275335684-37898b6baf30?w=500&q=80"
-    },
-    {
-        "title": "AI Optimized Style Best Seller - New Year Deal #38",
-        "price": "1,354",
-        "mrp": "2,031",
-        "savings": "FLAT 33% OFF",
-        "affiliate_link": "https://www.amazon.in/s?k=Style&tag=ascreation00f-21",
-        "image": "https://images.unsplash.com/photo-1523275335684-37898b6baf30?w=500&q=80"
-    },
-    {
-        "title": "AI Optimized Style Best Seller - New Year Deal #39",
-        "price": "3,503",
-        "mrp": "5,254.5",
-        "savings": "FLAT 33% OFF",
-        "affiliate_link": "https://www.amazon.in/s?k=Style&tag=ascreation00f-21",
-        "image": "https://images.unsplash.com/photo-1523275335684-37898b6baf30?w=500&q=80"
-    },
-    {
-        "title": "AI Optimized SmartHome Best Seller - New Year Deal #40",
-        "price": "4,926",
-        "mrp": "7,389",
-        "savings": "FLAT 33% OFF",
-        "affiliate_link": "https://www.amazon.in/s?k=SmartHome&tag=ascreation00f-21",
-        "image": "https://images.unsplash.com/photo-1523275335684-37898b6baf30?w=500&q=80"
-    }
-];
-// --- END: AUTOGENERATED DEALS DATA ---
+        const dummyDeals = []; 
+        // --- END: AUTOGENERATED DEALS DATA ---
 
         function initPage() {
             const list = document.getElementById('deals-list');
             if (!dummyDeals || dummyDeals.length === 0) {
-                list.innerHTML = '<div class="col-span-full py-20 text-center text-gray-500 italic">Fresh deals are being processed by AI... Please refresh in 5 minutes.</div>';
+                list.innerHTML = '<div class="col-span-full py-20 text-center text-emerald-400 font-bold animate-pulse text-lg">✨ AI is fetching the latest 2026 Amazon Trends... Refresh in 1 minute.</div>';
                 return;
             }
             list.innerHTML = dummyDeals.map(deal => `
-                <div class="glass-card p-4 rounded-2xl flex flex-col h-full border border-white/5">
-                    <div class="bg-white rounded-xl p-3 h-48 flex items-center justify-center mb-4 overflow-hidden">
-                        <img src="${deal.image}" class="max-h-full object-contain hover:scale-110 transition-transform" onerror="this.src='https://via.placeholder.com/200?text=Amazon+Product'">
+                <div class="glass-card p-4 rounded-2xl flex flex-col h-full group">
+                    <div class="bg-white rounded-xl p-3 h-48 flex items-center justify-center mb-4 overflow-hidden relative">
+                        <img src="${deal.image}" class="max-h-full object-contain group-hover:scale-110 transition-transform duration-500" onerror="this.src='https://via.placeholder.com/200?text=Amazon+Product'">
+                        <div class="absolute top-2 right-2 bg-red-600 text-white text-[9px] font-black px-2 py-1 rounded shadow-lg uppercase">Hot Deal</div>
                     </div>
-                    <h3 class="text-xs font-bold text-gray-200 line-clamp-2 mb-2 flex-grow">${deal.title}</h3>
-                    <div class="flex items-baseline gap-2 mb-4">
-                        <span class="text-xl font-black text-emerald-400">₹${deal.price}</span>
-                        <span class="text-[10px] text-gray-500 line-through opacity-50">₹${deal.mrp}</span>
+                    <h3 class="text-[11px] font-bold text-gray-200 line-clamp-2 mb-2 flex-grow leading-tight">${deal.title}</h3>
+                    <div class="bg-emerald-500/10 p-2 rounded-lg mb-3">
+                        <div class="flex items-baseline gap-2">
+                            <span class="text-xl font-black text-emerald-400">₹${deal.price}</span>
+                            <span class="text-[10px] text-gray-500 line-through opacity-50">₹${deal.mrp}</span>
+                        </div>
+                        <div class="text-[10px] font-bold text-emerald-500 uppercase mt-1">${deal.savings}</div>
                     </div>
-                    <a href="${deal.affiliate_link}" target="_blank" class="w-full bg-white/10 hover:bg-emerald-500 text-white py-3 rounded-xl text-center text-[10px] font-bold transition-all uppercase">GET DEAL NOW</a>
+                    <a href="${deal.affiliate_link}" target="_blank" class="w-full bg-gradient-to-r from-emerald-500 to-teal-600 hover:from-teal-500 hover:to-emerald-500 text-white py-3 rounded-xl text-center text-[11px] font-extrabold transition-all uppercase shadow-lg">
+                        ${deal.btnText || 'Grab Deal Now'}
+                    </a>
                 </div>
             `).join('');
         }
