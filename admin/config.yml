@@ -8,7 +8,7 @@ public_folder: "/assets/img"
 
 collections:
   - name: "deals"
-    label: "Amazon Daily Deals"
+    label: "🔥 Amazon Daily Deals"
     folder: "_deals"
     create: true
     slug: "{{date}}-{{slug}}"
@@ -16,9 +16,10 @@ collections:
       - {label: "Product Name", name: "title", widget: "string"}
       - {label: "MRP (₹)", name: "mrp", widget: "number"} 
       - {label: "Current Price (₹)", name: "price", widget: "number"}
-      - {label: "Savings", name: "savings", widget: "string"}
+      - {label: "Savings %", name: "savings", widget: "string"}
       - {label: "Amazon Affiliate Link", name: "affiliate_link", widget: "string"}
       - {label: "Product Image URL", name: "image", widget: "string"}
+      - {label: "Category", name: "category", widget: "select", options: ["Electronics", "Computing", "Smart Home", "Gaming"]}
 
   - name: "seasonal_config"
     label: "⚙️ Seasonal Engine Settings"
