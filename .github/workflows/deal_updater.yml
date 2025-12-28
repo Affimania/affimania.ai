@@ -1,30 +1,23 @@
 name: Daily Amazon Deal Update
-
 on:
   schedule:
-    - cron: '0 * * * *'
+    - cron: '0 4,6,10 * * *'
   workflow_dispatch:
-
 jobs:
   update-deals:
     runs-on: ubuntu-latest
     permissions:
-      contents: write 
+      contents: write
     steps:
-      - uses: actions/checkout@v3
-          
-      - name: Setup Node.js
-        uses: actions/setup-node@v3
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
         with:
-          node-version: '18'
-          
-      - name: Run Update Script
-        run: node update_deals.js # Seedha script run karein
-          
-      - name: Commit Updated Index
-        run: |
+          node-version: '20'
+      - run: npm install
+      - run: node update_deals.js
+      - run: |
           git config --global user.name "Affimania Bot"
-          git config --global user.email "affimania-bot@users.github.com"
-          git add index.html 
-          git commit -m "Automated: Deal Update Fix" || echo "No changes"
+          git config --global user.email "bot@affimania.ai"
+          git add index.html
+          git commit -m "🚀 Updated 40 Deals with AI" || echo "No changes"
           git push origin main
