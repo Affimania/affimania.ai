@@ -9,14 +9,14 @@
     <style>
         :root {
             --primary-gradient: linear-gradient(135deg, #10b981 0%, #3b82f6 100%);
-            --glass-bg: rgba(255, 255, 255, 0.05);
         }
 
         body { 
             font-family: 'Inter', sans-serif; 
             background-color: #0f172a; 
             color: #ffffff;
-            margin-bottom: 80px; /* Space for Bottom Nav */
+            margin-bottom: 90px; 
+            overflow-x: hidden;
         }
 
         .new-year-banner {
@@ -31,467 +31,161 @@
             border: 1px solid rgba(255, 255, 255, 0.1); transition: 0.3s ease;
         }
 
-        .glass-card:hover { border-color: #10b981; transform: translateY(-5px); }
-
-        /* 🔥 Neon Glow Animation */
-        .neon-border { box-shadow: 0 0 15px rgba(16, 185, 129, 0.1); }
-        .neon-border:hover { box-shadow: 0 0 25px rgba(16, 185, 129, 0.3); }
-
         /* 📱 Mobile Bottom Nav */
         .bottom-nav {
             position: fixed; bottom: 0; left: 0; right: 0;
-            background: rgba(15, 23, 42, 0.95); backdrop-filter: blur(10px);
+            background: rgba(15, 23, 42, 0.98); backdrop-filter: blur(15px);
             border-top: 1px solid rgba(255,255,255,0.1);
-            display: flex; justify-content: space-around; padding: 12px 0;
-            z-index: 1000;
+            display: flex; justify-content: space-around; padding: 15px 0;
+            z-index: 1000; box-shadow: 0 -10px 25px rgba(0,0,0,0.5);
         }
 
-        .nav-item { text-align: center; font-size: 10px; color: #94a3b8; text-decoration: none; }
+        .nav-item { text-align: center; font-size: 11px; color: #94a3b8; text-decoration: none; font-weight: 600; }
         .nav-item.active { color: #10b981; }
 
         .deals-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 20px; }
         @media (max-width: 1024px) { .deals-grid { grid-template-columns: repeat(2, 1fr); } }
         @media (max-width: 640px) { .deals-grid { grid-template-columns: repeat(1, 1fr); } }
+        
+        .timer-badge {
+            position: absolute; top: 10px; left: 10px;
+            background: #ef4444; color: white; font-size: 9px;
+            font-weight: 900; padding: 4px 8px; border-radius: 4px;
+            box-shadow: 0 4px 10px rgba(239, 68, 68, 0.3);
+        }
     </style>
 </head>
 <body class="p-4 md:p-10">
 
     <div class="max-w-7xl mx-auto">
-        <header class="text-center mb-8">
-            <div class="text-4xl font-extrabold" style="background: var(--primary-gradient); -webkit-background-clip: text; -webkit-text-fill-color: transparent;">AFFIMANIA Ai</div>
+        <header class="text-center mb-10">
+            <div class="text-5xl font-black tracking-tighter" style="background: var(--primary-gradient); -webkit-background-clip: text; -webkit-text-fill-color: transparent;">AFFIMANIA Ai</div>
         </header>
 
-        <div id="home" class="new-year-banner mb-10 shadow-2xl">
-            <h2 class="text-4xl md:text-6xl font-black mb-2 tracking-tighter uppercase text-white">HAPPY NEW YEAR <span class="text-emerald-400">2026</span></h2>
-            <p class="text-gray-300 text-sm md:text-lg italic">AI-Powered Exclusive Savings Engine</p>
+        <div id="home" class="new-year-banner mb-12 shadow-2xl">
+            <div class="inline-block px-3 py-1 bg-emerald-500 rounded-full text-[10px] font-bold mb-4">NEW YEAR 2026</div>
+            <h2 class="text-4xl md:text-6xl font-black mb-4 uppercase tracking-tight">CELEBRATE & SAVE</h2>
+            <p class="text-emerald-400 text-lg font-medium italic">Handpicked AI Deals Just For You</p>
         </div>
 
-        <div id="search" class="glass-card p-6 rounded-3xl mb-12">
-            <form id="affimania-form" class="space-y-4">
-                <input type="text" id="product" required class="w-full bg-white/5 border border-white/10 p-4 rounded-xl text-white outline-none" placeholder="Search products...">
-                <button type="submit" class="w-full bg-gradient-to-r from-emerald-500 to-blue-600 p-4 rounded-xl font-bold">✨ AI SEARCH FOR BEST PRICES</button>
+        <div id="search" class="glass-card p-8 rounded-3xl mb-16 shadow-2xl">
+            <form id="affimania-form" class="space-y-6">
+                <div>
+                    <label class="block text-xs font-bold text-gray-400 uppercase mb-2 ml-1">What are you looking for?</label>
+                    <input type="text" id="product" required class="w-full bg-white/5 border border-white/10 p-4 rounded-xl text-white outline-none focus:ring-2 focus:ring-emerald-500" placeholder="e.g. Smartwatch, Laptops...">
+                </div>
+                
+                <div class="flex gap-4">
+                    <div class="w-1/2">
+                        <label class="block text-xs font-bold text-gray-400 uppercase mb-2 ml-1">Min ₹</label>
+                        <input type="number" id="min_price" required class="w-full bg-white/5 border border-white/10 p-4 rounded-xl text-white outline-none focus:ring-2 focus:ring-emerald-500" placeholder="0">
+                    </div>
+                    <div class="w-1/2">
+                        <label class="block text-xs font-bold text-gray-400 uppercase mb-2 ml-1">Max ₹</label>
+                        <input type="number" id="max_price" required class="w-1/2 bg-white/5 border border-white/10 p-4 rounded-xl text-white outline-none focus:ring-2 focus:ring-emerald-500" style="width: 100%;" placeholder="50000">
+                    </div>
+                </div>
+
+                <button type="submit" class="w-full bg-gradient-to-r from-emerald-500 to-blue-600 text-white p-5 rounded-2xl font-black text-lg shadow-lg hover:opacity-90 transition-all">
+                    ✨ AI SEARCH FOR BEST PRICES
+                </button>
             </form>
-            <div id="result-card" class="mt-4 hidden"><a id="res-link" target="_blank" class="block w-full bg-white text-black text-center p-3 rounded-xl font-bold">🛒 GET OPTIMIZED LINK</a></div>
+            
+            <div id="result-card" class="mt-8 hidden animate-bounce">
+                <a id="res-link" target="_blank" class="block w-full bg-white text-black text-center p-4 rounded-2xl font-black shadow-xl">
+                    🛒 GET OPTIMIZED AMAZON LINK
+                </a>
+            </div>
         </div>
 
         <section id="deals">
-            <h2 class="text-2xl font-bold mb-8 border-l-4 border-emerald-500 pl-4 uppercase">🔥 TOP 40 TRENDING DEALS</h2>
-            <div id="deals-list" class="deals-grid"></div>
+            <h2 class="text-2xl font-black mb-8 border-l-4 border-emerald-500 pl-4 uppercase tracking-widest">🔥 TODAY'S TOP 40 DEALS</h2>
+            <div id="deals-list" class="deals-grid">
+                </div>
         </section>
 
-        <footer id="support" class="mt-20 py-10 text-center border-t border-white/5">
-            <div class="flex justify-center gap-4 mb-6">
-                <a href="mailto:affimania1@gmail.com" class="px-4 py-2 bg-white/5 border border-white/10 rounded-lg text-sm">📧 Email Support</a>
-                <a href="https://instagram.com/affimania.ai" class="px-4 py-2 bg-white/5 border border-white/10 rounded-lg text-sm">📸 Instagram</a>
+        <footer id="support" class="mt-32 py-16 text-center border-t border-white/5">
+            <h3 class="text-xl font-bold mb-8">Customer Support & Connect</h3>
+            <div class="flex flex-wrap justify-center gap-4 mb-12">
+                <a href="mailto:affimania1@gmail.com" class="px-6 py-3 bg-white/5 border border-white/10 rounded-xl font-bold hover:bg-emerald-500 transition-all">📧 Email Support</a>
+                <a href="https://instagram.com/affimania.ai" target="_blank" class="px-6 py-3 bg-white/5 border border-white/10 rounded-xl font-bold hover:bg-emerald-500 transition-all">📸 Instagram</a>
             </div>
-            <p class="text-[10px] text-gray-500 tracking-widest">VERSION 2.5.0 STABLE • 2026 READY</p>
+            <p class="text-[11px] text-gray-600 font-bold tracking-[0.2em] uppercase">© 2026 AFFIMANIA AI • NEW VERSION 2.5.0 </p>
         </footer>
     </div>
 
-    <div class="bottom-nav">
-        <a href="#home" class="nav-item"><div>🏠</div>Home</a>
-        <a href="#search" class="nav-item"><div>🔍</div>Search</a>
-        <a href="#deals" class="nav-item active"><div>🔥</div>Deals</a>
-        <a href="#support" class="nav-item"><div>💬</div>Support</a>
-    </div>
+    <nav class="bottom-nav">
+        <a href="#home" class="nav-item">
+            <div class="text-xl mb-1">🏠</div>
+            <span>Home</span>
+        </a>
+        <a href="#search" class="nav-item">
+            <div class="text-xl mb-1">🔍</div>
+            <span>Search</span>
+        </a>
+        <a href="#deals" class="nav-item active">
+            <div class="text-xl mb-1">🔥</div>
+            <span>Deals</span>
+        </a>
+        <a href="#support" class="nav-item">
+            <div class="text-xl mb-1">💬</div>
+            <span>Support</span>
+        </a>
+    </nav>
 
     <script>
+        const AFFILIATE_TAG = "ascreation00f-21";
         // --- START: AUTOGENERATED DEALS DATA ---
-const dummyDeals = [
-    {
-        "title": "Premium Smart Headphones - Festive Deal #1",
-        "price": "3,422",
-        "mrp": "5,133",
-        "savings": "🔥 FLAT 33% OFF",
-        "affiliate_link": "https://www.amazon.in/s?k=Smart%20Headphones&tag=ascreation00f-21",
-        "image": "https://placehold.co/600x400/0f172a/10b981?text=Best+deal+by+AFFIMANIA+Ai",
-        "btnText": "Grab This Deal!"
-    },
-    {
-        "title": "Premium AI Smartwatch - Festive Deal #2",
-        "price": "2,692",
-        "mrp": "4,038",
-        "savings": "🔥 FLAT 33% OFF",
-        "affiliate_link": "https://www.amazon.in/s?k=AI%20Smartwatch&tag=ascreation00f-21",
-        "image": "https://placehold.co/600x400/0f172a/10b981?text=Best+deal+by+AFFIMANIA+Ai",
-        "btnText": "2026 Special Price"
-    },
-    {
-        "title": "Premium Gaming Laptop - Festive Deal #3",
-        "price": "3,189",
-        "mrp": "4,783",
-        "savings": "🔥 FLAT 33% OFF",
-        "affiliate_link": "https://www.amazon.in/s?k=Gaming%20Laptop&tag=ascreation00f-21",
-        "image": "https://placehold.co/600x400/0f172a/10b981?text=Best+deal+by+AFFIMANIA+Ai",
-        "btnText": "Unlock Offer"
-    },
-    {
-        "title": "Premium Home Gadget - Festive Deal #4",
-        "price": "6,990",
-        "mrp": "10,485",
-        "savings": "🔥 FLAT 33% OFF",
-        "affiliate_link": "https://www.amazon.in/s?k=Home%20Gadget&tag=ascreation00f-21",
-        "image": "https://placehold.co/600x400/0f172a/10b981?text=Best+deal+by+AFFIMANIA+Ai",
-        "btnText": "Limited Time Deal"
-    },
-    {
-        "title": "Premium Wireless Mouse - Festive Deal #5",
-        "price": "6,724",
-        "mrp": "10,086",
-        "savings": "🔥 FLAT 33% OFF",
-        "affiliate_link": "https://www.amazon.in/s?k=Wireless%20Mouse&tag=ascreation00f-21",
-        "image": "https://placehold.co/600x400/0f172a/10b981?text=Best+deal+by+AFFIMANIA+Ai",
-        "btnText": "Check Best Price"
-    },
-    {
-        "title": "Premium 4K Smart TV - Festive Deal #6",
-        "price": "7,609",
-        "mrp": "11,413",
-        "savings": "🔥 FLAT 33% OFF",
-        "affiliate_link": "https://www.amazon.in/s?k=4K%20Smart%20TV&tag=ascreation00f-21",
-        "image": "https://placehold.co/600x400/0f172a/10b981?text=Best+deal+by+AFFIMANIA+Ai",
-        "btnText": "Shop Now"
-    },
-    {
-        "title": "Premium Mesh Wi-Fi - Festive Deal #7",
-        "price": "3,762",
-        "mrp": "5,643",
-        "savings": "🔥 FLAT 33% OFF",
-        "affiliate_link": "https://www.amazon.in/s?k=Mesh%20Wi-Fi&tag=ascreation00f-21",
-        "image": "https://placehold.co/600x400/0f172a/10b981?text=Best+deal+by+AFFIMANIA+Ai",
-        "btnText": "Grab This Deal!"
-    },
-    {
-        "title": "Premium Mechanical Keyboard - Festive Deal #8",
-        "price": "4,198",
-        "mrp": "6,297",
-        "savings": "🔥 FLAT 33% OFF",
-        "affiliate_link": "https://www.amazon.in/s?k=Mechanical%20Keyboard&tag=ascreation00f-21",
-        "image": "https://placehold.co/600x400/0f172a/10b981?text=Best+deal+by+AFFIMANIA+Ai",
-        "btnText": "2026 Special Price"
-    },
-    {
-        "title": "Premium Smart Headphones - Festive Deal #9",
-        "price": "4,778",
-        "mrp": "7,167",
-        "savings": "🔥 FLAT 33% OFF",
-        "affiliate_link": "https://www.amazon.in/s?k=Smart%20Headphones&tag=ascreation00f-21",
-        "image": "https://placehold.co/600x400/0f172a/10b981?text=Best+deal+by+AFFIMANIA+Ai",
-        "btnText": "Unlock Offer"
-    },
-    {
-        "title": "Premium AI Smartwatch - Festive Deal #10",
-        "price": "5,904",
-        "mrp": "8,856",
-        "savings": "🔥 FLAT 33% OFF",
-        "affiliate_link": "https://www.amazon.in/s?k=AI%20Smartwatch&tag=ascreation00f-21",
-        "image": "https://placehold.co/600x400/0f172a/10b981?text=Best+deal+by+AFFIMANIA+Ai",
-        "btnText": "Limited Time Deal"
-    },
-    {
-        "title": "Premium Gaming Laptop - Festive Deal #11",
-        "price": "1,544",
-        "mrp": "2,316",
-        "savings": "🔥 FLAT 33% OFF",
-        "affiliate_link": "https://www.amazon.in/s?k=Gaming%20Laptop&tag=ascreation00f-21",
-        "image": "https://placehold.co/600x400/0f172a/10b981?text=Best+deal+by+AFFIMANIA+Ai",
-        "btnText": "Check Best Price"
-    },
-    {
-        "title": "Premium Home Gadget - Festive Deal #12",
-        "price": "6,410",
-        "mrp": "9,615",
-        "savings": "🔥 FLAT 33% OFF",
-        "affiliate_link": "https://www.amazon.in/s?k=Home%20Gadget&tag=ascreation00f-21",
-        "image": "https://placehold.co/600x400/0f172a/10b981?text=Best+deal+by+AFFIMANIA+Ai",
-        "btnText": "Shop Now"
-    },
-    {
-        "title": "Premium Wireless Mouse - Festive Deal #13",
-        "price": "7,927",
-        "mrp": "11,890",
-        "savings": "🔥 FLAT 33% OFF",
-        "affiliate_link": "https://www.amazon.in/s?k=Wireless%20Mouse&tag=ascreation00f-21",
-        "image": "https://placehold.co/600x400/0f172a/10b981?text=Best+deal+by+AFFIMANIA+Ai",
-        "btnText": "Grab This Deal!"
-    },
-    {
-        "title": "Premium 4K Smart TV - Festive Deal #14",
-        "price": "6,113",
-        "mrp": "9,169",
-        "savings": "🔥 FLAT 33% OFF",
-        "affiliate_link": "https://www.amazon.in/s?k=4K%20Smart%20TV&tag=ascreation00f-21",
-        "image": "https://placehold.co/600x400/0f172a/10b981?text=Best+deal+by+AFFIMANIA+Ai",
-        "btnText": "2026 Special Price"
-    },
-    {
-        "title": "Premium Mesh Wi-Fi - Festive Deal #15",
-        "price": "6,682",
-        "mrp": "10,023",
-        "savings": "🔥 FLAT 33% OFF",
-        "affiliate_link": "https://www.amazon.in/s?k=Mesh%20Wi-Fi&tag=ascreation00f-21",
-        "image": "https://placehold.co/600x400/0f172a/10b981?text=Best+deal+by+AFFIMANIA+Ai",
-        "btnText": "Unlock Offer"
-    },
-    {
-        "title": "Premium Mechanical Keyboard - Festive Deal #16",
-        "price": "3,617",
-        "mrp": "5,425",
-        "savings": "🔥 FLAT 33% OFF",
-        "affiliate_link": "https://www.amazon.in/s?k=Mechanical%20Keyboard&tag=ascreation00f-21",
-        "image": "https://placehold.co/600x400/0f172a/10b981?text=Best+deal+by+AFFIMANIA+Ai",
-        "btnText": "Limited Time Deal"
-    },
-    {
-        "title": "Premium Smart Headphones - Festive Deal #17",
-        "price": "3,465",
-        "mrp": "5,197",
-        "savings": "🔥 FLAT 33% OFF",
-        "affiliate_link": "https://www.amazon.in/s?k=Smart%20Headphones&tag=ascreation00f-21",
-        "image": "https://placehold.co/600x400/0f172a/10b981?text=Best+deal+by+AFFIMANIA+Ai",
-        "btnText": "Check Best Price"
-    },
-    {
-        "title": "Premium AI Smartwatch - Festive Deal #18",
-        "price": "6,016",
-        "mrp": "9,024",
-        "savings": "🔥 FLAT 33% OFF",
-        "affiliate_link": "https://www.amazon.in/s?k=AI%20Smartwatch&tag=ascreation00f-21",
-        "image": "https://placehold.co/600x400/0f172a/10b981?text=Best+deal+by+AFFIMANIA+Ai",
-        "btnText": "Shop Now"
-    },
-    {
-        "title": "Premium Gaming Laptop - Festive Deal #19",
-        "price": "8,937",
-        "mrp": "13,405",
-        "savings": "🔥 FLAT 33% OFF",
-        "affiliate_link": "https://www.amazon.in/s?k=Gaming%20Laptop&tag=ascreation00f-21",
-        "image": "https://placehold.co/600x400/0f172a/10b981?text=Best+deal+by+AFFIMANIA+Ai",
-        "btnText": "Grab This Deal!"
-    },
-    {
-        "title": "Premium Home Gadget - Festive Deal #20",
-        "price": "1,877",
-        "mrp": "2,815",
-        "savings": "🔥 FLAT 33% OFF",
-        "affiliate_link": "https://www.amazon.in/s?k=Home%20Gadget&tag=ascreation00f-21",
-        "image": "https://placehold.co/600x400/0f172a/10b981?text=Best+deal+by+AFFIMANIA+Ai",
-        "btnText": "2026 Special Price"
-    },
-    {
-        "title": "Premium Wireless Mouse - Festive Deal #21",
-        "price": "4,605",
-        "mrp": "6,907",
-        "savings": "🔥 FLAT 33% OFF",
-        "affiliate_link": "https://www.amazon.in/s?k=Wireless%20Mouse&tag=ascreation00f-21",
-        "image": "https://placehold.co/600x400/0f172a/10b981?text=Best+deal+by+AFFIMANIA+Ai",
-        "btnText": "Unlock Offer"
-    },
-    {
-        "title": "Premium 4K Smart TV - Festive Deal #22",
-        "price": "8,928",
-        "mrp": "13,392",
-        "savings": "🔥 FLAT 33% OFF",
-        "affiliate_link": "https://www.amazon.in/s?k=4K%20Smart%20TV&tag=ascreation00f-21",
-        "image": "https://placehold.co/600x400/0f172a/10b981?text=Best+deal+by+AFFIMANIA+Ai",
-        "btnText": "Limited Time Deal"
-    },
-    {
-        "title": "Premium Mesh Wi-Fi - Festive Deal #23",
-        "price": "7,824",
-        "mrp": "11,736",
-        "savings": "🔥 FLAT 33% OFF",
-        "affiliate_link": "https://www.amazon.in/s?k=Mesh%20Wi-Fi&tag=ascreation00f-21",
-        "image": "https://placehold.co/600x400/0f172a/10b981?text=Best+deal+by+AFFIMANIA+Ai",
-        "btnText": "Check Best Price"
-    },
-    {
-        "title": "Premium Mechanical Keyboard - Festive Deal #24",
-        "price": "5,080",
-        "mrp": "7,620",
-        "savings": "🔥 FLAT 33% OFF",
-        "affiliate_link": "https://www.amazon.in/s?k=Mechanical%20Keyboard&tag=ascreation00f-21",
-        "image": "https://placehold.co/600x400/0f172a/10b981?text=Best+deal+by+AFFIMANIA+Ai",
-        "btnText": "Shop Now"
-    },
-    {
-        "title": "Premium Smart Headphones - Festive Deal #25",
-        "price": "6,933",
-        "mrp": "10,399",
-        "savings": "🔥 FLAT 33% OFF",
-        "affiliate_link": "https://www.amazon.in/s?k=Smart%20Headphones&tag=ascreation00f-21",
-        "image": "https://placehold.co/600x400/0f172a/10b981?text=Best+deal+by+AFFIMANIA+Ai",
-        "btnText": "Grab This Deal!"
-    },
-    {
-        "title": "Premium AI Smartwatch - Festive Deal #26",
-        "price": "3,104",
-        "mrp": "4,656",
-        "savings": "🔥 FLAT 33% OFF",
-        "affiliate_link": "https://www.amazon.in/s?k=AI%20Smartwatch&tag=ascreation00f-21",
-        "image": "https://placehold.co/600x400/0f172a/10b981?text=Best+deal+by+AFFIMANIA+Ai",
-        "btnText": "2026 Special Price"
-    },
-    {
-        "title": "Premium Gaming Laptop - Festive Deal #27",
-        "price": "1,632",
-        "mrp": "2,448",
-        "savings": "🔥 FLAT 33% OFF",
-        "affiliate_link": "https://www.amazon.in/s?k=Gaming%20Laptop&tag=ascreation00f-21",
-        "image": "https://placehold.co/600x400/0f172a/10b981?text=Best+deal+by+AFFIMANIA+Ai",
-        "btnText": "Unlock Offer"
-    },
-    {
-        "title": "Premium Home Gadget - Festive Deal #28",
-        "price": "6,888",
-        "mrp": "10,332",
-        "savings": "🔥 FLAT 33% OFF",
-        "affiliate_link": "https://www.amazon.in/s?k=Home%20Gadget&tag=ascreation00f-21",
-        "image": "https://placehold.co/600x400/0f172a/10b981?text=Best+deal+by+AFFIMANIA+Ai",
-        "btnText": "Limited Time Deal"
-    },
-    {
-        "title": "Premium Wireless Mouse - Festive Deal #29",
-        "price": "4,515",
-        "mrp": "6,772",
-        "savings": "🔥 FLAT 33% OFF",
-        "affiliate_link": "https://www.amazon.in/s?k=Wireless%20Mouse&tag=ascreation00f-21",
-        "image": "https://placehold.co/600x400/0f172a/10b981?text=Best+deal+by+AFFIMANIA+Ai",
-        "btnText": "Check Best Price"
-    },
-    {
-        "title": "Premium 4K Smart TV - Festive Deal #30",
-        "price": "2,551",
-        "mrp": "3,826",
-        "savings": "🔥 FLAT 33% OFF",
-        "affiliate_link": "https://www.amazon.in/s?k=4K%20Smart%20TV&tag=ascreation00f-21",
-        "image": "https://placehold.co/600x400/0f172a/10b981?text=Best+deal+by+AFFIMANIA+Ai",
-        "btnText": "Shop Now"
-    },
-    {
-        "title": "Premium Mesh Wi-Fi - Festive Deal #31",
-        "price": "7,435",
-        "mrp": "11,152",
-        "savings": "🔥 FLAT 33% OFF",
-        "affiliate_link": "https://www.amazon.in/s?k=Mesh%20Wi-Fi&tag=ascreation00f-21",
-        "image": "https://placehold.co/600x400/0f172a/10b981?text=Best+deal+by+AFFIMANIA+Ai",
-        "btnText": "Grab This Deal!"
-    },
-    {
-        "title": "Premium Mechanical Keyboard - Festive Deal #32",
-        "price": "9,143",
-        "mrp": "13,714",
-        "savings": "🔥 FLAT 33% OFF",
-        "affiliate_link": "https://www.amazon.in/s?k=Mechanical%20Keyboard&tag=ascreation00f-21",
-        "image": "https://placehold.co/600x400/0f172a/10b981?text=Best+deal+by+AFFIMANIA+Ai",
-        "btnText": "2026 Special Price"
-    },
-    {
-        "title": "Premium Smart Headphones - Festive Deal #33",
-        "price": "7,650",
-        "mrp": "11,475",
-        "savings": "🔥 FLAT 33% OFF",
-        "affiliate_link": "https://www.amazon.in/s?k=Smart%20Headphones&tag=ascreation00f-21",
-        "image": "https://placehold.co/600x400/0f172a/10b981?text=Best+deal+by+AFFIMANIA+Ai",
-        "btnText": "Unlock Offer"
-    },
-    {
-        "title": "Premium AI Smartwatch - Festive Deal #34",
-        "price": "4,546",
-        "mrp": "6,819",
-        "savings": "🔥 FLAT 33% OFF",
-        "affiliate_link": "https://www.amazon.in/s?k=AI%20Smartwatch&tag=ascreation00f-21",
-        "image": "https://placehold.co/600x400/0f172a/10b981?text=Best+deal+by+AFFIMANIA+Ai",
-        "btnText": "Limited Time Deal"
-    },
-    {
-        "title": "Premium Gaming Laptop - Festive Deal #35",
-        "price": "3,011",
-        "mrp": "4,516",
-        "savings": "🔥 FLAT 33% OFF",
-        "affiliate_link": "https://www.amazon.in/s?k=Gaming%20Laptop&tag=ascreation00f-21",
-        "image": "https://placehold.co/600x400/0f172a/10b981?text=Best+deal+by+AFFIMANIA+Ai",
-        "btnText": "Check Best Price"
-    },
-    {
-        "title": "Premium Home Gadget - Festive Deal #36",
-        "price": "2,553",
-        "mrp": "3,829",
-        "savings": "🔥 FLAT 33% OFF",
-        "affiliate_link": "https://www.amazon.in/s?k=Home%20Gadget&tag=ascreation00f-21",
-        "image": "https://placehold.co/600x400/0f172a/10b981?text=Best+deal+by+AFFIMANIA+Ai",
-        "btnText": "Shop Now"
-    },
-    {
-        "title": "Premium Wireless Mouse - Festive Deal #37",
-        "price": "3,680",
-        "mrp": "5,520",
-        "savings": "🔥 FLAT 33% OFF",
-        "affiliate_link": "https://www.amazon.in/s?k=Wireless%20Mouse&tag=ascreation00f-21",
-        "image": "https://placehold.co/600x400/0f172a/10b981?text=Best+deal+by+AFFIMANIA+Ai",
-        "btnText": "Grab This Deal!"
-    },
-    {
-        "title": "Premium 4K Smart TV - Festive Deal #38",
-        "price": "8,417",
-        "mrp": "12,625",
-        "savings": "🔥 FLAT 33% OFF",
-        "affiliate_link": "https://www.amazon.in/s?k=4K%20Smart%20TV&tag=ascreation00f-21",
-        "image": "https://placehold.co/600x400/0f172a/10b981?text=Best+deal+by+AFFIMANIA+Ai",
-        "btnText": "2026 Special Price"
-    },
-    {
-        "title": "Premium Mesh Wi-Fi - Festive Deal #39",
-        "price": "3,088",
-        "mrp": "4,632",
-        "savings": "🔥 FLAT 33% OFF",
-        "affiliate_link": "https://www.amazon.in/s?k=Mesh%20Wi-Fi&tag=ascreation00f-21",
-        "image": "https://placehold.co/600x400/0f172a/10b981?text=Best+deal+by+AFFIMANIA+Ai",
-        "btnText": "Unlock Offer"
-    },
-    {
-        "title": "Premium Mechanical Keyboard - Festive Deal #40",
-        "price": "4,027",
-        "mrp": "6,040",
-        "savings": "🔥 FLAT 33% OFF",
-        "affiliate_link": "https://www.amazon.in/s?k=Mechanical%20Keyboard&tag=ascreation00f-21",
-        "image": "https://placehold.co/600x400/0f172a/10b981?text=Best+deal+by+AFFIMANIA+Ai",
-        "btnText": "Limited Time Deal"
-    }
-];
-// --- END: AUTOGENERATED DEALS DATA ---
+        const dummyDeals = []; 
+        // --- END: AUTOGENERATED DEALS DATA ---
 
         function initPage() {
             const list = document.getElementById('deals-list');
-            list.innerHTML = dummyDeals.map((deal, index) => `
-                <div class="glass-card p-4 rounded-2xl flex flex-col h-full neon-border">
-                    <div class="bg-white rounded-xl p-3 h-44 flex items-center justify-center mb-3 relative overflow-hidden">
+            if(dummyDeals.length === 0) {
+                list.innerHTML = '<p class="col-span-full text-center py-20 text-emerald-500 font-bold italic">AI is syncing fresh deals... please wait.</p>';
+                return;
+            }
+            list.innerHTML = dummyDeals.map((deal, idx) => `
+                <div class="glass-card p-4 rounded-3xl flex flex-col h-full relative overflow-hidden group">
+                    <div class="timer-badge">ENDING IN: <span class="countdown" data-time="${Math.floor(Math.random()*3600)+1800}">--:--</span></div>
+                    <div class="bg-white rounded-2xl p-4 h-48 flex items-center justify-center mb-4 transition-transform group-hover:scale-105 duration-500">
                         <img src="${deal.image}" class="max-h-full object-contain">
-                        <div class="absolute top-0 left-0 bg-red-600 text-white text-[8px] font-bold px-2 py-1">ENDING IN: <span class="timer" data-id="${index}">--:--</span></div>
                     </div>
-                    <h3 class="text-[10px] font-bold text-gray-200 line-clamp-2 mb-2 flex-grow">${deal.title}</h3>
-                    <div class="flex items-baseline gap-2 mb-3">
-                        <span class="text-xl font-black text-emerald-400">₹${deal.price}</span>
-                        <span class="text-[9px] text-gray-500 line-through">₹${deal.mrp}</span>
+                    <h3 class="text-[11px] font-bold text-gray-200 line-clamp-2 mb-3 leading-tight flex-grow">${deal.title}</h3>
+                    <div class="flex items-baseline gap-2 mb-4 bg-emerald-500/10 p-2 rounded-xl">
+                        <span class="text-2xl font-black text-emerald-400">₹${deal.price}</span>
+                        <span class="text-[10px] text-gray-500 line-through">₹${deal.mrp}</span>
                     </div>
-                    <a href="${deal.affiliate_link}" target="_blank" class="w-full bg-emerald-500 hover:bg-emerald-400 text-white py-2 rounded-xl text-center text-[10px] font-extrabold transition-all">${deal.btnText || 'GRAB DEAL'}</a>
+                    <a href="${deal.affiliate_link}" target="_blank" class="w-full bg-emerald-500 hover:bg-emerald-400 text-white py-3 rounded-xl text-center text-[11px] font-black transition-all shadow-lg uppercase tracking-wider">
+                        ${deal.btnText || 'Grab Deal'}
+                    </a>
                 </div>
             `).join('');
-            startTimers();
+            runCountdowns();
         }
 
-        function startTimers() {
-            const timers = document.querySelectorAll('.timer');
-            timers.forEach(timer => {
-                let time = Math.floor(Math.random() * 3600) + 1800;
-                setInterval(() => {
-                    let mins = Math.floor(time / 60);
-                    let secs = time % 60;
-                    timer.innerText = `${mins}:${secs < 10 ? '0' : ''}${secs}`;
-                    if (time > 0) time--;
+        function runCountdowns() {
+            const timers = document.querySelectorAll('.countdown');
+            timers.forEach(t => {
+                let sec = parseInt(t.getAttribute('data-time'));
+                const itv = setInterval(() => {
+                    let m = Math.floor(sec/60);
+                    let s = sec%60;
+                    t.innerText = `${m}:${s < 10 ? '0' : ''}${s}`;
+                    if(sec <= 0) clearInterval(itv);
+                    sec--;
                 }, 1000);
             });
         }
+
+        document.getElementById('affimania-form').addEventListener('submit', function(e) {
+            e.preventDefault();
+            const product = document.getElementById('product').value;
+            const min = document.getElementById('min_price').value;
+            const max = document.getElementById('max_price').value;
+            document.getElementById('res-link').href = `https://www.amazon.in/s?k=${encodeURIComponent(product)}&low-price=${min}&high-price=${max}&tag=${AFFILIATE_TAG}`;
+            document.getElementById('result-card').classList.remove('hidden');
+        });
 
         window.onload = initPage;
     </script>
