@@ -1,29 +1,31 @@
-{
-  "name": "affimania-ai-automation",
-  "version": "2.5.0",
-  "description": "2026 AI-Powered Script for 40+ Amazon Deals.",
-  "main": "update_deals.js",
-  "scripts": {
-    "start": "node update_deals.js"
-  },
-  "author": "Affimania Ai",
-  "license": "MIT",
-  "dependencies": {
-    "amazon-paapi": "^1.0.1",
-    "fs-extra": "^11.1.0"
-  }
-}{
-  "name": "affimania-ai-automation",
-  "version": "2.5.0",
-  "description": "2026 AI-Powered Script for 40+ Amazon Deals.",
-  "main": "update_deals.js",
-  "scripts": {
-    "start": "node update_deals.js"
-  },
-  "author": "Affimania Ai",
-  "license": "MIT",
-  "dependencies": {
-    "amazon-paapi": "^1.0.1",
-    "fs-extra": "^11.1.0"
-  }
-}
+backend:
+  name: github
+  repo: affimania/affimania
+  branch: main 
+
+media_folder: "assets/img"
+public_folder: "/assets/img"
+
+collections:
+  - name: "deals"
+    label: "🔥 Amazon Daily Deals"
+    folder: "_deals"
+    create: true
+    slug: "{{date}}-{{slug}}"
+    fields:
+      - {label: "Product Name", name: "title", widget: "string"}
+      - {label: "MRP (₹)", name: "mrp", widget: "number"} 
+      - {label: "Current Price (₹)", name: "price", widget: "number"}
+      - {label: "Savings %", name: "savings", widget: "string"}
+      - {label: "Amazon Affiliate Link", name: "affiliate_link", widget: "string"}
+      - {label: "Product Image URL", name: "image", widget: "string"}
+      - {label: "Category", name: "category", widget: "select", options: ["Electronics", "Computing", "Smart Home", "Gaming"]}
+
+  - name: "festive_settings"
+    label: "🎉 Festive Banner Config"
+    folder: "_config"
+    create: true
+    fields:
+      - {label: "Banner Title", name: "banner_title", widget: "string", default: "HAPPY NEW YEAR 2026"}
+      - {label: "Banner Subtitle", name: "banner_sub", widget: "string", default: "Your Gateway to Smart Shopping!"}
+      - {label: "Event Mode Active", name: "is_active", widget: "boolean", default: true}
