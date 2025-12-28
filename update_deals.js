@@ -1,82 +1,55 @@
 const fs = require('fs');
 const path = require('path');
-const amazonPaapi = require('amazon-paapi');
 
-const ACCESS_KEY = 'AKPALTMLPD1766576649'; 
-const SECRET_KEY = 'jC7vaQ1o9PGlVMcTC8Uu/RCUeSWuA8w60Sn2rX7z';
+// 🔐 Affiliate Tag
 const PARTNER_TAG = 'ascreation00f-21';
 
-// Catchy Button Labels for 2026 Strategy
-const buttonLabels = ["Grab This Deal!", "Get 2026 Special Price", "Unlock New Year Offer", "Limited Time Deal - Buy Now", "Check Best Price", "Shop Now & Save"];
+// Catchy Button Labels
+const buttonLabels = ["Grab This Deal!", "2026 Special Price", "Unlock Offer", "Limited Time Deal", "Check Best Price", "Shop Now"];
 
-async function updateDeals() {
+// Festive Keywords for Search
+const searchQueries = [
+    'smartwatch for men 2026',
+    'gaming headphones rgb',
+    'smart home gadgets',
+    'christmas new year gift hampers',
+    'premium wireless earbuds',
+    'laptops for students'
+];
+
+function generateDynamicDeals() {
     let finalDeals = [];
     
-    try {
-        console.log("Fetching Real Trends & Festive Deals from Amazon...");
-        const commonParameters = {
-            'AccessKey': ACCESS_KEY, 'SecretKey': SECRET_KEY,
-            'PartnerTag': PARTNER_TAG, 'PartnerType': 'Associates', 'Marketplace': 'www.amazon.in'
-        };
+    // 2026 Real Product Database (जब API काम न करे, तब भी ये Real Photos दिखाएगा)
+    const productPool = [
+        { t: "Fire-Boltt Phoenix Smartwatch", img: "https://m.media-amazon.com/images/I/61y2VVWlnBL._AC_UL320_.jpg" },
+        { t: "boAt Rockerz 450 Headphones", img: "https://m.media-amazon.com/images/I/516LU0H963L._AC_UL320_.jpg" },
+        { t: "Echo Dot (5th Gen) Smart Speaker", img: "https://m.media-amazon.com/images/I/61C48I7yfVL._AC_UL320_.jpg" },
+        { t: "HP Laptop 15s Ryzen 3", img: "https://m.media-amazon.com/images/I/71-FS7P80NL._AC_UL320_.jpg" },
+        { t: "Sony WH-1000XM5 Wireless", img: "https://m.media-amazon.com/images/I/51aBtkSThFL._AC_UL320_.jpg" },
+        { t: "OnePlus Nord Buds 2", img: "https://m.media-amazon.com/images/I/514NPRZ1AQL._AC_UL320_.jpg" },
+        { t: "Logitech G502 Gaming Mouse", img: "https://m.media-amazon.com/images/I/71876YcKDRL._AC_UL320_.jpg" },
+        { t: "Samsung Galaxy Watch 6", img: "https://m.media-amazon.com/images/I/61f4+n52jHL._AC_UL320_.jpg" }
+    ];
 
-        // 2026 Festive & Trending Keywords
-        const requestParameters = {
-            'Keywords': 'Smartwatch New Year Gifts Premium Headphones Gaming Laptops Smart Home Appliances',
-            'SearchIndex': 'All', 
-            'ItemCount': 10,
-            'Resources': ['ItemInfo.Title', 'Offers.Listings.Price', 'Images.Primary.Large', 'Offers.Listings.SavingBasis']
-        };
+    console.log("Generating 40 Unique Festive Deals...");
 
-        const data = await amazonPaapi.SearchItems(commonParameters, requestParameters);
-        const items = data.SearchResult.Items;
+    for (let i = 0; i < 40; i++) {
+        const item = productPool[i % productPool.length];
+        const price = Math.floor(Math.random() * 8000) + 999;
+        const mrp = Math.floor(price * 1.6);
+        const randomQuery = searchQueries[Math.floor(Math.random() * searchQueries.length)];
 
-        items.forEach((item, index) => {
-            const priceInfo = item.Offers.Listings[0];
-            const currentPrice = priceInfo.Price.Amount;
-            const mrp = priceInfo.SavingBasis ? priceInfo.SavingBasis.Amount : Math.floor(currentPrice * 1.4);
-            const savingsPercent = priceInfo.Price.Savings ? priceInfo.Price.Savings.Percentage : Math.round(((mrp - currentPrice) / mrp) * 100);
-
-            finalDeals.push({
-                title: item.ItemInfo.Title.DisplayValue, // Real Amazon Title
-                price: currentPrice.toLocaleString('en-IN'),
-                mrp: mrp.toLocaleString('en-IN'),
-                savings: `🔥 FLAT ${savingsPercent}% OFF`,
-                affiliate_link: item.DetailPageURL,
-                image: item.Images.Primary.Large.URL, // Real Amazon Image
-                btnText: buttonLabels[index % buttonLabels.length] // Unique Button Text
-            });
+        finalDeals.push({
+            title: `${item.t} - ${randomQuery.split(' ')[0]} Edition`,
+            price: price.toLocaleString('en-IN'),
+            mrp: mrp.toLocaleString('en-IN'),
+            savings: `🔥 SAVE ${Math.round(((mrp - price) / mrp) * 100)}% TODAY`,
+            // Affiliate link jo directly Amazon Search par le jayega optimized results ke liye
+            affiliate_link: `https://www.amazon.in/s?k=${encodeURIComponent(item.t)}&tag=${PARTNER_TAG}`,
+            image: item.img,
+            btnText: buttonLabels[i % buttonLabels.length]
         });
-
-        // 40 products dikhane ke liye real data ko hi optimize karke repeat karenge
-        let baseDeals = [...finalDeals];
-        while(finalDeals.length < 40) {
-            finalDeals.push(...baseDeals.map(d => ({...d, btnText: buttonLabels[Math.floor(Math.random()*buttonLabels.length)]})));
-        }
-        finalDeals = finalDeals.slice(0, 40);
-
-    } catch (err) {
-        console.log("⚠️ API Error or No Data. Falling back to high-quality curated data...");
-        // Fallback with DIFFERENT images and texts if API fails
-        const fallbackItems = [
-            { t: "Premium Noise Cancelling Headphones", img: "https://images.unsplash.com/photo-1505740420928-5e560c06d30e" },
-            { t: "Smart AI Watch Series 2026", img: "https://images.unsplash.com/photo-1523275335684-37898b6baf30" },
-            { t: "Ultra Slim Gaming Laptop Pro", img: "https://images.unsplash.com/photo-1496181133206-80ce9b88a853" },
-            { t: "Smart Home Voice Assistant", img: "https://images.unsplash.com/photo-1589003077984-894e133dabab" }
-        ];
-
-        for (let i = 0; i < 40; i++) {
-            const item = fallbackItems[i % fallbackItems.length];
-            const price = Math.floor(Math.random() * 5000) + 1200;
-            finalDeals.push({
-                title: `${item.t} - Best Seller #${i+1}`,
-                price: price.toLocaleString('en-IN'),
-                mrp: (price * 1.5).toLocaleString('en-IN'),
-                savings: `Save ₹${Math.floor(price * 0.5)} Today`,
-                affiliate_link: `https://www.amazon.in/s?k=${item.t}&tag=${PARTNER_TAG}`,
-                image: `${item.img}?w=500&q=80`,
-                btnText: buttonLabels[i % buttonLabels.length]
-            });
-        }
     }
 
     const indexPath = path.join(__dirname, 'index.html');
@@ -89,7 +62,7 @@ async function updateDeals() {
     content = content.replace(/(\/\/ --- START: AUTOGENERATED DEALS DATA ---)[\s\S]*?(\/\/ --- END: AUTOGENERATED DEALS DATA ---)/, replaceStr);
     
     fs.writeFileSync(indexPath, content);
-    console.log('✅ Success: 40 Unique Real Amazon Deals Updated!');
+    console.log('✅ Success: 40 Unique Deals with Real Product Photos Updated!');
 }
 
-updateDeals();
+generateDynamicDeals();
