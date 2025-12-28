@@ -3,379 +3,148 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>AFFIMANIA Ai | 2026</title>
+    <title>AFFIMANIA Ai | Happy New Year 2026</title>
     <script src="https://cdn.tailwindcss.com"></script>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700;800&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&display=swap" rel="stylesheet">
     <style>
-        body { background-color: #0f172a; color: white; font-family: 'Inter', sans-serif; }
-        .glass-card { background: rgba(255, 255, 255, 0.03); backdrop-filter: blur(12px); border: 1px solid rgba(255, 255, 255, 0.1); transition: 0.3s; }
-        .glass-card:hover { transform: translateY(-5px); border-color: #10b981; }
-        .deals-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 20px; }
+        :root {
+            --primary-gradient: linear-gradient(135deg, #10b981 0%, #3b82f6 100%);
+            --glass-bg: rgba(255, 255, 255, 0.05);
+            --glass-border: rgba(255, 255, 255, 0.1);
+        }
+
+        body { 
+            font-family: 'Inter', sans-serif; 
+            background-color: #0f172a; 
+            color: #ffffff;
+            overflow-x: hidden;
+        }
+
+        /* Festive Banner Design */
+        .new-year-banner {
+            background: linear-gradient(rgba(15, 23, 42, 0.7), rgba(15, 23, 42, 0.8)), 
+                        url('https://images.unsplash.com/photo-1546733080-d99f4af6763a?w=1200&q=80');
+            background-size: cover;
+            background-position: center;
+            border-radius: 30px;
+            padding: 80px 20px;
+            text-align: center;
+            border: 1px solid rgba(16, 185, 129, 0.3);
+            box-shadow: 0 0 50px rgba(16, 185, 129, 0.1);
+        }
+
+        .glass-card { 
+            background: rgba(255, 255, 255, 0.03); 
+            backdrop-filter: blur(15px); 
+            border: 1px solid var(--glass-border);
+            transition: 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275); 
+        }
+
+        .glass-card:hover { 
+            transform: translateY(-8px); 
+            border-color: #10b981;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.4); 
+        }
+
+        .deals-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 20px;
+        }
+
+        /* Contact Buttons */
+        .contact-button {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 12px 24px;
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 12px;
+            color: white;
+            font-weight: 600;
+            transition: 0.3s;
+        }
+
+        .contact-button:hover {
+            background: var(--primary-gradient);
+            transform: translateY(-3px);
+            border-color: transparent;
+        }
+
         @media (max-width: 1024px) { .deals-grid { grid-template-columns: repeat(2, 1fr); } }
         @media (max-width: 640px) { .deals-grid { grid-template-columns: repeat(1, 1fr); } }
     </style>
 </head>
-<body class="p-6">
-    <div class="max-w-7xl mx-auto">
-        <header class="text-center mb-10">
-            <h1 class="text-5xl font-extrabold text-transparent bg-clip-text bg-gradient-to-r from-emerald-400 to-blue-500">AFFIMANIA Ai</h1>
-            <p class="text-gray-400 mt-2 uppercase tracking-widest text-xs">Access Key Active: ...6649</p>
+<body class="p-4 md:p-10">
+
+    <div id="app-container" class="max-w-7xl mx-auto">
+        
+        <header class="text-center mb-8">
+            <div class="text-5xl font-extrabold tracking-tighter" style="background: var(--primary-gradient); -webkit-background-clip: text; -webkit-text-fill-color: transparent;">
+                AFFIMANIA Ai
+            </div>
         </header>
 
-        <div class="glass-card p-6 rounded-3xl mb-12">
-            <form id="affimania-form" class="space-y-4">
-                <input type="text" id="product" required class="w-full bg-white/5 border border-white/10 p-4 rounded-xl text-white outline-none focus:ring-2 focus:ring-emerald-500" placeholder="What are you looking for?">
-                <div class="flex gap-4">
-                    <input type="number" id="min_price" required class="w-1/2 bg-white/5 border border-white/10 p-4 rounded-xl" placeholder="Min ₹">
-                    <input type="number" id="max_price" required class="w-1/2 bg-white/5 border border-white/10 p-4 rounded-xl" placeholder="Max ₹">
-                </div>
-                <button type="submit" class="w-full bg-gradient-to-r from-emerald-500 to-teal-600 p-4 rounded-xl font-bold">✨ SEARCH WITH AI</button>
-            </form>
-            <div id="result-card" class="mt-4 hidden"><a id="res-link" target="_blank" class="block w-full bg-white text-black text-center p-3 rounded-xl font-bold">🛒 GET OPTIMIZED LINK</a></div>
+        <div class="new-year-banner mb-12">
+            <div class="inline-block px-4 py-1 rounded-full bg-emerald-500 text-white text-[10px] font-bold tracking-widest uppercase mb-4 animate-pulse">
+                Celebration Mode On
+            </div>
+            <h2 class="text-5xl md:text-7xl font-black mb-4 tracking-tighter">HAPPY NEW YEAR <span class="text-emerald-400">2026</span></h2>
+            <p class="text-gray-300 text-lg md:text-xl font-medium italic">Your Gateway to Smart Shopping in the New Year!</p>
         </div>
 
-        <h2 class="text-2xl font-bold mb-6 border-l-4 border-emerald-500 pl-4">🔥 40 TOP TRENDING DEALS</h2>
-        <div id="deals-list" class="deals-grid"></div>
+        <div class="glass-card p-8 rounded-3xl mb-16 shadow-2xl">
+            <form id="affimania-form" class="space-y-6">
+                <input type="text" id="product" required class="w-full bg-white/5 border border-white/10 p-4 rounded-xl text-white outline-none" placeholder="Search product for 2026...">
+                <div class="flex gap-4">
+                    <input type="number" id="min_price" required class="w-1/2 bg-white/5 border border-white/10 p-4 rounded-xl text-white" placeholder="Min ₹">
+                    <input type="number" id="max_price" required class="w-1/2 bg-white/5 border border-white/10 p-4 rounded-xl text-white" placeholder="Max ₹">
+                </div>
+                <button type="submit" class="w-full bg-gradient-to-r from-emerald-500 to-blue-600 text-white p-4 rounded-xl font-bold text-lg transition-all hover:opacity-90">
+                    ✨ AI SEARCH FOR BEST DEALS
+                </button>
+            </form>
+            <div id="result-card" class="mt-6 hidden bg-emerald-500/10 border border-emerald-500/30 p-4 rounded-2xl">
+                <a id="res-link" target="_blank" class="block w-full bg-white text-black text-center p-3 rounded-xl font-black">🛒 GET NEW YEAR DEAL LINK</a>
+            </div>
+        </div>
+
+        <section>
+            <h2 class="text-2xl font-bold mb-8 border-l-4 border-emerald-500 pl-4">🔥 NEW YEAR SPECIAL: TOP 40 DEALS</h2>
+            <div id="deals-list" class="deals-grid">
+                </div>
+        </section>
+
+        <footer class="mt-24 pt-12 border-t border-white/5 text-center">
+            <h3 class="text-xl font-bold mb-8 text-gray-200">Customer Support & Connect</h3>
+            <div class="flex flex-wrap justify-center gap-4 mb-10">
+                <a href="mailto:affimania1@gmail.com" class="contact-button w-full sm:w-auto">📧 affimania1@gmail.com</a>
+                <a href="https://www.instagram.com/affimania.ai" target="_blank" class="contact-button w-full sm:w-auto">📸 @affimania.ai</a>
+            </div>
+            <p class="text-gray-500 text-[10px] font-bold uppercase tracking-widest">© 2026 AFFIMANIA Ai • AI Powered Shopping Engine</p>
+        </footer>
     </div>
 
     <script>
         const AFFILIATE_TAG = "ascreation00f-21";
-        const dummyDeals = [
-    {
-        "title": "Premium Computing & AI - AI Deal #1",
-        "price": "23,073",
-        "mrp": "32,600",
-        "savings": "29% Off",
-        "affiliate_link": "https://www.amazon.in/s?k=Computing+&+AI&tag=ascreation00f-21",
-        "image": "https://images.unsplash.com/photo-1525547719571-a2d4ac8945e2?w=500&q=80"
-    },
-    {
-        "title": "Premium Smart Home - AI Deal #2",
-        "price": "10,710",
-        "mrp": "14,617",
-        "savings": "27% Off",
-        "affiliate_link": "https://www.amazon.in/s?k=Smart+Home&tag=ascreation00f-21",
-        "image": "https://images.unsplash.com/photo-1584622650111-993a426fbf0a?w=500&q=80"
-    },
-    {
-        "title": "Premium Smart Home - AI Deal #3",
-        "price": "27,332",
-        "mrp": "34,871",
-        "savings": "22% Off",
-        "affiliate_link": "https://www.amazon.in/s?k=Smart+Home&tag=ascreation00f-21",
-        "image": "https://images.unsplash.com/photo-1584622650111-993a426fbf0a?w=500&q=80"
-    },
-    {
-        "title": "Premium Electronics & Tech - AI Deal #4",
-        "price": "6,043",
-        "mrp": "16,438",
-        "savings": "63% Off",
-        "affiliate_link": "https://www.amazon.in/s?k=Electronics+&+Tech&tag=ascreation00f-21",
-        "image": "https://images.unsplash.com/photo-1523275335684-37898b6baf30?w=500&q=80"
-    },
-    {
-        "title": "Premium Computing & AI - AI Deal #5",
-        "price": "18,996",
-        "mrp": "29,148",
-        "savings": "35% Off",
-        "affiliate_link": "https://www.amazon.in/s?k=Computing+&+AI&tag=ascreation00f-21",
-        "image": "https://images.unsplash.com/photo-1496181133206-80ce9b88a853?w=500&q=80"
-    },
-    {
-        "title": "Premium Smart Home - AI Deal #6",
-        "price": "20,748",
-        "mrp": "26,159",
-        "savings": "21% Off",
-        "affiliate_link": "https://www.amazon.in/s?k=Smart+Home&tag=ascreation00f-21",
-        "image": "https://images.unsplash.com/photo-1584622650111-993a426fbf0a?w=500&q=80"
-    },
-    {
-        "title": "Premium Electronics & Tech - AI Deal #7",
-        "price": "31,773",
-        "mrp": "35,966",
-        "savings": "12% Off",
-        "affiliate_link": "https://www.amazon.in/s?k=Electronics+&+Tech&tag=ascreation00f-21",
-        "image": "https://images.unsplash.com/photo-1505740420928-5e560c06d30e?w=500&q=80"
-    },
-    {
-        "title": "Premium Smart Home - AI Deal #8",
-        "price": "28,798",
-        "mrp": "35,122",
-        "savings": "18% Off",
-        "affiliate_link": "https://www.amazon.in/s?k=Smart+Home&tag=ascreation00f-21",
-        "image": "https://images.unsplash.com/photo-1558002038-1055907df827?w=500&q=80"
-    },
-    {
-        "title": "Premium Computing & AI - AI Deal #9",
-        "price": "14,749",
-        "mrp": "22,919",
-        "savings": "36% Off",
-        "affiliate_link": "https://www.amazon.in/s?k=Computing+&+AI&tag=ascreation00f-21",
-        "image": "https://images.unsplash.com/photo-1496181133206-80ce9b88a853?w=500&q=80"
-    },
-    {
-        "title": "Premium Electronics & Tech - AI Deal #10",
-        "price": "9,428",
-        "mrp": "14,201",
-        "savings": "34% Off",
-        "affiliate_link": "https://www.amazon.in/s?k=Electronics+&+Tech&tag=ascreation00f-21",
-        "image": "https://images.unsplash.com/photo-1505740420928-5e560c06d30e?w=500&q=80"
-    },
-    {
-        "title": "Premium Electronics & Tech - AI Deal #11",
-        "price": "20,355",
-        "mrp": "29,350",
-        "savings": "31% Off",
-        "affiliate_link": "https://www.amazon.in/s?k=Electronics+&+Tech&tag=ascreation00f-21",
-        "image": "https://images.unsplash.com/photo-1523275335684-37898b6baf30?w=500&q=80"
-    },
-    {
-        "title": "Premium Computing & AI - AI Deal #12",
-        "price": "22,475",
-        "mrp": "32,976",
-        "savings": "32% Off",
-        "affiliate_link": "https://www.amazon.in/s?k=Computing+&+AI&tag=ascreation00f-21",
-        "image": "https://images.unsplash.com/photo-1496181133206-80ce9b88a853?w=500&q=80"
-    },
-    {
-        "title": "Premium Smart Home - AI Deal #13",
-        "price": "26,907",
-        "mrp": "32,056",
-        "savings": "16% Off",
-        "affiliate_link": "https://www.amazon.in/s?k=Smart+Home&tag=ascreation00f-21",
-        "image": "https://images.unsplash.com/photo-1558002038-1055907df827?w=500&q=80"
-    },
-    {
-        "title": "Premium Computing & AI - AI Deal #14",
-        "price": "24,338",
-        "mrp": "32,220",
-        "savings": "24% Off",
-        "affiliate_link": "https://www.amazon.in/s?k=Computing+&+AI&tag=ascreation00f-21",
-        "image": "https://images.unsplash.com/photo-1525547719571-a2d4ac8945e2?w=500&q=80"
-    },
-    {
-        "title": "Premium Electronics & Tech - AI Deal #15",
-        "price": "34,889",
-        "mrp": "45,133",
-        "savings": "23% Off",
-        "affiliate_link": "https://www.amazon.in/s?k=Electronics+&+Tech&tag=ascreation00f-21",
-        "image": "https://images.unsplash.com/photo-1523275335684-37898b6baf30?w=500&q=80"
-    },
-    {
-        "title": "Premium Electronics & Tech - AI Deal #16",
-        "price": "22,410",
-        "mrp": "24,726",
-        "savings": "9% Off",
-        "affiliate_link": "https://www.amazon.in/s?k=Electronics+&+Tech&tag=ascreation00f-21",
-        "image": "https://images.unsplash.com/photo-1505740420928-5e560c06d30e?w=500&q=80"
-    },
-    {
-        "title": "Premium Computing & AI - AI Deal #17",
-        "price": "30,369",
-        "mrp": "38,871",
-        "savings": "22% Off",
-        "affiliate_link": "https://www.amazon.in/s?k=Computing+&+AI&tag=ascreation00f-21",
-        "image": "https://images.unsplash.com/photo-1525547719571-a2d4ac8945e2?w=500&q=80"
-    },
-    {
-        "title": "Premium Computing & AI - AI Deal #18",
-        "price": "28,887",
-        "mrp": "35,571",
-        "savings": "19% Off",
-        "affiliate_link": "https://www.amazon.in/s?k=Computing+&+AI&tag=ascreation00f-21",
-        "image": "https://images.unsplash.com/photo-1525547719571-a2d4ac8945e2?w=500&q=80"
-    },
-    {
-        "title": "Premium Smart Home - AI Deal #19",
-        "price": "10,187",
-        "mrp": "19,453",
-        "savings": "48% Off",
-        "affiliate_link": "https://www.amazon.in/s?k=Smart+Home&tag=ascreation00f-21",
-        "image": "https://images.unsplash.com/photo-1558002038-1055907df827?w=500&q=80"
-    },
-    {
-        "title": "Premium Smart Home - AI Deal #20",
-        "price": "2,875",
-        "mrp": "9,630",
-        "savings": "70% Off",
-        "affiliate_link": "https://www.amazon.in/s?k=Smart+Home&tag=ascreation00f-21",
-        "image": "https://images.unsplash.com/photo-1558002038-1055907df827?w=500&q=80"
-    },
-    {
-        "title": "Premium Electronics & Tech - AI Deal #21",
-        "price": "2,809",
-        "mrp": "6,142",
-        "savings": "54% Off",
-        "affiliate_link": "https://www.amazon.in/s?k=Electronics+&+Tech&tag=ascreation00f-21",
-        "image": "https://images.unsplash.com/photo-1505740420928-5e560c06d30e?w=500&q=80"
-    },
-    {
-        "title": "Premium Computing & AI - AI Deal #22",
-        "price": "15,910",
-        "mrp": "25,891",
-        "savings": "39% Off",
-        "affiliate_link": "https://www.amazon.in/s?k=Computing+&+AI&tag=ascreation00f-21",
-        "image": "https://images.unsplash.com/photo-1496181133206-80ce9b88a853?w=500&q=80"
-    },
-    {
-        "title": "Premium Computing & AI - AI Deal #23",
-        "price": "15,824",
-        "mrp": "22,068",
-        "savings": "28% Off",
-        "affiliate_link": "https://www.amazon.in/s?k=Computing+&+AI&tag=ascreation00f-21",
-        "image": "https://images.unsplash.com/photo-1496181133206-80ce9b88a853?w=500&q=80"
-    },
-    {
-        "title": "Premium Electronics & Tech - AI Deal #24",
-        "price": "12,589",
-        "mrp": "17,420",
-        "savings": "28% Off",
-        "affiliate_link": "https://www.amazon.in/s?k=Electronics+&+Tech&tag=ascreation00f-21",
-        "image": "https://images.unsplash.com/photo-1523275335684-37898b6baf30?w=500&q=80"
-    },
-    {
-        "title": "Premium Electronics & Tech - AI Deal #25",
-        "price": "21,223",
-        "mrp": "30,090",
-        "savings": "29% Off",
-        "affiliate_link": "https://www.amazon.in/s?k=Electronics+&+Tech&tag=ascreation00f-21",
-        "image": "https://images.unsplash.com/photo-1505740420928-5e560c06d30e?w=500&q=80"
-    },
-    {
-        "title": "Premium Smart Home - AI Deal #26",
-        "price": "5,268",
-        "mrp": "15,306",
-        "savings": "66% Off",
-        "affiliate_link": "https://www.amazon.in/s?k=Smart+Home&tag=ascreation00f-21",
-        "image": "https://images.unsplash.com/photo-1558002038-1055907df827?w=500&q=80"
-    },
-    {
-        "title": "Premium Electronics & Tech - AI Deal #27",
-        "price": "29,550",
-        "mrp": "30,587",
-        "savings": "3% Off",
-        "affiliate_link": "https://www.amazon.in/s?k=Electronics+&+Tech&tag=ascreation00f-21",
-        "image": "https://images.unsplash.com/photo-1505740420928-5e560c06d30e?w=500&q=80"
-    },
-    {
-        "title": "Premium Computing & AI - AI Deal #28",
-        "price": "28,537",
-        "mrp": "30,451",
-        "savings": "6% Off",
-        "affiliate_link": "https://www.amazon.in/s?k=Computing+&+AI&tag=ascreation00f-21",
-        "image": "https://images.unsplash.com/photo-1525547719571-a2d4ac8945e2?w=500&q=80"
-    },
-    {
-        "title": "Premium Smart Home - AI Deal #29",
-        "price": "20,320",
-        "mrp": "29,477",
-        "savings": "31% Off",
-        "affiliate_link": "https://www.amazon.in/s?k=Smart+Home&tag=ascreation00f-21",
-        "image": "https://images.unsplash.com/photo-1558002038-1055907df827?w=500&q=80"
-    },
-    {
-        "title": "Premium Electronics & Tech - AI Deal #30",
-        "price": "27,821",
-        "mrp": "35,042",
-        "savings": "21% Off",
-        "affiliate_link": "https://www.amazon.in/s?k=Electronics+&+Tech&tag=ascreation00f-21",
-        "image": "https://images.unsplash.com/photo-1505740420928-5e560c06d30e?w=500&q=80"
-    },
-    {
-        "title": "Premium Electronics & Tech - AI Deal #31",
-        "price": "31,386",
-        "mrp": "42,263",
-        "savings": "26% Off",
-        "affiliate_link": "https://www.amazon.in/s?k=Electronics+&+Tech&tag=ascreation00f-21",
-        "image": "https://images.unsplash.com/photo-1505740420928-5e560c06d30e?w=500&q=80"
-    },
-    {
-        "title": "Premium Electronics & Tech - AI Deal #32",
-        "price": "23,328",
-        "mrp": "29,290",
-        "savings": "20% Off",
-        "affiliate_link": "https://www.amazon.in/s?k=Electronics+&+Tech&tag=ascreation00f-21",
-        "image": "https://images.unsplash.com/photo-1505740420928-5e560c06d30e?w=500&q=80"
-    },
-    {
-        "title": "Premium Electronics & Tech - AI Deal #33",
-        "price": "23,884",
-        "mrp": "31,802",
-        "savings": "25% Off",
-        "affiliate_link": "https://www.amazon.in/s?k=Electronics+&+Tech&tag=ascreation00f-21",
-        "image": "https://images.unsplash.com/photo-1523275335684-37898b6baf30?w=500&q=80"
-    },
-    {
-        "title": "Premium Computing & AI - AI Deal #34",
-        "price": "3,040",
-        "mrp": "10,101",
-        "savings": "70% Off",
-        "affiliate_link": "https://www.amazon.in/s?k=Computing+&+AI&tag=ascreation00f-21",
-        "image": "https://images.unsplash.com/photo-1496181133206-80ce9b88a853?w=500&q=80"
-    },
-    {
-        "title": "Premium Computing & AI - AI Deal #35",
-        "price": "26,321",
-        "mrp": "35,865",
-        "savings": "27% Off",
-        "affiliate_link": "https://www.amazon.in/s?k=Computing+&+AI&tag=ascreation00f-21",
-        "image": "https://images.unsplash.com/photo-1496181133206-80ce9b88a853?w=500&q=80"
-    },
-    {
-        "title": "Premium Computing & AI - AI Deal #36",
-        "price": "5,020",
-        "mrp": "14,769",
-        "savings": "66% Off",
-        "affiliate_link": "https://www.amazon.in/s?k=Computing+&+AI&tag=ascreation00f-21",
-        "image": "https://images.unsplash.com/photo-1525547719571-a2d4ac8945e2?w=500&q=80"
-    },
-    {
-        "title": "Premium Electronics & Tech - AI Deal #37",
-        "price": "23,521",
-        "mrp": "30,788",
-        "savings": "24% Off",
-        "affiliate_link": "https://www.amazon.in/s?k=Electronics+&+Tech&tag=ascreation00f-21",
-        "image": "https://images.unsplash.com/photo-1505740420928-5e560c06d30e?w=500&q=80"
-    },
-    {
-        "title": "Premium Smart Home - AI Deal #38",
-        "price": "27,923",
-        "mrp": "38,438",
-        "savings": "27% Off",
-        "affiliate_link": "https://www.amazon.in/s?k=Smart+Home&tag=ascreation00f-21",
-        "image": "https://images.unsplash.com/photo-1558002038-1055907df827?w=500&q=80"
-    },
-    {
-        "title": "Premium Computing & AI - AI Deal #39",
-        "price": "27,960",
-        "mrp": "33,742",
-        "savings": "17% Off",
-        "affiliate_link": "https://www.amazon.in/s?k=Computing+&+AI&tag=ascreation00f-21",
-        "image": "https://images.unsplash.com/photo-1525547719571-a2d4ac8945e2?w=500&q=80"
-    },
-    {
-        "title": "Premium Computing & AI - AI Deal #40",
-        "price": "20,764",
-        "mrp": "24,898",
-        "savings": "17% Off",
-        "affiliate_link": "https://www.amazon.in/s?k=Computing+&+AI&tag=ascreation00f-21",
-        "image": "https://images.unsplash.com/photo-1496181133206-80ce9b88a853?w=500&q=80"
-    }
-]; // Script will fill this 40 times
+        // --- START: AUTOGENERATED DEALS DATA ---
+        const dummyDeals = []; 
+        // --- END: AUTOGENERATED DEALS DATA ---
 
         function initPage() {
             const list = document.getElementById('deals-list');
             list.innerHTML = dummyDeals.map(deal => `
-                <div class="glass-card p-4 rounded-2xl flex flex-col">
-                    <div class="bg-white rounded-lg p-2 h-40 flex items-center justify-center mb-3">
-                        <img src="${deal.image}" class="max-h-full">
+                <div class="glass-card p-4 rounded-2xl flex flex-col h-full">
+                    <div class="bg-white rounded-xl p-3 h-48 flex items-center justify-center mb-4">
+                        <img src="${deal.image}" class="max-h-full object-contain" onerror="this.src='https://via.placeholder.com/200?text=Amazon+Deal'">
                     </div>
-                    <h3 class="text-xs font-bold text-gray-200 line-clamp-2 mb-2">${deal.title}</h3>
+                    <h3 class="text-xs font-bold text-gray-200 line-clamp-2 mb-2 flex-grow">${deal.title}</h3>
                     <div class="flex items-baseline gap-2 mb-4">
                         <span class="text-xl font-black text-emerald-400">₹${deal.price}</span>
                         <span class="text-[10px] text-gray-500 line-through">₹${deal.mrp}</span>
                     </div>
-                    <a href="${deal.affiliate_link}" target="_blank" class="w-full bg-white/10 hover:bg-emerald-500 py-2 rounded-lg text-center text-[10px] font-bold transition-all">BUY NOW</a>
+                    <a href="${deal.affiliate_link}" target="_blank" class="w-full bg-white/10 hover:bg-emerald-500 text-white py-3 rounded-xl text-center text-[10px] font-bold transition-all">BUY ON AMAZON</a>
                 </div>
             `).join('');
         }
