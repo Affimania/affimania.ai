@@ -40,7 +40,328 @@
 
     <script>
         const AFFILIATE_TAG = "ascreation00f-21";
-        const dummyDeals = []; // Script will fill this 40 times
+        const dummyDeals = [
+    {
+        "title": "Premium Computing & AI - AI Deal #1",
+        "price": "23,073",
+        "mrp": "32,600",
+        "savings": "29% Off",
+        "affiliate_link": "https://www.amazon.in/s?k=Computing+&+AI&tag=ascreation00f-21",
+        "image": "https://images.unsplash.com/photo-1525547719571-a2d4ac8945e2?w=500&q=80"
+    },
+    {
+        "title": "Premium Smart Home - AI Deal #2",
+        "price": "10,710",
+        "mrp": "14,617",
+        "savings": "27% Off",
+        "affiliate_link": "https://www.amazon.in/s?k=Smart+Home&tag=ascreation00f-21",
+        "image": "https://images.unsplash.com/photo-1584622650111-993a426fbf0a?w=500&q=80"
+    },
+    {
+        "title": "Premium Smart Home - AI Deal #3",
+        "price": "27,332",
+        "mrp": "34,871",
+        "savings": "22% Off",
+        "affiliate_link": "https://www.amazon.in/s?k=Smart+Home&tag=ascreation00f-21",
+        "image": "https://images.unsplash.com/photo-1584622650111-993a426fbf0a?w=500&q=80"
+    },
+    {
+        "title": "Premium Electronics & Tech - AI Deal #4",
+        "price": "6,043",
+        "mrp": "16,438",
+        "savings": "63% Off",
+        "affiliate_link": "https://www.amazon.in/s?k=Electronics+&+Tech&tag=ascreation00f-21",
+        "image": "https://images.unsplash.com/photo-1523275335684-37898b6baf30?w=500&q=80"
+    },
+    {
+        "title": "Premium Computing & AI - AI Deal #5",
+        "price": "18,996",
+        "mrp": "29,148",
+        "savings": "35% Off",
+        "affiliate_link": "https://www.amazon.in/s?k=Computing+&+AI&tag=ascreation00f-21",
+        "image": "https://images.unsplash.com/photo-1496181133206-80ce9b88a853?w=500&q=80"
+    },
+    {
+        "title": "Premium Smart Home - AI Deal #6",
+        "price": "20,748",
+        "mrp": "26,159",
+        "savings": "21% Off",
+        "affiliate_link": "https://www.amazon.in/s?k=Smart+Home&tag=ascreation00f-21",
+        "image": "https://images.unsplash.com/photo-1584622650111-993a426fbf0a?w=500&q=80"
+    },
+    {
+        "title": "Premium Electronics & Tech - AI Deal #7",
+        "price": "31,773",
+        "mrp": "35,966",
+        "savings": "12% Off",
+        "affiliate_link": "https://www.amazon.in/s?k=Electronics+&+Tech&tag=ascreation00f-21",
+        "image": "https://images.unsplash.com/photo-1505740420928-5e560c06d30e?w=500&q=80"
+    },
+    {
+        "title": "Premium Smart Home - AI Deal #8",
+        "price": "28,798",
+        "mrp": "35,122",
+        "savings": "18% Off",
+        "affiliate_link": "https://www.amazon.in/s?k=Smart+Home&tag=ascreation00f-21",
+        "image": "https://images.unsplash.com/photo-1558002038-1055907df827?w=500&q=80"
+    },
+    {
+        "title": "Premium Computing & AI - AI Deal #9",
+        "price": "14,749",
+        "mrp": "22,919",
+        "savings": "36% Off",
+        "affiliate_link": "https://www.amazon.in/s?k=Computing+&+AI&tag=ascreation00f-21",
+        "image": "https://images.unsplash.com/photo-1496181133206-80ce9b88a853?w=500&q=80"
+    },
+    {
+        "title": "Premium Electronics & Tech - AI Deal #10",
+        "price": "9,428",
+        "mrp": "14,201",
+        "savings": "34% Off",
+        "affiliate_link": "https://www.amazon.in/s?k=Electronics+&+Tech&tag=ascreation00f-21",
+        "image": "https://images.unsplash.com/photo-1505740420928-5e560c06d30e?w=500&q=80"
+    },
+    {
+        "title": "Premium Electronics & Tech - AI Deal #11",
+        "price": "20,355",
+        "mrp": "29,350",
+        "savings": "31% Off",
+        "affiliate_link": "https://www.amazon.in/s?k=Electronics+&+Tech&tag=ascreation00f-21",
+        "image": "https://images.unsplash.com/photo-1523275335684-37898b6baf30?w=500&q=80"
+    },
+    {
+        "title": "Premium Computing & AI - AI Deal #12",
+        "price": "22,475",
+        "mrp": "32,976",
+        "savings": "32% Off",
+        "affiliate_link": "https://www.amazon.in/s?k=Computing+&+AI&tag=ascreation00f-21",
+        "image": "https://images.unsplash.com/photo-1496181133206-80ce9b88a853?w=500&q=80"
+    },
+    {
+        "title": "Premium Smart Home - AI Deal #13",
+        "price": "26,907",
+        "mrp": "32,056",
+        "savings": "16% Off",
+        "affiliate_link": "https://www.amazon.in/s?k=Smart+Home&tag=ascreation00f-21",
+        "image": "https://images.unsplash.com/photo-1558002038-1055907df827?w=500&q=80"
+    },
+    {
+        "title": "Premium Computing & AI - AI Deal #14",
+        "price": "24,338",
+        "mrp": "32,220",
+        "savings": "24% Off",
+        "affiliate_link": "https://www.amazon.in/s?k=Computing+&+AI&tag=ascreation00f-21",
+        "image": "https://images.unsplash.com/photo-1525547719571-a2d4ac8945e2?w=500&q=80"
+    },
+    {
+        "title": "Premium Electronics & Tech - AI Deal #15",
+        "price": "34,889",
+        "mrp": "45,133",
+        "savings": "23% Off",
+        "affiliate_link": "https://www.amazon.in/s?k=Electronics+&+Tech&tag=ascreation00f-21",
+        "image": "https://images.unsplash.com/photo-1523275335684-37898b6baf30?w=500&q=80"
+    },
+    {
+        "title": "Premium Electronics & Tech - AI Deal #16",
+        "price": "22,410",
+        "mrp": "24,726",
+        "savings": "9% Off",
+        "affiliate_link": "https://www.amazon.in/s?k=Electronics+&+Tech&tag=ascreation00f-21",
+        "image": "https://images.unsplash.com/photo-1505740420928-5e560c06d30e?w=500&q=80"
+    },
+    {
+        "title": "Premium Computing & AI - AI Deal #17",
+        "price": "30,369",
+        "mrp": "38,871",
+        "savings": "22% Off",
+        "affiliate_link": "https://www.amazon.in/s?k=Computing+&+AI&tag=ascreation00f-21",
+        "image": "https://images.unsplash.com/photo-1525547719571-a2d4ac8945e2?w=500&q=80"
+    },
+    {
+        "title": "Premium Computing & AI - AI Deal #18",
+        "price": "28,887",
+        "mrp": "35,571",
+        "savings": "19% Off",
+        "affiliate_link": "https://www.amazon.in/s?k=Computing+&+AI&tag=ascreation00f-21",
+        "image": "https://images.unsplash.com/photo-1525547719571-a2d4ac8945e2?w=500&q=80"
+    },
+    {
+        "title": "Premium Smart Home - AI Deal #19",
+        "price": "10,187",
+        "mrp": "19,453",
+        "savings": "48% Off",
+        "affiliate_link": "https://www.amazon.in/s?k=Smart+Home&tag=ascreation00f-21",
+        "image": "https://images.unsplash.com/photo-1558002038-1055907df827?w=500&q=80"
+    },
+    {
+        "title": "Premium Smart Home - AI Deal #20",
+        "price": "2,875",
+        "mrp": "9,630",
+        "savings": "70% Off",
+        "affiliate_link": "https://www.amazon.in/s?k=Smart+Home&tag=ascreation00f-21",
+        "image": "https://images.unsplash.com/photo-1558002038-1055907df827?w=500&q=80"
+    },
+    {
+        "title": "Premium Electronics & Tech - AI Deal #21",
+        "price": "2,809",
+        "mrp": "6,142",
+        "savings": "54% Off",
+        "affiliate_link": "https://www.amazon.in/s?k=Electronics+&+Tech&tag=ascreation00f-21",
+        "image": "https://images.unsplash.com/photo-1505740420928-5e560c06d30e?w=500&q=80"
+    },
+    {
+        "title": "Premium Computing & AI - AI Deal #22",
+        "price": "15,910",
+        "mrp": "25,891",
+        "savings": "39% Off",
+        "affiliate_link": "https://www.amazon.in/s?k=Computing+&+AI&tag=ascreation00f-21",
+        "image": "https://images.unsplash.com/photo-1496181133206-80ce9b88a853?w=500&q=80"
+    },
+    {
+        "title": "Premium Computing & AI - AI Deal #23",
+        "price": "15,824",
+        "mrp": "22,068",
+        "savings": "28% Off",
+        "affiliate_link": "https://www.amazon.in/s?k=Computing+&+AI&tag=ascreation00f-21",
+        "image": "https://images.unsplash.com/photo-1496181133206-80ce9b88a853?w=500&q=80"
+    },
+    {
+        "title": "Premium Electronics & Tech - AI Deal #24",
+        "price": "12,589",
+        "mrp": "17,420",
+        "savings": "28% Off",
+        "affiliate_link": "https://www.amazon.in/s?k=Electronics+&+Tech&tag=ascreation00f-21",
+        "image": "https://images.unsplash.com/photo-1523275335684-37898b6baf30?w=500&q=80"
+    },
+    {
+        "title": "Premium Electronics & Tech - AI Deal #25",
+        "price": "21,223",
+        "mrp": "30,090",
+        "savings": "29% Off",
+        "affiliate_link": "https://www.amazon.in/s?k=Electronics+&+Tech&tag=ascreation00f-21",
+        "image": "https://images.unsplash.com/photo-1505740420928-5e560c06d30e?w=500&q=80"
+    },
+    {
+        "title": "Premium Smart Home - AI Deal #26",
+        "price": "5,268",
+        "mrp": "15,306",
+        "savings": "66% Off",
+        "affiliate_link": "https://www.amazon.in/s?k=Smart+Home&tag=ascreation00f-21",
+        "image": "https://images.unsplash.com/photo-1558002038-1055907df827?w=500&q=80"
+    },
+    {
+        "title": "Premium Electronics & Tech - AI Deal #27",
+        "price": "29,550",
+        "mrp": "30,587",
+        "savings": "3% Off",
+        "affiliate_link": "https://www.amazon.in/s?k=Electronics+&+Tech&tag=ascreation00f-21",
+        "image": "https://images.unsplash.com/photo-1505740420928-5e560c06d30e?w=500&q=80"
+    },
+    {
+        "title": "Premium Computing & AI - AI Deal #28",
+        "price": "28,537",
+        "mrp": "30,451",
+        "savings": "6% Off",
+        "affiliate_link": "https://www.amazon.in/s?k=Computing+&+AI&tag=ascreation00f-21",
+        "image": "https://images.unsplash.com/photo-1525547719571-a2d4ac8945e2?w=500&q=80"
+    },
+    {
+        "title": "Premium Smart Home - AI Deal #29",
+        "price": "20,320",
+        "mrp": "29,477",
+        "savings": "31% Off",
+        "affiliate_link": "https://www.amazon.in/s?k=Smart+Home&tag=ascreation00f-21",
+        "image": "https://images.unsplash.com/photo-1558002038-1055907df827?w=500&q=80"
+    },
+    {
+        "title": "Premium Electronics & Tech - AI Deal #30",
+        "price": "27,821",
+        "mrp": "35,042",
+        "savings": "21% Off",
+        "affiliate_link": "https://www.amazon.in/s?k=Electronics+&+Tech&tag=ascreation00f-21",
+        "image": "https://images.unsplash.com/photo-1505740420928-5e560c06d30e?w=500&q=80"
+    },
+    {
+        "title": "Premium Electronics & Tech - AI Deal #31",
+        "price": "31,386",
+        "mrp": "42,263",
+        "savings": "26% Off",
+        "affiliate_link": "https://www.amazon.in/s?k=Electronics+&+Tech&tag=ascreation00f-21",
+        "image": "https://images.unsplash.com/photo-1505740420928-5e560c06d30e?w=500&q=80"
+    },
+    {
+        "title": "Premium Electronics & Tech - AI Deal #32",
+        "price": "23,328",
+        "mrp": "29,290",
+        "savings": "20% Off",
+        "affiliate_link": "https://www.amazon.in/s?k=Electronics+&+Tech&tag=ascreation00f-21",
+        "image": "https://images.unsplash.com/photo-1505740420928-5e560c06d30e?w=500&q=80"
+    },
+    {
+        "title": "Premium Electronics & Tech - AI Deal #33",
+        "price": "23,884",
+        "mrp": "31,802",
+        "savings": "25% Off",
+        "affiliate_link": "https://www.amazon.in/s?k=Electronics+&+Tech&tag=ascreation00f-21",
+        "image": "https://images.unsplash.com/photo-1523275335684-37898b6baf30?w=500&q=80"
+    },
+    {
+        "title": "Premium Computing & AI - AI Deal #34",
+        "price": "3,040",
+        "mrp": "10,101",
+        "savings": "70% Off",
+        "affiliate_link": "https://www.amazon.in/s?k=Computing+&+AI&tag=ascreation00f-21",
+        "image": "https://images.unsplash.com/photo-1496181133206-80ce9b88a853?w=500&q=80"
+    },
+    {
+        "title": "Premium Computing & AI - AI Deal #35",
+        "price": "26,321",
+        "mrp": "35,865",
+        "savings": "27% Off",
+        "affiliate_link": "https://www.amazon.in/s?k=Computing+&+AI&tag=ascreation00f-21",
+        "image": "https://images.unsplash.com/photo-1496181133206-80ce9b88a853?w=500&q=80"
+    },
+    {
+        "title": "Premium Computing & AI - AI Deal #36",
+        "price": "5,020",
+        "mrp": "14,769",
+        "savings": "66% Off",
+        "affiliate_link": "https://www.amazon.in/s?k=Computing+&+AI&tag=ascreation00f-21",
+        "image": "https://images.unsplash.com/photo-1525547719571-a2d4ac8945e2?w=500&q=80"
+    },
+    {
+        "title": "Premium Electronics & Tech - AI Deal #37",
+        "price": "23,521",
+        "mrp": "30,788",
+        "savings": "24% Off",
+        "affiliate_link": "https://www.amazon.in/s?k=Electronics+&+Tech&tag=ascreation00f-21",
+        "image": "https://images.unsplash.com/photo-1505740420928-5e560c06d30e?w=500&q=80"
+    },
+    {
+        "title": "Premium Smart Home - AI Deal #38",
+        "price": "27,923",
+        "mrp": "38,438",
+        "savings": "27% Off",
+        "affiliate_link": "https://www.amazon.in/s?k=Smart+Home&tag=ascreation00f-21",
+        "image": "https://images.unsplash.com/photo-1558002038-1055907df827?w=500&q=80"
+    },
+    {
+        "title": "Premium Computing & AI - AI Deal #39",
+        "price": "27,960",
+        "mrp": "33,742",
+        "savings": "17% Off",
+        "affiliate_link": "https://www.amazon.in/s?k=Computing+&+AI&tag=ascreation00f-21",
+        "image": "https://images.unsplash.com/photo-1525547719571-a2d4ac8945e2?w=500&q=80"
+    },
+    {
+        "title": "Premium Computing & AI - AI Deal #40",
+        "price": "20,764",
+        "mrp": "24,898",
+        "savings": "17% Off",
+        "affiliate_link": "https://www.amazon.in/s?k=Computing+&+AI&tag=ascreation00f-21",
+        "image": "https://images.unsplash.com/photo-1496181133206-80ce9b88a853?w=500&q=80"
+    }
+]; // Script will fill this 40 times
 
         function initPage() {
             const list = document.getElementById('deals-list');
