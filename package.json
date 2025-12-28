@@ -1,13 +1,16 @@
 {
   "name": "affimania-ai-automation",
   "version": "2.5.0",
-  "description": "2026 Festive AI Script with Real Amazon Image Fetching.",
+  "description": "2026 AI-Powered Script with Real Amazon Image Fetching.",
   "main": "update_deals.js",
   "scripts": {
     "start": "node update_deals.js"
   },
+  "author": "Affimania Ai",
+  "license": "MIT",
   "dependencies": {
     "amazon-paapi": "^1.0.1",
-    "fs-extra": "^11.1.0"
+    "fs-extra": "^11.1.0",
+    "path": "^0.12.7"
   }
 }
